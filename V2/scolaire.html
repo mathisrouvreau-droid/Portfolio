@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projets scolaires – Mathis Rouvreau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+
+<header class="modern-header">
+  <div class="container header-inner">
+    <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
+    <a href="index.html" class="brand">Mathis Rouvreau</a>
+    <button class="theme-toggle" aria-label="Basculer le thème">🌗</button>
+  </div>
+  <div class="container header-bottom">
+    <nav aria-label="Navigation principale" data-open="false">
+      <ul class="nav-list">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="alternance.html">Alternance</a></li>
+        <li><a href="scolaire.html" aria-current="page">Scolaire</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><button class="nav-contact-btn" data-open-contact aria-label="Ouvrir le formulaire de contact">Contact</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <h1 class="mb-1">Projets réalisés en formation</h1>
+    <p class="muted max-w-prose">Projets techniques menés pendant le BTS SIO SISR : administration systèmes, réseaux, sécurité, supervision et déploiement. Deux projets majeurs réalisés en équipe sur des infrastructures complètes.</p>
+
+    <!-- Stats -->
+    <div class="stats-grid reveal" style="margin-top:2rem">
+      <div class="stat-card">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Projets d'infrastructure</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">12+</div>
+        <div class="stat-label">Technologies déployées</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Tests validés</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Années BTS SIO</div>
+      </div>
+    </div>
+
+    <!-- ========================
+         TIMELINE INTERACTIVE V2
+         ======================== -->
+    <section style="margin-top:3rem">
+      <h2 class="mb-1" style="text-align:center">Parcours de formation</h2>
+      <p class="muted" style="text-align:center;margin-bottom:2.5rem">Frise chronologique SIO 1ère année → SIO 2ème année</p>
+
+      <div class="timeline-v2">
+        <!-- Ligne animée -->
+        <div class="timeline-v2-line" aria-hidden="true"></div>
+
+        <!-- ===== MILESTONE : SIO 1ère année ===== -->
+        <div class="tl-v2-milestone">
+          <div class="tl-v2-milestone-label">SIO 1ère année — MACODEMY</div>
+          <div class="tl-v2-milestone-dot" aria-hidden="true"></div>
+        </div>
+
+        <!-- Contexte MACODEMY -->
+        <div class="tl-v2-items" style="margin-bottom:1.5rem">
+          <div class="tl-v2-card tl-left">
+            <div class="tl-v2-card-content" style="background:linear-gradient(135deg,color-mix(in oklab,var(--brand) 6%,transparent),var(--surface-2))">
+              <h4>Projet MACODEMY</h4>
+              <p>Conception et déploiement d'un réseau complet pour l'établissement MACODEMY en équipe (Hugo, Mathis, Evan). Réseau avec 3 services segmentés en VLANs, Windows Server 2019 centralisé, serveur Web Debian en DMZ.</p>
+              <div class="badges">
+                <span class="badge">Windows Server 2019</span>
+                <span class="badge">Active Directory</span>
+                <span class="badge">Cisco</span>
+                <span class="badge">Debian</span>
+                <span class="badge">Packet Tracer</span>
+              </div>
+            </div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot"></div>
+            </div>
+            <div class="tl-v2-card-spacer"></div>
+          </div>
+        </div>
+
+        <!-- Activités MACODEMY -->
+        <div class="tl-v2-items">
+
+          <div class="tl-v2-card tl-right">
+            <div class="tl-v2-card-spacer"></div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot"></div>
+            </div>
+            <div class="tl-v2-card-content">
+              <h4>🖥️ AD / DHCP / DNS</h4>
+              <p>Contrôleur de domaine <code>macodemy.local</code>, 3 OU, groupes de sécurité, 3 étendues DHCP (VLAN 10/20/30), zone DNS interne.</p>
+              <div class="badges"><span class="badge">B1.2</span><span class="badge">B1.3</span><span class="badge">B1.5</span></div>
+            </div>
+          </div>
+
+          <div class="tl-v2-card tl-left">
+            <div class="tl-v2-card-content">
+              <h4>📂 Répertoires réseau &amp; Lecteurs partagés</h4>
+              <p>Répertoires personnels et communs par service, droits NTFS différenciés, scripts d'ouverture de session NETLOGON pour mapping automatique.</p>
+              <div class="badges"><span class="badge">B1.2</span><span class="badge">B2.2</span></div>
+            </div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot"></div>
+            </div>
+            <div class="tl-v2-card-spacer"></div>
+          </div>
+
+          <div class="tl-v2-card tl-right">
+            <div class="tl-v2-card-spacer"></div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot"></div>
+            </div>
+            <div class="tl-v2-card-content">
+              <h4>⚙️ GPO – Fond d'écran &amp; déploiement logiciels</h4>
+              <p>GPO fond d'écran personnalisé MACODEMY, GPO déploiement automatique Mozilla Firefox et Google Chrome par OU ciblée.</p>
+              <div class="badges"><span class="badge">B1.2</span><span class="badge">B1.5</span></div>
+            </div>
+          </div>
+
+          <div class="tl-v2-card tl-left">
+            <div class="tl-v2-card-content">
+              <h4>🌐 VLANs, OSPF &amp; ACL</h4>
+              <p>VLAN 10 (Administratif), VLAN 20 (Enseignants), VLAN 30 (Étudiants), sous-interfaces 802.1Q, routage OSPF, ACL étendues pour isolement étudiants.</p>
+              <div class="badges"><span class="badge">B3.2</span><span class="badge">B3.3</span><span class="badge">B4.1</span></div>
+            </div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot"></div>
+            </div>
+            <div class="tl-v2-card-spacer"></div>
+          </div>
+
+          <div class="tl-v2-card tl-right">
+            <div class="tl-v2-card-spacer"></div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot"></div>
+            </div>
+            <div class="tl-v2-card-content">
+              <h4>🐧 Serveur Web Debian – Apache2 en DMZ</h4>
+              <p>IP statique 192.168.10.1, Apache2, VirtualHost <code>macodemy.local</code>, accessible depuis tous les VLANs via <code>http://macodemy.local</code>.</p>
+              <div class="badges"><span class="badge">B1.2</span><span class="badge">B3.2</span></div>
+            </div>
+          </div>
+
+          <div class="tl-v2-card tl-left">
+            <div class="tl-v2-card-content">
+              <h4>💻 Intégration postes clients Windows 10</h4>
+              <p>Création clés USB bootables via Rufus, installation UEFI Windows 10 (22H2), jonction au domaine MACODEMY, vérification lecteurs réseau et GPO.</p>
+              <div class="badges"><span class="badge">B1.1</span><span class="badge">B1.4</span></div>
+            </div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot"></div>
+            </div>
+            <div class="tl-v2-card-spacer"></div>
+          </div>
+
+        </div>
+
+        <!-- ===== MILESTONE : SIO 2ème année ===== -->
+        <div class="tl-v2-milestone" style="margin-top:2.5rem">
+          <div class="tl-v2-milestone-label" style="background:linear-gradient(135deg,var(--brand-2),#c084fc)">SIO 2ème année — PPE3 MDS49</div>
+          <div class="tl-v2-milestone-dot" style="background:linear-gradient(135deg,var(--brand-2),#c084fc);box-shadow:0 0 0 5px rgba(155,126,248,.2),var(--glow-violet)" aria-hidden="true"></div>
+        </div>
+
+        <!-- Contexte PPE3 -->
+        <div class="tl-v2-items" style="margin-bottom:1.5rem">
+          <div class="tl-v2-card tl-right">
+            <div class="tl-v2-card-spacer"></div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot" style="background:linear-gradient(135deg,var(--brand-2),#c084fc)"></div>
+            </div>
+            <div class="tl-v2-card-content" style="background:linear-gradient(135deg,color-mix(in oklab,var(--brand-2) 6%,transparent),var(--surface-2))">
+              <h4>Projet PPE3 — MDS49</h4>
+              <p>Infrastructure réseau sécurisée pour la Maison Départementale des Sports 49. 4 VLANs (Volley, Escrime, Administratif, Partenaires), AD, serveur web DMZ, supervision Zabbix, WiFi RADIUS. Méthode Agile (Trello) — Équipe : Mathis, Evan, Julien.</p>
+              <div class="badges">
+                <span class="badge">Windows Server 2019</span>
+                <span class="badge">Zabbix</span>
+                <span class="badge">FreeRadius</span>
+                <span class="badge">WPA2-Enterprise</span>
+                <span class="badge">NAT/PAT</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activités PPE3 -->
+        <div class="tl-v2-items">
+
+          <div class="tl-v2-card tl-left">
+            <div class="tl-v2-card-content">
+              <h4>🔌 Infrastructure multi-VLANs &amp; routage OSPF</h4>
+              <p>VLAN 10/20/30/100, sous-interfaces 802.1Q sur RDC, DHCP Relay par VLAN, ACL inter-VLAN, OSPF inter-routeurs. Plages : 172.16.x.0/18.</p>
+              <div class="badges"><span class="badge">B3.2</span><span class="badge">B3.3</span></div>
+            </div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot" style="background:linear-gradient(135deg,var(--brand-2),#c084fc)"></div>
+            </div>
+            <div class="tl-v2-card-spacer"></div>
+          </div>
+
+          <div class="tl-v2-card tl-right">
+            <div class="tl-v2-card-spacer"></div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot" style="background:linear-gradient(135deg,var(--brand-2),#c084fc)"></div>
+            </div>
+            <div class="tl-v2-card-content">
+              <h4>🔄 NAT/PAT &amp; ACL étendues</h4>
+              <p>Routeur de bordure : NAT/PAT <code>8.8.8.1:80</code> → <code>10.54.0.100:80</code>, ACL étendue WEB, 2 ACL standard NAT, interfaces DMZ/interne/Internet.</p>
+              <div class="badges"><span class="badge">B3.3</span><span class="badge">B4.1</span></div>
+            </div>
+          </div>
+
+          <div class="tl-v2-card tl-left">
+            <div class="tl-v2-card-content">
+              <h4>🖥️ AD / DHCP / DNS &amp; GPO — MDS49.local</h4>
+              <p>OU : Bureaux_Adm, Comité_Volley, Comité_Escrime, Partenaires. DHCP multi-étendues avec réservations Zabbix. GPO : interdiction panneau de config.</p>
+              <div class="badges"><span class="badge">B1.2</span><span class="badge">B1.5</span><span class="badge">B2.2</span></div>
+            </div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot" style="background:linear-gradient(135deg,var(--brand-2),#c084fc)"></div>
+            </div>
+            <div class="tl-v2-card-spacer"></div>
+          </div>
+
+          <div class="tl-v2-card tl-right">
+            <div class="tl-v2-card-spacer"></div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot" style="background:linear-gradient(135deg,var(--brand-2),#c084fc)"></div>
+            </div>
+            <div class="tl-v2-card-content">
+              <h4>📡 Supervision Zabbix</h4>
+              <p>Agent Zabbix sur serveur AD et Debian, SNMP sur routeurs Cisco (<code>snmp-server community RO</code>) et switch, tableau de bord alertes temps réel.</p>
+              <div class="badges"><span class="badge">B3.4</span><span class="badge">B5.1</span></div>
+            </div>
+          </div>
+
+          <div class="tl-v2-card tl-left">
+            <div class="tl-v2-card-content">
+              <h4>📶 RADIUS / WPA2-Enterprise</h4>
+              <p>Borne Cisco (172.16.255.253) VLAN 100, SSID <code>accesspoint</code>, FreeRadius sous Debian, intégration AD via Winbind, authentification 802.1X dynamique.</p>
+              <div class="badges"><span class="badge">B2.4</span><span class="badge">B3.3</span></div>
+            </div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot" style="background:linear-gradient(135deg,var(--brand-2),#c084fc)"></div>
+            </div>
+            <div class="tl-v2-card-spacer"></div>
+          </div>
+
+          <div class="tl-v2-card tl-right">
+            <div class="tl-v2-card-spacer"></div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot" style="background:linear-gradient(135deg,var(--success),var(--brand))"></div>
+            </div>
+            <div class="tl-v2-card-content" style="border-color:color-mix(in oklab,var(--success) 25%,transparent)">
+              <h4>✅ Plans de tests — 100% conformes</h4>
+              <p>Test site web interne/externe (NAT), cloisonnement VLAN (ping ↔), DHCP 4 VLANs, NAT/PAT (<code>show ip nat translations</code>). Tous tests réussis.</p>
+              <div class="badges"><span class="badge">B4.1</span><span class="badge">B5.1</span></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- END TIMELINE V2 -->
+    </section>
+
+    <!-- Compétences transversales -->
+    <section class="section">
+      <h2 class="mb-2">Compétences transversales développées</h2>
+      <div class="soft-skills-grid">
+        <div class="soft-skill-card reveal">
+          <div class="soft-skill-icon">📝</div>
+          <h3>Documentation technique</h3>
+          <p>Rédaction de procédures, schémas réseau, plans de tests, rapports d'intervention</p>
+        </div>
+        <div class="soft-skill-card reveal">
+          <div class="soft-skill-icon">🤝</div>
+          <h3>Travail en équipe</h3>
+          <p>Projets menés en trinôme, répartition des tâches via Gantt, méthode Agile (Trello)</p>
+        </div>
+        <div class="soft-skill-card reveal">
+          <div class="soft-skill-icon">🎯</div>
+          <h3>Gestion de projet</h3>
+          <p>Planification sur 7 semaines, respect des jalons, suivi des écarts planning</p>
+        </div>
+        <div class="soft-skill-card reveal">
+          <div class="soft-skill-icon">🔍</div>
+          <h3>Résolution de problèmes</h3>
+          <p>Diagnostic réseau (ping, ipconfig, show ip), plans de tests structurés</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Citation -->
+    <blockquote class="card reveal quote-highlight" style="margin-top:2rem">
+      <p class="mb-1"><em>Les projets scolaires m'ont permis d'acquérir des bases solides que j'applique aujourd'hui quotidiennement en entreprise.</em></p>
+      <cite class="muted">– Mathis ROUVREAU</cite>
+    </blockquote>
+
+    <div class="center" style="margin-top:2rem">
+      <a class="btn btn-primary" href="alternance.html">Voir mes projets en alternance</a>
+      <a class="btn btn-outline" href="competences.html">Mes compétences</a>
+    </div>
+  </div>
+</main>
+
+<button class="back-to-top" aria-label="Retour en haut" title="Retour en haut">↑</button>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-section">
+      <h4>Mathis Rouvreau</h4>
+      <p>Alternant BTS SIO SISR</p>
+    </div>
+    <div class="footer-section">
+      <h4>Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="alternance.html">Alternance</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <ul class="footer-links">
+        <li><a href="mailto:mathis.rouvreau@gmail.com">Email</a></li>
+        <li><button class="footer-contact-btn" data-open-contact>Ouvrir le formulaire</button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2025 Mathis ROUVREAU – Portfolio BTS SIO SISR V2.</p>
+  </div>
+</footer>
+
+<!-- CONTACT MODAL -->
+<div class="contact-modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-label="Formulaire de contact" hidden>
+  <div class="contact-modal">
+    <button class="contact-modal-close" aria-label="Fermer" data-close-contact>✕</button>
+    <div class="contact-modal-inner">
+      <div class="contact-modal-left">
+        <div class="contact-modal-eyebrow">Disponible dès sept. 2025</div>
+        <h2 class="contact-modal-title">Travaillons<br>ensemble.</h2>
+        <p class="contact-modal-desc muted">Réponse garantie sous 24–48h. Ouvert aux opportunités en SysAdmin, Infrastructure et Cybersécurité.</p>
+        <div class="contact-modal-links">
+          <a href="mailto:mathis.rouvreau@gmail.com" class="contact-link-item">
+            <span class="contact-link-icon">📧</span>
+            <div>
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-value">mathis.rouvreau@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/mathis-rouvreau-aa6096305/" target="_blank" rel="noopener" class="contact-link-item">
+            <span class="contact-link-icon">💼</span>
+            <div>
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-value">linkedin.com/in/mathis-rouvreau</div>
+            </div>
+          </a>
+          <a href="https://github.com/mathisrouvreau" target="_blank" rel="noopener" class="contact-link-item">
+            <span class="contact-link-icon">💻</span>
+            <div>
+              <div class="contact-link-label">GitHub</div>
+              <div class="contact-link-value">github.com/mathisrouvreau</div>
+            </div>
+          </a>
+        </div>
+        <div class="contact-availability">
+          <span class="contact-avail-dot"></span>
+          Île-de-France · Ouvert au télétravail partiel
+        </div>
+      </div>
+      <div class="contact-modal-right">
+        <form class="contact-form" action="mailto:mathis.rouvreau@gmail.com" method="post" enctype="text/plain">
+          <div class="contact-form-row">
+            <div class="contact-form-field">
+              <label for="modal-name">Nom *</label>
+              <input id="modal-name" name="Nom" type="text" required placeholder="Jean Dupont" autocomplete="name">
+            </div>
+            <div class="contact-form-field">
+              <label for="modal-email">Email *</label>
+              <input id="modal-email" name="Email" type="email" required placeholder="jean@exemple.fr" autocomplete="email">
+            </div>
+          </div>
+          <div class="contact-form-field">
+            <label for="modal-subject">Objet</label>
+            <select id="modal-subject" name="Objet">
+              <option value="Alternance">Proposition d'alternance</option>
+              <option value="Emploi">Proposition d'emploi</option>
+              <option value="Stage">Proposition de stage</option>
+              <option value="Projet">Collaboration sur un projet</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+          <div class="contact-form-field">
+            <label for="modal-message">Message *</label>
+            <textarea id="modal-message" name="Message" rows="4" required placeholder="Bonjour Mathis, je vous contacte au sujet de…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary contact-form-submit">📨 Envoyer le message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

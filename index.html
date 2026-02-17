@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio de Mathis Rouvreau – BTS SIO SISR. Systèmes, réseaux, cybersécurité et automatisation (PowerShell, Azure, n8n).">
+  <meta property="og:title" content="Mathis Rouvreau - Portfolio BTS SIO SISR">
+  <meta property="og:description" content="Alternant SysAdmin - Azure, PowerShell, Cybersécurité">
+  <meta property="og:type" content="website">
+  <title>Mathis Rouvreau – Portfolio BTS SIO SISR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+
+<header class="modern-header">
+  <div class="container header-inner">
+    <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
+    <a href="index.html" class="brand" aria-label="Retour à l'accueil">Mathis Rouvreau</a>
+    <button class="theme-toggle" aria-label="Basculer le thème">🌗</button>
+  </div>
+  <div class="container header-bottom">
+    <nav aria-label="Navigation principale" data-open="false">
+      <ul class="nav-list">
+        <li><a href="index.html" aria-current="page">Accueil</a></li>
+        <li><a href="alternance.html">Alternance</a></li>
+        <li><a href="scolaire.html">Scolaire</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero section" id="accueil">
+  <div class="blob" aria-hidden="true"></div>
+  <div class="container hero-container">
+    <div class="hero-text reveal">
+      <h1>Systèmes, Réseaux &amp; Sécurité – orientés résultats</h1>
+      <p>Je m'appelle Mathis Rouvreau, étudiant en 2ᵉ année de BTS SIO (SISR). Passionné par les infrastructures, <strong>l'administration système et réseau</strong> et <strong>la cybersécurité</strong>, je développe mes compétences en alternance au sein d'AGIR Recouvrement.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="alternance.html">Voir mes projets</a>
+        <a class="btn btn-secondary" href="contact.html">Me contacter</a>
+        <a class="btn btn-outline" href="assets/CV_Mathis_Rouvreau.pdf" download>📄 Télécharger mon CV</a>
+      </div>
+    </div>
+    <div class="hero-photo reveal">
+      <img src="/Photo/IMG_8395.png" alt="Portrait de Mathis Rouvreau" loading="lazy">
+    </div>
+  </div>
+  <div class="scroll-indicator" aria-hidden="true">
+    <span>↓</span>
+  </div>
+</section>
+
+<section class="section" id="a-propos">
+  <div class="container">
+    <h2 class="mb-1">À propos</h2>
+    <p class="max-w-prose muted">J'administre et sécurise des environnements Microsoft et réseaux. 
+Je privilégie des solutions robustes, documentées et automatisées, permettant un fonctionnement stable et durable du SI.</p>
+    
+    <div class="cards cards-3" style="margin-top:1rem">
+      <div class="card reveal">
+        <div class="card-icon">🌐</div>
+        <h3>Réseaux</h3>
+        <p>Segmentation (VLAN), routage, VPN site-à-site &amp; nomade, supervision et dépannage méthodique.</p>
+        <div class="badges">
+          <span class="badge">QoS</span>
+          <span class="badge">Pare-feu</span>
+          <span class="badge">Monitoring</span>
+          <span class="badge">VLAN</span>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🖥️</div>
+        <h3>Systèmes</h3>
+        <p>Windows Server, Active Directory, GPO, DNS/DHCP, fichiers/impressions, VMware &amp; Hyper-V.</p>
+        <div class="badges">
+          <span class="badge">Durcissement</span>
+          <span class="badge">Sauvegardes</span>
+          <span class="badge">Supervision</span>
+          <span class="badge">AD</span>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">⚡</div>
+        <h3>Automatisation</h3>
+        <p>PowerShell, n8n et API pour fiabiliser la création de comptes, les délégations et les rapports.</p>
+        <div class="badges">
+          <span class="badge">PowerShell</span>
+          <span class="badge">n8n</span>
+          <span class="badge">Graph API</span>
+          <span class="badge">REST</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section stats-section" id="stats">
+  <div class="container">
+    <h2 class="mb-1">En chiffres</h2>
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">GPO configurées</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">300+</div>
+        <div class="stat-label">Utilisateurs gérés</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Projets réalisés</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">99.9%</div>
+        <div class="stat-label">Disponibilité SI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="highlights">
+  <div class="container">
+    <h2 class="mb-1">Réalisations marquantes</h2>
+    <div class="timeline">
+      <article class="tl-item reveal">
+        <div class="tl-header">
+          <span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-title">Durcissement AD &amp; amélioration du niveau de sécurité</div>
+          <div class="tl-meta">GPO, comptes à privilèges, audit</div>
+        </div>
+        <div class="tl-content">
+          <p>Travail de fond sur Kerberos, GPO critiques (RDP, PSRemote), hygiène des OU et droits, consolidation de la journalisation.</p>
+          <div class="tl-impact">
+            <strong>Impact :</strong> Réduction de 75% des vulnérabilités détectées, conformité ANSSI renforcée
+          </div>
+        </div>
+      </article>
+      <article class="tl-item reveal">
+        <div class="tl-header">
+          <span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-title">Synchronisation Azure AD Connect (Hybrid Join)</div>
+          <div class="tl-meta">MFA, Conditional Access</div>
+        </div>
+        <div class="tl-content">
+          <p>Intégration fluide au SI existant avec politiques d'accès conditionnel et MFA renforcé.</p>
+          <div class="tl-impact">
+            <strong>Impact :</strong> 100% des utilisateurs protégés par MFA, SSO transparent
+          </div>
+        </div>
+      </article>
+      <article class="tl-item reveal">
+        <div class="tl-header">
+          <span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-title">Automatisation n8n pour les délégations Exchange Online</div>
+          <div class="tl-meta">Traçabilité &amp; gouvernance</div>
+        </div>
+        <div class="tl-content">
+          <p>Workflow avec approbations, application/retrait automatique des droits et rapport hebdomadaire.</p>
+          <div class="tl-impact">
+            <strong>Impact :</strong> Gain de 8h/semaine, zéro erreur humaine, traçabilité complète
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="cta" style="margin-top:1rem">
+      <a class="btn btn-outline" href="alternance.html">Tous les projets d'alternance</a>
+      <a class="btn btn-outline" href="scolaire.html">Projets scolaires</a>
+    </div>
+  </div>
+</section>
+
+<section class="section tech-stack-section">
+  <div class="container">
+    <h2 class="mb-1">Technologies & Outils</h2>
+    <div class="tech-stack reveal">
+      <div class="tech-category">
+        <h3>Systèmes</h3>
+        <div class="tech-items">
+          <span class="tech-badge">Windows Server</span>
+          <span class="tech-badge">Active Directory</span>
+          <span class="tech-badge">Azure AD</span>
+          <span class="tech-badge">Linux</span>
+          <span class="tech-badge">VMware</span>
+          <span class="tech-badge">Hyper-V</span>
+        </div>
+      </div>
+      <div class="tech-category">
+        <h3>Réseau & Sécurité</h3>
+        <div class="tech-items">
+          <span class="tech-badge">Cisco</span>
+          <span class="tech-badge">pfSense</span>
+          <span class="tech-badge">VPN</span>
+          <span class="tech-badge">Wireshark</span>
+          <span class="tech-badge">Nmap</span>
+          <span class="tech-badge">VLAN</span>
+        </div>
+      </div>
+      <div class="tech-category">
+        <h3>Automatisation</h3>
+        <div class="tech-items">
+          <span class="tech-badge">PowerShell</span>
+          <span class="tech-badge">n8n</span>
+          <span class="tech-badge">Graph API</span>
+          <span class="tech-badge">REST API</span>
+          <span class="tech-badge">Git</span>
+          <span class="tech-badge">Docker</span>
+        </div>
+      </div>
+      <div class="tech-category">
+        <h3>Cloud</h3>
+        <div class="tech-items">
+          <span class="tech-badge">Microsoft 365</span>
+          <span class="tech-badge">Azure</span>
+          <span class="tech-badge">Entra ID</span>
+          <span class="tech-badge">Intune</span>
+          <span class="tech-badge">Exchange Online</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <blockquote class="card reveal quote-highlight">
+      <p class="mb-1"><em>Livrer des infrastructures stables, sécurisées et simples à exploiter – sans magie : de la méthode et des preuves.</em></p>
+      <cite class="muted">– Mathis ROUVREAU</cite>
+    </blockquote>
+  </div>
+</section>
+
+<button class="back-to-top" aria-label="Retour en haut" title="Retour en haut">↑</button>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-section">
+      <h4>Mathis Rouvreau</h4>
+      <p class="muted">Alternant BTS SIO SISR<br>Spécialiste Systèmes & Réseaux</p>
+    </div>
+    <div class="footer-section">
+      <h4>Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="alternance.html">Alternance</a></li>
+        <li><a href="scolaire.html">Scolaire</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="veille.html">Veille</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <ul class="footer-links">
+        <li><a href="mailto:mathis.rouvreau@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/mathis-rouvreau-aa6096305/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="contact.html">Formulaire</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p class="muted">&copy; 2025 Mathis ROUVREAU – Portfolio BTS SIO SISR. Tous droits réservés.</p>
+  </div>
+</footer>
+
+</body>
+</html>

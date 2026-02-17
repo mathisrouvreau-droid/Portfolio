@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Compétences – Mathis Rouvreau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+
+<header class="modern-header">
+  <div class="container header-inner">
+    <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
+    <a href="index.html" class="brand">Mathis Rouvreau</a>
+    <button class="theme-toggle" aria-label="Basculer le thème">🌗</button>
+  </div>
+  <div class="container header-bottom">
+    <nav aria-label="Navigation principale" data-open="false">
+      <ul class="nav-list">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="alternance.html">Alternance</a></li>
+        <li><a href="scolaire.html">Scolaire</a></li>
+        <li><a href="competences.html" aria-current="page">Compétences</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><button class="nav-contact-btn" data-open-contact aria-label="Ouvrir le formulaire de contact">Contact</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ══════════════════════════════════════════
+       HERO — Grille SISR en pleine largeur
+  ══════════════════════════════════════════ -->
+  <section class="sisr-hero">
+    <div class="sisr-hero-bg" aria-hidden="true"></div>
+    <div class="container">
+
+      <div class="sisr-hero-header">
+        <div class="sisr-hero-eyebrow">Référentiel officiel BTS SIO</div>
+        <h1 class="sisr-hero-title">Grille de compétences <span class="sisr-title-accent">SISR</span></h1>
+        <p class="sisr-hero-subtitle">12 compétences du référentiel national — tracées sur mes projets scolaires et professionnels</p>
+      </div>
+
+      <div class="sisr-iframe-wrap reveal">
+        <iframe
+          src="https://docs.google.com/spreadsheets/d/1SuHaiuh3s9YbL1jZzISExL3_kPPMQHYl/edit?usp=sharing&ouid=103058906793999014370&rtpof=true&sd=true"
+          class="sisr-iframe"
+          title="Grille de compétences BTS SIO SISR – Mathis Rouvreau"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+        <div class="sisr-iframe-fade" aria-hidden="true"></div>
+
+        <div class="sisr-table-footer">
+          <div class="sisr-legend">
+            <span class="sisr-legend-item">📋 Référentiel BTS SIO SISR officiel</span>
+            <span class="sisr-legend-sep">·</span>
+            <span class="sisr-legend-item">Projets scolaires &amp; professionnels</span>
+          </div>
+          <a href="https://docs.google.com/spreadsheets/d/1SuHaiuh3s9YbL1jZzISExL3_kPPMQHYl/edit?usp=sharing&ouid=103058906793999014370&rtpof=true&sd=true" target="_blank" rel="noopener" class="btn btn-outline sisr-sheets-btn">
+            Ouvrir en plein écran ↗
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SKILL BARS
+  ══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Compétences techniques clés</h2>
+        <p class="muted max-w-prose">Niveaux évalués sur la base de mes projets réels en alternance et en formation.</p>
+      </div>
+
+      <div class="skills-grid-v2 reveal">
+
+        <div class="skill-category">
+          <h3>🖥️ Administration Systèmes</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Windows Server (AD, GPO, DNS, DHCP)</span>
+                <span class="skill-level">Expert</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:90%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">PowerShell / Scripting</span>
+                <span class="skill-level">Avancé</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:85%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Linux (Debian, Ubuntu)</span>
+                <span class="skill-level">Intermédiaire</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:70%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Virtualisation (VMware, Hyper-V)</span>
+                <span class="skill-level">Avancé</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:80%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>🌐 Réseaux &amp; Infrastructure</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">TCP/IP, Routage, VLAN</span>
+                <span class="skill-level">Avancé</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:85%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">VPN (Site-to-Site, Remote Access)</span>
+                <span class="skill-level">Avancé</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:80%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Pare-feu (pfSense, FortiGate)</span>
+                <span class="skill-level">Intermédiaire</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:75%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Diagnostic réseau (Wireshark, ping, tracert)</span>
+                <span class="skill-level">Expert</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:90%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>🔒 Cybersécurité</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Durcissement AD / GPO Sécurité</span>
+                <span class="skill-level">Expert</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:90%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">MFA, Conditional Access (Azure)</span>
+                <span class="skill-level">Avancé</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:85%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Audit de sécurité (Nmap, BloodHound)</span>
+                <span class="skill-level">Avancé</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:80%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Gestion des accès &amp; identités (IAM)</span>
+                <span class="skill-level">Avancé</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:85%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>☁️ Cloud &amp; Services Microsoft</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Azure AD / Entra ID</span>
+                <span class="skill-level">Avancé</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:85%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Microsoft 365 (Exchange, Teams)</span>
+                <span class="skill-level">Avancé</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:80%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Intune (MDM/MAM)</span>
+                <span class="skill-level">Intermédiaire</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:70%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Azure AD Connect (Hybrid)</span>
+                <span class="skill-level">Avancé</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:85%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>⚡ Automatisation &amp; DevOps</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">n8n (Workflow automation)</span>
+                <span class="skill-level">Expert</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:90%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">API REST / Graph API</span>
+                <span class="skill-level">Avancé</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:80%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Git / GitHub</span>
+                <span class="skill-level">Intermédiaire</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:75%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Docker / Conteneurisation</span>
+                <span class="skill-level">Débutant</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:60%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>📊 Outils &amp; Méthodologie</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">GLPI / Gestion tickets</span>
+                <span class="skill-level">Avancé</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:80%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Documentation technique</span>
+                <span class="skill-level">Expert</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:90%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Méthodologie ITIL</span>
+                <span class="skill-level">Intermédiaire</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:70%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Supervision (Zabbix, PRTG)</span>
+                <span class="skill-level">Intermédiaire</span>
+              </div>
+              <div class="skill-bar"><div class="skill-progress" style="--progress:65%"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       CERTIFICATIONS V2
+  ══════════════════════════════════════════ -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Certifications &amp; Formations</h2>
+        <p class="muted">Parcours de validation officielle des compétences.</p>
+      </div>
+
+      <div class="certifications-v2">
+
+        <div class="cert-card-v2 reveal">
+          <div class="cert-card-v2-header">
+            <div class="cert-card-v2-icon">🎓</div>
+            <div>
+              <div class="cert-card-v2-org">Lycée</div>
+              <h3>BTS SIO option SISR</h3>
+            </div>
+          </div>
+          <p class="muted" style="font-size:var(--step--1);margin:0">Services Informatiques aux Organisations – Solutions d'Infrastructure, Systèmes et Réseaux. Formation de 2 ans en alternance.</p>
+          <div class="cert-card-v2-footer">
+            <span class="cert-card-v2-date">📅 2023 – 2025</span>
+            <span class="cert-badge cert-badge-inprogress">En cours</span>
+          </div>
+        </div>
+
+        <div class="cert-card-v2 reveal">
+          <div class="cert-card-v2-header">
+            <div class="cert-card-v2-icon">☁️</div>
+            <div>
+              <div class="cert-card-v2-org">Microsoft</div>
+              <h3>AZ-900 – Azure Fundamentals</h3>
+            </div>
+          </div>
+          <p class="muted" style="font-size:var(--step--1);margin:0">Fondamentaux Azure : services cloud, modèles de tarification, concepts de sécurité et gouvernance. En préparation active.</p>
+          <div class="cert-card-v2-footer">
+            <span class="cert-card-v2-date">📅 Prévu 2025</span>
+            <span class="cert-badge cert-badge-inprogress">En préparation</span>
+          </div>
+        </div>
+
+        <div class="cert-card-v2 reveal">
+          <div class="cert-card-v2-header">
+            <div class="cert-card-v2-icon">🔒</div>
+            <div>
+              <div class="cert-card-v2-org">ANSSI / SecNumAcadémie</div>
+              <h3>Formation Cybersécurité</h3>
+            </div>
+          </div>
+          <p class="muted" style="font-size:var(--step--1);margin:0">MOOC – Sensibilisation à la sécurité du numérique : risques, bonnes pratiques, réglementation, gestion des incidents.</p>
+          <div class="cert-card-v2-footer">
+            <span class="cert-card-v2-date">📅 2024</span>
+            <span class="cert-badge cert-badge-obtained">Obtenu</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SOFT SKILLS
+  ══════════════════════════════════════════ -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Compétences transversales</h2>
+      </div>
+      <div class="soft-skills-grid">
+        <div class="soft-skill-card reveal">
+          <div class="soft-skill-icon">🎯</div>
+          <h3>Rigueur &amp; Méthode</h3>
+          <p>Approche méthodique dans la résolution de problèmes, documentation systématique</p>
+        </div>
+        <div class="soft-skill-card reveal">
+          <div class="soft-skill-icon">🤝</div>
+          <h3>Travail en équipe</h3>
+          <p>Collaboration avec le support IT, formation des utilisateurs, communication claire</p>
+        </div>
+        <div class="soft-skill-card reveal">
+          <div class="soft-skill-icon">🔍</div>
+          <h3>Veille technologique</h3>
+          <p>Suivi actif des évolutions (cybersécurité, cloud, automatisation)</p>
+        </div>
+        <div class="soft-skill-card reveal">
+          <div class="soft-skill-icon">🚀</div>
+          <h3>Autonomie &amp; Initiative</h3>
+          <p>Gestion de projets en autonomie, proposition de solutions innovantes</p>
+        </div>
+        <div class="soft-skill-card reveal">
+          <div class="soft-skill-icon">📚</div>
+          <h3>Apprentissage continu</h3>
+          <p>Curiosité technique, autoformation, adaptation rapide</p>
+        </div>
+        <div class="soft-skill-card reveal">
+          <div class="soft-skill-icon">⚖️</div>
+          <h3>Gestion des priorités</h3>
+          <p>Priorisation des incidents selon leur criticité, multi-tâches</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container center" style="padding-bottom:4rem">
+    <a class="btn btn-primary" href="alternance.html">Voir mes projets</a>
+    <a class="btn btn-outline" href="../assets/CV_Mathis_Rouvreau.pdf" download>📄 Télécharger mon CV</a>
+  </div>
+
+</main>
+
+<!-- ══════════════════════════════════════════
+     CONTACT MODAL (partagé toutes pages)
+══════════════════════════════════════════ -->
+<div class="contact-modal-overlay" id="contactModal" role="dialog" aria-modal="true" aria-label="Formulaire de contact" hidden>
+  <div class="contact-modal">
+    <button class="contact-modal-close" aria-label="Fermer" data-close-contact>✕</button>
+
+    <div class="contact-modal-inner">
+      <div class="contact-modal-left">
+        <div class="contact-modal-eyebrow">Disponible dès sept. 2025</div>
+        <h2 class="contact-modal-title">Travaillons<br>ensemble.</h2>
+        <p class="contact-modal-desc muted">Réponse garantie sous 24–48h. Je suis ouvert aux opportunités en SysAdmin, Infrastructure et Cybersécurité.</p>
+
+        <div class="contact-modal-links">
+          <a href="mailto:mathis.rouvreau@gmail.com" class="contact-link-item">
+            <span class="contact-link-icon">📧</span>
+            <div>
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-value">mathis.rouvreau@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/mathis-rouvreau-aa6096305/" target="_blank" rel="noopener" class="contact-link-item">
+            <span class="contact-link-icon">💼</span>
+            <div>
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-value">linkedin.com/in/mathis-rouvreau</div>
+            </div>
+          </a>
+          <a href="https://github.com/mathisrouvreau" target="_blank" rel="noopener" class="contact-link-item">
+            <span class="contact-link-icon">💻</span>
+            <div>
+              <div class="contact-link-label">GitHub</div>
+              <div class="contact-link-value">github.com/mathisrouvreau</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="contact-availability">
+          <span class="contact-avail-dot"></span>
+          Île-de-France · Ouvert au télétravail partiel
+        </div>
+      </div>
+
+      <div class="contact-modal-right">
+        <form class="contact-form" action="mailto:mathis.rouvreau@gmail.com" method="post" enctype="text/plain">
+          <div class="contact-form-row">
+            <div class="contact-form-field">
+              <label for="modal-name">Nom *</label>
+              <input id="modal-name" name="Nom" type="text" required placeholder="Jean Dupont" autocomplete="name">
+            </div>
+            <div class="contact-form-field">
+              <label for="modal-email">Email *</label>
+              <input id="modal-email" name="Email" type="email" required placeholder="jean@exemple.fr" autocomplete="email">
+            </div>
+          </div>
+          <div class="contact-form-field">
+            <label for="modal-subject">Objet</label>
+            <select id="modal-subject" name="Objet">
+              <option value="Alternance">Proposition d'alternance</option>
+              <option value="Emploi">Proposition d'emploi</option>
+              <option value="Stage">Proposition de stage</option>
+              <option value="Projet">Collaboration sur un projet</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+          <div class="contact-form-field">
+            <label for="modal-message">Message *</label>
+            <textarea id="modal-message" name="Message" rows="4" required placeholder="Bonjour Mathis, je vous contacte au sujet de…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary contact-form-submit">
+            📨 Envoyer le message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="back-to-top" aria-label="Retour en haut">↑</button>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-section">
+      <h4>Mathis Rouvreau</h4>
+      <p>Alternant BTS SIO SISR</p>
+    </div>
+    <div class="footer-section">
+      <h4>Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="alternance.html">Alternance</a></li>
+        <li><a href="scolaire.html">Scolaire</a></li>
+        <li><a href="veille.html">Veille</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <ul class="footer-links">
+        <li><a href="mailto:mathis.rouvreau@gmail.com">Email direct</a></li>
+        <li><button class="footer-contact-btn" data-open-contact>Ouvrir le formulaire</button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2025 Mathis ROUVREAU – Portfolio BTS SIO SISR V2.</p>
+  </div>
+</footer>
+
+</body>
+</html>

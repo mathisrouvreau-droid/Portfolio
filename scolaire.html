@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projets scolaires – Mathis Rouvreau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="modern-header">
+    <div class="container header-inner">
+      <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
+      <a href="index.html" class="brand">Mathis Rouvreau</a>
+      <button class="theme-toggle" aria-label="Basculer le thème">🌗</button>
+    </div>
+    <div class="container header-bottom">
+      <nav aria-label="Navigation principale" data-open="false">
+        <ul class="nav-list">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="alternance.html">Alternance</a></li>
+          <li><a href="scolaire.html" aria-current="page">Scolaire</a></li>
+          <li><a href="competences.html">Compétences</a></li>
+          <li><a href="veille.html">Veille</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="mb-1">Projets réalisés en formation</h1>
+      <p class="muted max-w-prose">Projets techniques menés pendant le BTS SIO SISR : administration systèmes, réseaux, sécurité, supervision et déploiement. Deux projets majeurs réalisés en équipe sur des infrastructures complètes.</p>
+
+      <!-- Stats -->
+      <section class="stats-section" style="padding:2rem 0">
+        <div class="container">
+          <div class="stats-grid reveal">
+            <div class="stat-card">
+              <div class="stat-number">2</div>
+              <div class="stat-label">Projets d'infrastructure</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">12+</div>
+              <div class="stat-label">Technologies déployées</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Tests validés</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">2</div>
+              <div class="stat-label">Années BTS SIO</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================
+           PROJET 1 : MACODEMY
+           ============================ -->
+      <section class="section">
+        <div class="card reveal company-presentation" style="margin-bottom:2rem">
+          <div class="company-header">
+            <div class="company-info">
+              <h2 class="mb-1">Projet MACODEMY — SIO 1ère année</h2>
+              <p class="company-tagline">Optimisation de la gestion du parc informatique</p>
+            </div>
+          </div>
+          <div class="company-details">
+            <div class="company-block">
+              <h3>Contexte</h3>
+              <p>Conception et déploiement d'un réseau complet pour l'établissement MACODEMY en équipe (Hugo, Mathis, Evan). Le réseau comprend 3 services (Administratif, Enseignants, Étudiants) segmentés en VLANs séparés, un serveur Windows Server 2019 centralisé et un serveur Web Debian en DMZ.</p>
+            </div>
+            <div class="company-block">
+              <h3>Équipe</h3>
+              <p>Hugo PASDOIT — Mathis ROUVREAU — Evan RAIMBAULT</p>
+            </div>
+            <div class="company-block">
+              <h3>Environnement technique</h3>
+              <div class="tech-env">
+                <div class="tech-env-category">
+                  <strong>Systèmes :</strong>
+                  <span class="badge">Windows Server 2019</span>
+                  <span class="badge">Active Directory</span>
+                  <span class="badge">DHCP / DNS</span>
+                  <span class="badge">GPO</span>
+                </div>
+                <div class="tech-env-category">
+                  <strong>Réseau :</strong>
+                  <span class="badge">Cisco (routeurs & switchs)</span>
+                  <span class="badge">VLAN 802.1Q</span>
+                  <span class="badge">OSPF</span>
+                  <span class="badge">ACL</span>
+                </div>
+                <div class="tech-env-category">
+                  <strong>Serveurs :</strong>
+                  <span class="badge">Debian</span>
+                  <span class="badge">Apache2</span>
+                  <span class="badge">Windows 10</span>
+                  <span class="badge">Packet Tracer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="mb-2">Activités réalisées — MACODEMY</h2>
+        <div class="projects-grid" style="margin-top:1rem">
+
+          <article class="project-card reveal">
+            <div class="project-icon">🖥️</div>
+            <h4>Serveur Windows Server 2019 — AD / DHCP / DNS</h4>
+            <p>Déploiement d'un contrôleur de domaine <code>macodemy.local</code> avec gestion centralisée des utilisateurs par Unités d'Organisation, distribution automatique d'adresses IP par VLAN et résolution DNS interne.</p>
+            <div class="project-details">
+              <strong>Réalisations :</strong>
+              <ul>
+                <li>Création des OU : Administratif, Enseignants, Étudiants</li>
+                <li>Groupes de sécurité associés à chaque OU</li>
+                <li>Comptes utilisateurs (format <code>nomp</code>)</li>
+                <li>3 étendues DHCP (VLAN 10, 20, 30) avec DHCP Relay</li>
+                <li>Zone DNS <code>macodemy.local</code> → serveur Web Debian (192.168.10.1)</li>
+              </ul>
+            </div>
+            <div class="project-competences">
+              <strong>Compétences SISR :</strong>
+              <div class="badges">
+                <span class="badge">B1.2</span>
+                <span class="badge">B1.3</span>
+                <span class="badge">B1.5</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-icon">📂</div>
+            <h4>Répertoires réseau & Lecteurs partagés</h4>
+            <p>Mise en place de répertoires personnels et communs pour chaque utilisateur, avec gestion fine des droits d'accès selon le groupe d'appartenance. Scripts d'ouverture de session pour le mapping automatique.</p>
+            <div class="project-details">
+              <strong>Réalisations :</strong>
+              <ul>
+                <li>Lecteur Perso (<code>\\WINSERVACODEMY\Perso\%username%</code>)</li>
+                <li>Lecteur Commun par service (Commun_Administratif, Commun_Enseignants, Commun_Etudiants)</li>
+                <li>Lecteur Ressources : contrôle total (admin), lecture/écriture (enseignants), lecture (étudiants)</li>
+                <li>Scripts de session dans NETLOGON (<code>NET USE K: \\...</code>)</li>
+              </ul>
+            </div>
+            <div class="project-competences">
+              <strong>Compétences SISR :</strong>
+              <div class="badges">
+                <span class="badge">B1.2</span>
+                <span class="badge">B2.2</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-icon">⚙️</div>
+            <h4>GPO — Fond d'écran & déploiement logiciels</h4>
+            <p>Configuration de stratégies de groupe pour personnaliser l'environnement utilisateur et automatiser le déploiement applicatif sur l'ensemble du parc.</p>
+            <div class="project-details">
+              <strong>Réalisations :</strong>
+              <ul>
+                <li>GPO fond d'écran personnalisé MACODEMY (via chemin réseau partagé)</li>
+                <li>GPO installation automatique de Mozilla Firefox</li>
+                <li>GPO installation automatique de Google Chrome</li>
+                <li>Application par Unité d'Organisation ciblée</li>
+              </ul>
+            </div>
+            <div class="project-competences">
+              <strong>Compétences SISR :</strong>
+              <div class="badges">
+                <span class="badge">B1.2</span>
+                <span class="badge">B1.5</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-icon">🌐</div>
+            <h4>Infrastructure réseau — VLANs, OSPF & ACL</h4>
+            <p>Segmentation complète du réseau par VLAN via switchs Cisco, routage dynamique OSPF entre les sites et ACL pour contrôler les flux inter-VLANs.</p>
+            <div class="project-details">
+              <strong>Réalisations :</strong>
+              <ul>
+                <li>VLAN 10 (Administratif), VLAN 20 (Enseignants), VLAN 30 (Étudiants)</li>
+                <li>Sous-interfaces 802.1Q sur routeur local (ip helper-address DHCP)</li>
+                <li>Routage OSPF entre routeur local et routeur DMZ</li>
+                <li>ACL étendues : isolement étudiants / accès web seul autorisé</li>
+                <li>Schéma réseau simulé sur Packet Tracer</li>
+              </ul>
+            </div>
+            <div class="project-competences">
+              <strong>Compétences SISR :</strong>
+              <div class="badges">
+                <span class="badge">B3.2</span>
+                <span class="badge">B3.3</span>
+                <span class="badge">B4.1</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-icon">🐧</div>
+            <h4>Serveur Web Debian — Apache2 en DMZ</h4>
+            <p>Installation et configuration d'un serveur web Apache2 sous Debian, placé en zone DMZ, accessible depuis tous les postes du réseau via le nom de domaine interne <code>macodemy.local</code>.</p>
+            <div class="project-details">
+              <strong>Réalisations :</strong>
+              <ul>
+                <li>IP statique : 192.168.10.1 (DMZ)</li>
+                <li>Installation Apache2 (<code>apt install apache2</code>)</li>
+                <li>Configuration VirtualHost (<code>ServerName macodemy.local</code>)</li>
+                <li>Déploiement des fichiers dans <code>/var/www/html</code></li>
+                <li>Accès via <code>http://macodemy.local</code> depuis tous les VLANs</li>
+              </ul>
+            </div>
+            <div class="project-competences">
+              <strong>Compétences SISR :</strong>
+              <div class="badges">
+                <span class="badge">B1.2</span>
+                <span class="badge">B3.2</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-icon">💻</div>
+            <h4>Intégration des postes clients Windows 10</h4>
+            <p>Installation et intégration au domaine de postes clients Windows 10 (22H2), un par VLAN, avec configuration DNS et jonction au domaine <code>MACODEMY</code>.</p>
+            <div class="project-details">
+              <strong>Réalisations :</strong>
+              <ul>
+                <li>Création de clés USB bootables via Rufus (ISO Windows 10)</li>
+                <li>Installation UEFI de Windows 10 (22H2)</li>
+                <li>Définition du DNS préféré : 172.16.1.1 (WinServ)</li>
+                <li>Jonction au domaine MACODEMY via les identifiants administrateur</li>
+                <li>Vérification des lecteurs réseau (K:, P:, R:) et du fond d'écran GPO</li>
+              </ul>
+            </div>
+            <div class="project-competences">
+              <strong>Compétences SISR :</strong>
+              <div class="badges">
+                <span class="badge">B1.1</span>
+                <span class="badge">B1.4</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============================
+           PROJET 2 : PPE3 MDS49
+           ============================ -->
+      <section class="section">
+        <div class="card reveal company-presentation" style="margin-bottom:2rem">
+          <div class="company-header">
+            <div class="company-info">
+              <h2 class="mb-1">Projet PPE3 — MDS49 — SIO 2ème année</h2>
+              <p class="company-tagline">Infrastructure réseau sécurisée — Maison Départementale des Sports 49</p>
+            </div>
+          </div>
+          <div class="company-details">
+            <div class="company-block">
+              <h3>Contexte</h3>
+              <p>Conception et déploiement d'une infrastructure réseau sécurisée et segmentée pour la Maison Départementale des Sports 49 (MDS49). Le réseau est divisé en 4 VLANs (Volley, Escrime, Administratif, Partenaires), avec contrôleur de domaine AD, serveur web en DMZ, supervision Zabbix et authentification WiFi via RADIUS. Gestion de projet en méthode Agile (Trello).</p>
+            </div>
+            <div class="company-block">
+              <h3>Équipe</h3>
+              <p>Mathis ROUVREAU — Evan RAIMBAULT — Julien TOUZEAU</p>
+            </div>
+            <div class="company-block">
+              <h3>Environnement technique</h3>
+              <div class="tech-env">
+                <div class="tech-env-category">
+                  <strong>Systèmes :</strong>
+                  <span class="badge">Windows Server 2019</span>
+                  <span class="badge">Active Directory</span>
+                  <span class="badge">DHCP / DNS</span>
+                  <span class="badge">Debian</span>
+                </div>
+                <div class="tech-env-category">
+                  <strong>Réseau :</strong>
+                  <span class="badge">Cisco (routeurs & switch)</span>
+                  <span class="badge">VLAN 802.1Q</span>
+                  <span class="badge">OSPF</span>
+                  <span class="badge">NAT/PAT</span>
+                  <span class="badge">ACL</span>
+                </div>
+                <div class="tech-env-category">
+                  <strong>Services :</strong>
+                  <span class="badge">Zabbix</span>
+                  <span class="badge">SNMP</span>
+                  <span class="badge">FreeRadius</span>
+                  <span class="badge">WPA2-Enterprise</span>
+                  <span class="badge">Apache2</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="mb-2">Activités réalisées — PPE3 MDS49</h2>
+        <div class="projects-grid" style="margin-top:1rem">
+
+          <article class="project-card reveal">
+            <div class="project-icon">🔌</div>
+            <h4>Infrastructure réseau multi-VLANs & routage OSPF</h4>
+            <p>Segmentation du réseau MDS49 en 4 VLANs distincts. Le routeur RDC gère les sous-interfaces 802.1Q, le DHCP Relay et les ACL de filtrage. Les routes entre routeurs sont configurées en OSPF.</p>
+            <div class="project-details">
+              <strong>Réalisations :</strong>
+              <ul>
+                <li>VLAN 10 (Volley) — 172.16.0.0/18</li>
+                <li>VLAN 20 (Escrime) — 172.16.64.0/18</li>
+                <li>VLAN 30 (Administratif) — 172.16.128.0/18</li>
+                <li>VLAN 100 (Partenaires) — 172.16.192.0/18</li>
+                <li>Sous-interfaces 802.1Q sur Routeur RDC (g0/0/0.10, .20, .30, .100)</li>
+                <li>DHCP Relay (ip helper-address) par VLAN</li>
+                <li>ACL inter-VLAN + OSPF inter-routeurs</li>
+              </ul>
+            </div>
+            <div class="project-competences">
+              <strong>Compétences SISR :</strong>
+              <div class="badges">
+                <span class="badge">B3.2</span>
+                <span class="badge">B3.3</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-icon">🔄</div>
+            <h4>Routeur central MDS49 — NAT/PAT & ACL étendues</h4>
+            <p>Configuration du routeur de bordure assurant le routage entre la DMZ, le réseau interne et Internet, avec translation d'adresses NAT/PAT et filtrage par ACL étendues.</p>
+            <div class="project-details">
+              <strong>Réalisations :</strong>
+              <ul>
+                <li>NAT/PAT : adresse publique <code>8.8.8.1:80</code> → <code>10.54.0.100:80</code></li>
+                <li>ACL étendue WEB : autorisation HTTP seul vers serveur interne</li>
+                <li>2 ACL standard liées au NAT (accès sous-réseaux + serveur web)</li>
+                <li>Interface DMZ (10.54.0.254/24), Réseau interne (192.168.0.1/30), Internet (s0/1/0)</li>
+              </ul>
+            </div>
+            <div class="project-competences">
+              <strong>Compétences SISR :</strong>
+              <div class="badges">
+                <span class="badge">B3.3</span>
+                <span class="badge">B4.1</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-icon">🖥️</div>
+            <h4>Serveur Windows 2019 — AD / DHCP / DNS & GPO</h4>
+            <p>Déploiement du contrôleur de domaine <code>MDS49.local</code> avec arborescence AD par comité, service DHCP multi-étendues, DNS interne et GPO de sécurité.</p>
+            <div class="project-details">
+              <strong>Réalisations :</strong>
+              <ul>
+                <li>OU : Bureaux_Administratifs, Comité_Volley, Comité_Escrime, Partenaires</li>
+                <li>Groupes de sécurité par OU avec répertoires personnels et communs</li>
+                <li>Droits différenciés : responsables (écriture) / employés (lecture) sur commun</li>
+                <li>DHCP : étendues par VLAN + réservations (Zabbix, Windows Server)</li>
+                <li>GPO : interdiction du panneau de configuration aux utilisateurs</li>
+              </ul>
+            </div>
+            <div class="project-competences">
+              <strong>Compétences SISR :</strong>
+              <div class="badges">
+                <span class="badge">B1.2</span>
+                <span class="badge">B1.5</span>
+                <span class="badge">B2.2</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-icon">🐧</div>
+            <h4>Serveur Web Debian — Apache2 en DMZ</h4>
+            <p>Hébergement du site institutionnel MDS49 sur un serveur Debian placé en DMZ (10.54.0.100), accessible depuis l'intérieur et l'extérieur via NAT/PAT.</p>
+            <div class="project-details">
+              <strong>Réalisations :</strong>
+              <ul>
+                <li>IP statique : 10.54.0.100 (DMZ 10.54.0.0/24)</li>
+                <li>Installation Apache2 (<code>apt install apache2 -y</code>)</li>
+                <li>Accès interne direct et accès externe via NAT/PAT (8.8.8.1:80)</li>
+                <li>ACL de filtrage en entrée de la DMZ</li>
+              </ul>
+            </div>
+            <div class="project-competences">
+              <strong>Compétences SISR :</strong>
+              <div class="badges">
+                <span class="badge">B1.2</span>
+                <span class="badge">B3.2</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-icon">📡</div>
+            <h4>Supervision Zabbix — Monitoring de l'infrastructure</h4>
+            <p>Déploiement d'un serveur Zabbix pour surveiller en temps réel l'ensemble de l'infrastructure : serveurs, routeurs et switch via agents et protocole SNMP.</p>
+            <div class="project-details">
+              <strong>Réalisations :</strong>
+              <ul>
+                <li>Agent Zabbix installé sur serveur AD et serveur Web Debian</li>
+                <li>Supervision SNMP des routeurs Cisco (<code>snmp-server community RO</code>)</li>
+                <li>Supervision SNMP du switch (<code>snmp-server community SW</code>)</li>
+                <li>Tableau de bord : état serveurs, équipements réseau, alertes</li>
+              </ul>
+            </div>
+            <div class="project-competences">
+              <strong>Compétences SISR :</strong>
+              <div class="badges">
+                <span class="badge">B3.4</span>
+                <span class="badge">B5.1</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-icon">📶</div>
+            <h4>Borne WiFi & Authentification WPA2-Enterprise (RADIUS)</h4>
+            <p>Configuration d'une borne WiFi Cisco avec deux SSID, dont un sécurisé par WPA2-Enterprise via un serveur FreeRadius intégré à l'Active Directory.</p>
+            <div class="project-details">
+              <strong>Réalisations :</strong>
+              <ul>
+                <li>Borne Cisco (IP : 172.16.255.253) dans le VLAN 100 (Partenaires)</li>
+                <li>SSID ouvert : <code>accesspoint</code> (VLAN Partenaires)</li>
+                <li>Serveur FreeRadius installé sous Debian</li>
+                <li>Intégration AD via Winbind</li>
+                <li>Authentification 802.1X — contrôle d'accès dynamique via AD</li>
+              </ul>
+            </div>
+            <div class="project-competences">
+              <strong>Compétences SISR :</strong>
+              <div class="badges">
+                <span class="badge">B2.4</span>
+                <span class="badge">B3.3</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-icon">✅</div>
+            <h4>Plans de tests & validation de l'infrastructure</h4>
+            <p>Rédaction et exécution de plans de tests fonctionnels pour valider l'ensemble des services déployés : site web, cloisonnement VLAN, DHCP et NAT/PAT.</p>
+            <div class="project-details">
+              <strong>Tests réalisés (100% conformes) :</strong>
+              <ul>
+                <li>Test site web interne (10.54.0.100) — par Julien</li>
+                <li>Test site web externe (200.200.200.200 via NAT) — par Evan</li>
+                <li>Test cloisonnement inter-VLAN (ping VLAN Volley ↔ Escrime) — par Mathis</li>
+                <li>Test DHCP sur 4 VLANs (<code>ipconfig /all</code>) — par Julien</li>
+                <li>Test NAT/PAT (<code>show ip nat translations</code>) — par Mathis</li>
+              </ul>
+            </div>
+            <div class="project-competences">
+              <strong>Compétences SISR :</strong>
+              <div class="badges">
+                <span class="badge">B4.1</span>
+                <span class="badge">B5.1</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Compétences transversales -->
+      <section class="section">
+        <h2 class="mb-2">Compétences transversales développées</h2>
+        <div class="soft-skills-grid">
+          <div class="soft-skill-card reveal">
+            <div class="soft-skill-icon">📝</div>
+            <h3>Documentation technique</h3>
+            <p>Rédaction de procédures, schémas réseau, plans de tests, rapports d'intervention et documentation de configurations</p>
+          </div>
+          <div class="soft-skill-card reveal">
+            <div class="soft-skill-icon">🤝</div>
+            <h3>Travail en équipe</h3>
+            <p>Projets menés en trinôme, répartition des tâches via planning (Gantt), coordination et méthode Agile (Trello)</p>
+          </div>
+          <div class="soft-skill-card reveal">
+            <div class="soft-skill-icon">🎯</div>
+            <h3>Gestion de projet</h3>
+            <p>Planification sur 7 semaines, respect des jalons, suivi des écarts entre planning prévu et réalisé</p>
+          </div>
+          <div class="soft-skill-card reveal">
+            <div class="soft-skill-icon">🔍</div>
+            <h3>Résolution de problèmes</h3>
+            <p>Diagnostic réseau (ping, ipconfig, show ip), validation par plans de tests structurés et seuils de conformité</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Citation -->
+      <blockquote class="card reveal quote-highlight" style="margin-top:2rem">
+        <p class="mb-1"><em>Les projets scolaires m'ont permis d'acquérir des bases solides que j'applique aujourd'hui quotidiennement en entreprise.</em></p>
+        <cite class="muted">– Mathis ROUVREAU</cite>
+      </blockquote>
+
+      <div class="center" style="margin-top:2rem">
+        <a class="btn btn-primary" href="alternance.html">Voir mes projets en alternance</a>
+        <a class="btn btn-outline" href="competences.html">Mes compétences</a>
+      </div>
+    </div>
+  </main>
+
+  <button class="back-to-top" aria-label="Retour en haut" title="Retour en haut">↑</button>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="muted">&copy; 2025 Mathis ROUVREAU – Portfolio BTS SIO SISR.</p>
+    </div>
+  </footer>
+</body>
+</html>

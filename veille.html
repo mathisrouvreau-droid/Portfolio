@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veille technologique – Mathis Rouvreau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="modern-header">
+    <div class="container header-inner">
+      <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
+      <a href="index.html" class="brand">Mathis Rouvreau</a>
+      <button class="theme-toggle" aria-label="Basculer le thème">🌗</button>
+    </div>
+    <div class="container header-bottom">
+      <nav aria-label="Navigation principale" data-open="false">
+        <ul class="nav-list">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="alternance.html">Alternance</a></li>
+          <li><a href="scolaire.html">Scolaire</a></li>
+          <li><a href="competences.html">Compétences</a></li>
+          <li><a href="veille.html" aria-current="page">Veille</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="mb-1">Veille technologique</h1>
+      <p class="muted max-w-prose">
+        Je réalise une veille continue sur les sujets liés à mon domaine : cybersécurité, infrastructures Microsoft/Azure 
+        et automatisation. L'objectif est d'anticiper les évolutions, renforcer mes compétences
+        et appliquer rapidement les bonnes pratiques dans mes projets professionnels.
+      </p>
+
+      <!-- Pourquoi la veille -->
+      <section class="card reveal" style="margin-top:2rem;background:linear-gradient(135deg,color-mix(in oklab, var(--surface-2) 95%, transparent),color-mix(in oklab, var(--surface) 95%, transparent));border-left:4px solid var(--brand)">
+        <h2 class="mb-1">🎯 Pourquoi cette veille ?</h2>
+        <p>Dans le domaine IT, les technologies évoluent rapidement. Une veille structurée me permet de :</p>
+        <ul style="margin-top:.75rem">
+          <li><strong>Rester à jour</strong> sur les vulnérabilités et correctifs de sécurité</li>
+          <li><strong>Anticiper les évolutions</strong> des plateformes que j'administre (Microsoft, Azure)</li>
+          <li><strong>Découvrir de nouveaux outils</strong> d'automatisation et de gestion</li>
+          <li><strong>Appliquer les bonnes pratiques</strong> recommandées par les experts du secteur</li>
+          <li><strong>Développer mes compétences</strong> de manière continue et autonome</li>
+        </ul>
+      </section>
+
+      <!-- Thématiques de veille -->
+      <section class="section">
+        <h2 class="mb-2">Thématiques suivies</h2>
+        <div class="cards cards-3" style="margin-top:1rem">
+
+          <article class="card reveal">
+            <div class="card-icon">🛡️</div>
+            <h3>Cybersécurité</h3>
+            <p>Analyse des vulnérabilités, suivi des menaces et bonnes pratiques de sécurité dans les environnements d'entreprise.</p>
+            
+            <div class="veille-block">
+              <strong>Sources principales :</strong>
+              <ul class="stack" style="margin-top:.5rem">
+                <li><a href="https://www.cert.ssi.gouv.fr/" target="_blank" rel="noopener">CERT-FR</a> – Alertes sécurité officielles</li>
+                <li><a href="https://www.zataz.com/" target="_blank" rel="noopener">ZATAZ</a> – Actualités cybersécurité</li>
+                <li><a href="https://www.bleepingcomputer.com/" target="_blank" rel="noopener">BleepingComputer</a> – News et analyses</li>
+                <li><a href="https://thehackernews.com/" target="_blank" rel="noopener">The Hacker News</a> – Menaces émergentes</li>
+              </ul>
+            </div>
+
+            <div class="veille-block" style="margin-top:1rem">
+              <strong>Thèmes clés :</strong>
+              <div class="badges" style="margin-top:.5rem">
+                <span class="badge">Durcissement AD</span>
+                <span class="badge">Zero-Day</span>
+                <span class="badge">MFA</span>
+                <span class="badge">LDAP Signing</span>
+                <span class="badge">Kerberos</span>
+                <span class="badge">Ransomware</span>
+              </div>
+            </div>
+
+            <div class="veille-block" style="margin-top:1rem">
+              <strong>Sujets récents suivis :</strong>
+              <ul style="margin-top:.5rem;color:var(--muted)">
+                <li>Kerberos hardening (MS updates)</li>
+                <li>Attaques par relai NTLM</li>
+                <li>Renforcement LDAP signing obligatoire</li>
+                <li>Nouvelles vulnérabilités Exchange</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon">🧠</div>
+            <h3>IA & Automatisation</h3>
+            <p>Impact de l'IA sur l'administration système, automatisation des tâches et intégration dans les workflows internes.</p>
+            
+            <div class="veille-block">
+              <strong>Outils suivis :</strong>
+              <ul class="stack" style="margin-top:.5rem">
+                <li><a href="https://n8n.io" target="_blank" rel="noopener">n8n</a> – Workflow automation</li>
+                <li><strong>PowerShell</strong> – Scripting avancé</li>
+                <li><strong>Graph API</strong> – Automatisation M365</li>
+                <li><a href="https://zapier.com/" target="_blank" rel="noopener">Zapier</a> / <a href="https://www.make.com/" target="_blank" rel="noopener">Make</a> – No-code automation</li>
+              </ul>
+            </div>
+
+            <div class="veille-block" style="margin-top:1rem">
+              <strong>Veille IA :</strong>
+              <ul style="margin-top:.5rem;color:var(--muted)">
+                <li>ChatGPT et assistants IA pour IT</li>
+                <li>GitHub Copilot pour scripting</li>
+                <li>Modèles d'assistance helpdesk</li>
+                <li>Automatisation des tickets GLPI</li>
+              </ul>
+            </div>
+
+            <div class="veille-block" style="margin-top:1rem">
+              <strong>Cas concrets appliqués :</strong>
+              <ul style="margin-top:.5rem;color:var(--muted)">
+                <li>Délégation Exchange automatisée (n8n)</li>
+                <li>Création d'utilisateurs AD via API</li>
+                <li>Scripts de reporting automatique</li>
+                <li>Monitoring proactif avec alertes</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon">☁️</div>
+            <h3>Cloud / Azure</h3>
+            <p>Suivi de l'évolution des services Microsoft Entra, Intune et Azure AD, avec un focus sur l'identité et la sécurité.</p>
+            
+            <div class="veille-block">
+              <strong>Ressources :</strong>
+              <ul class="stack" style="margin-top:.5rem">
+                <li><a href="https://learn.microsoft.com/fr-fr/azure/" target="_blank" rel="noopener">Microsoft Learn</a> – Documentation officielle</li>
+                <li><a href="https://www.microsoft.com/en-us/microsoft-365/roadmap" target="_blank" rel="noopener">M365 Roadmap</a> – Nouveautés planifiées</li>
+                <li><a href="https://techcommunity.microsoft.com/" target="_blank" rel="noopener">Tech Community</a> – Forums et blogs</li>
+                <li><a href="https://www.youtube.com/@MSFTMechanics" target="_blank" rel="noopener">Microsoft Mechanics</a> – Vidéos techniques</li>
+              </ul>
+            </div>
+
+            <div class="veille-block" style="margin-top:1rem">
+              <strong>Points d'attention :</strong>
+              <div class="badges" style="margin-top:.5rem">
+                <span class="badge">Conditional Access</span>
+                <span class="badge">MFA</span>
+                <span class="badge">Hybrid Join</span>
+                <span class="badge">PIM</span>
+                <span class="badge">Intune</span>
+                <span class="badge">Zero Trust</span>
+              </div>
+            </div>
+
+            <div class="veille-block" style="margin-top:1rem">
+              <strong>Nouveautés suivies :</strong>
+              <ul style="margin-top:.5rem;color:var(--muted)">
+                <li>Restrictions d'accès basées sur le risque</li>
+                <li>Durcissement des postes via Intune</li>
+                <li>Évolution Entra ID (ex-Azure AD)</li>
+                <li>Passkeys et authentification FIDO2</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Méthodologie de veille -->
+      <section class="section">
+        <h2 class="mb-2">📋 Ma méthodologie de veille</h2>
+        <div class="timeline">
+          <article class="tl-item reveal">
+            <div class="tl-header">
+              <span class="tl-dot" aria-hidden="true"></span>
+              <div class="tl-title">1. Collecte d'informations</div>
+              <div class="tl-meta">Quotidienne</div>
+            </div>
+            <div class="tl-content">
+              <p>Consultation des flux RSS, newsletters spécialisées (CERT-FR, Microsoft, etc.) et réseaux sociaux professionnels (LinkedIn, Twitter). Utilisation de Feedly pour centraliser les sources.</p>
+            </div>
+          </article>
+
+          <article class="tl-item reveal">
+            <div class="tl-header">
+              <span class="tl-dot" aria-hidden="true"></span>
+              <div class="tl-title">2. Tri et analyse</div>
+              <div class="tl-meta">Hebdomadaire</div>
+            </div>
+            <div class="tl-content">
+              <p>Sélection des articles pertinents selon leur impact potentiel sur mes projets. Lecture approfondie et prise de notes dans Notion. Évaluation de la criticité (alerte sécurité vs. simple actualité).</p>
+            </div>
+          </article>
+
+          <article class="tl-item reveal">
+            <div class="tl-header">
+              <span class="tl-dot" aria-hidden="true"></span>
+              <div class="tl-title">3. Expérimentation</div>
+              <div class="tl-meta">Mensuelle</div>
+            </div>
+            <div class="tl-content">
+              <p>Test des nouvelles fonctionnalités ou outils dans un environnement de lab (VMs, Azure Free Tier). Documentation des résultats dans OneNote. Partage avec l'équipe IT si applicable.</p>
+            </div>
+          </article>
+
+          <article class="tl-item reveal">
+            <div class="tl-header">
+              <span class="tl-dot" aria-hidden="true"></span>
+              <div class="tl-title">4. Application professionnelle</div>
+              <div class="tl-meta">Continue</div>
+            </div>
+            <div class="tl-content">
+              <p>Intégration des bonnes pratiques dans les projets en cours. Proposition d'améliorations basées sur la veille. Mise à jour de la documentation interne.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Dernières lectures -->
+      <section class="section">
+        <h2 class="mb-2">📚 Dernières lectures marquantes</h2>
+        <div class="accordion">
+          <article class="ac-item reveal" aria-expanded="false">
+            <button class="ac-trigger" type="button">
+              <span>🔒 Renforcement Kerberos dans Active Directory (Janvier 2025)</span>
+              <span class="ac-icon">▼</span>
+            </button>
+            <div class="ac-panel">
+              <p><strong>Source :</strong> Microsoft Security Blog</p>
+              <p><strong>Résumé :</strong> Microsoft a publié de nouvelles recommandations pour renforcer l'authentification Kerberos suite à plusieurs vulnérabilités découvertes fin 2024. Les points clés incluent le chiffrement AES obligatoire, la désactivation de RC4, et l'activation de l'armoring Kerberos.</p>
+              <p><strong>Impact sur mes projets :</strong> J'ai appliqué ces recommandations dans l'environnement AGIR Recouvrement via des GPO spécifiques, réduisant significativement la surface d'attaque AD.</p>
+              <div class="badges" style="margin-top:.75rem">
+                <span class="badge">Kerberos</span>
+                <span class="badge">Active Directory</span>
+                <span class="badge">GPO</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ac-item reveal" aria-expanded="false">
+            <button class="ac-trigger" type="button">
+              <span>☁️ Nouveautés Conditional Access - Accès basé sur le risque (Décembre 2024)</span>
+              <span class="ac-icon">▼</span>
+            </button>
+            <div class="ac-panel">
+              <p><strong>Source :</strong> Microsoft Tech Community</p>
+              <p><strong>Résumé :</strong> Azure AD Conditional Access intègre désormais des politiques basées sur le niveau de risque calculé en temps réel (localisation inhabituelle, device non conforme, tentatives suspectes, etc.).</p>
+              <p><strong>Application :</strong> Mise en place de politiques graduées : MFA simple pour risque faible, MFA + device compliant pour risque moyen, blocage pour risque élevé.</p>
+              <div class="badges" style="margin-top:.75rem">
+                <span class="badge">Azure AD</span>
+                <span class="badge">Conditional Access</span>
+                <span class="badge">Zero Trust</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ac-item reveal" aria-expanded="false">
+            <button class="ac-trigger" type="button">
+              <span>⚡ Automatisation IT avec n8n : retour d'expérience (Novembre 2024)</span>
+              <span class="ac-icon">▼</span>
+            </button>
+            <div class="ac-panel">
+              <p><strong>Source :</strong> n8n Community Blog</p>
+              <p><strong>Résumé :</strong> Étude de cas d'entreprises ayant automatisé leurs processus IT avec n8n (ticketing, provisioning, monitoring). Comparaison avec d'autres solutions (Zapier, Power Automate).</p>
+              <p><strong>Résultat :</strong> M'a inspiré pour créer mon workflow de délégation Exchange, avec un gain de temps de 8h/semaine et zéro erreur humaine.</p>
+              <div class="badges" style="margin-top:.75rem">
+                <span class="badge">n8n</span>
+                <span class="badge">Automatisation</span>
+                <span class="badge">Workflow</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Citation -->
+      <blockquote class="card reveal quote-highlight" style="margin-top:2rem">
+        <p class="mb-1"><em>Une bonne veille permet de rester à jour, mais surtout de prendre des décisions techniques éclairées et sécurisées.</em></p>
+        <cite class="muted">– Mathis ROUVREAU</cite>
+      </blockquote>
+
+      <div class="center" style="margin-top:2rem">
+        <a class="btn btn-primary" href="contact.html">Me contacter</a>
+        <a class="btn btn-outline" href="competences.html">Mes compétences</a>
+      </div>
+
+    </div>
+  </main>
+
+  <button class="back-to-top" aria-label="Retour en haut" title="Retour en haut">↑</button>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="muted">&copy; 2025 Mathis ROUVREAU – Portfolio BTS SIO SISR.</p>
+    </div>
+  </footer>
+</body>
+</html>

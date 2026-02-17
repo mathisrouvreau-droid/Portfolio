@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alternance – Mathis Rouvreau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="modern-header">
+    <div class="container header-inner">
+      <button class="nav-toggle" aria-label="Ouvrir le menu">☰</button>
+      <a href="index.html" class="brand">Mathis Rouvreau</a>
+      <button class="theme-toggle" aria-label="Basculer le thème">🌗</button>
+    </div>
+    <div class="container header-bottom">
+      <nav aria-label="Navigation principale" data-open="false">
+        <ul class="nav-list">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="alternance.html" aria-current="page">Alternance</a></li>
+          <li><a href="scolaire.html">Scolaire</a></li>
+          <li><a href="competences.html">Compétences</a></li>
+          <li><a href="veille.html">Veille</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="mb-1">Projets réalisés en alternance</h1>
+      <p class="muted max-w-prose">Découvrez mes réalisations professionnelles au sein d'AGIR Recouvrement, où j'interviens sur l'infrastructure IT, la sécurité et l'automatisation des processus.</p>
+
+      <section class="card reveal company-presentation">
+        <div class="company-header">
+          <div class="company-info">
+            <h2 class="mb-1">AGIR Recouvrement</h2>
+            <p class="company-tagline">Mon entreprise d'alternance</p>
+          </div>
+        </div>
+        
+        <div class="company-details">
+          <div class="company-block">
+            <h3>🏢 Secteur d'activité</h3>
+            <p>AGIR Recouvrement est une société spécialisée dans le <strong>recouvrement de créances</strong> et la gestion du poste clients pour les entreprises. L'entreprise accompagne ses clients dans la récupération amiable et judiciaire de leurs impayés, avec un fort accent sur la conformité légale et la relation client.</p>
+          </div>
+
+          <div class="company-block">
+            <h3>👥 Structure & Équipe IT</h3>
+            <ul>
+              <li><strong>Effectif :</strong> ~50 collaborateurs</li>
+              <li><strong>Équipe IT :</strong> 2 personnes (1 responsable IT + 1 alternant)</li>
+              <li><strong>Parc informatique :</strong> 60+ postes de travail, infrastructure hybride (on-premise + cloud)</li>
+              <li><strong>Technologies :</strong> Windows Server, Active Directory, Microsoft 365, Azure</li>
+            </ul>
+          </div>
+
+          <div class="company-block">
+            <h3>🎯 Mon rôle & périmètre</h3>
+            <p>En tant qu'<strong>alternant administrateur systèmes et réseaux</strong>, j'interviens sur :</p>
+            <ul>
+              <li><strong>Sécurité :</strong> Durcissement AD, GPO, gestion des accès et authentification MFA</li>
+              <li><strong>Cloud :</strong> Migration vers Azure AD, synchronisation hybride, Conditional Access</li>
+              <li><strong>Automatisation :</strong> Développement de workflows n8n pour la gestion Exchange et les processus IT</li>
+              <li><strong>Support :</strong> Résolution incidents N2, déploiement postes, maintenance infrastructure</li>
+              <li><strong>Documentation :</strong> Procédures, schémas réseau, inventaire SI</li>
+            </ul>
+          </div>
+
+          <div class="company-block">
+            <h3>🛠️ Environnement technique</h3>
+            <div class="tech-env">
+              <div class="tech-env-category">
+                <strong>Systèmes :</strong>
+                <span class="badge">Windows Server 2019/2022</span>
+                <span class="badge">Active Directory</span>
+                <span class="badge">DHCP/DNS</span>
+                <span class="badge">GPO</span>
+              </div>
+              <div class="tech-env-category">
+                <strong>Cloud :</strong>
+                <span class="badge">Microsoft 365</span>
+                <span class="badge">Azure AD</span>
+                <span class="badge">Exchange Online</span>
+                <span class="badge">Intune</span>
+              </div>
+              <div class="tech-env-category">
+                <strong>Outils :</strong>
+                <span class="badge">PowerShell</span>
+                <span class="badge">n8n</span>
+                <span class="badge">Graph API</span>
+                <span class="badge">GLPI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section pt-0">
+        <h2 class="mb-2" style="margin-top: 2rem;">Mes projets</h2>
+        <div class="accordion">
+          <article class="ac-item reveal" aria-expanded="true">
+            <button class="ac-trigger" type="button">
+              <span>🔒 Stoïk – Cybersécurité &amp; GPO</span>
+              <span class="ac-icon">▼</span>
+            </button>
+            <div class="ac-panel">
+              <div class="project-meta">
+                <span class="project-tag">Sécurité</span>
+                <span class="project-tag">Active Directory</span>
+                <span class="project-tag">GPO</span>
+                <span class="project-duration">Durée : 3 mois</span>
+              </div>
+              
+              <div class="gallery" data-gallery="stoik-gpo">
+                <div class="viewer">
+                  <img src="img/projet-ad-1.jpg" alt="Vue globale de l'infrastructure Active Directory durcie" class="viewer-img">
+                  <div class="gallery-counter"><span class="current">1</span> / <span class="total">3</span></div>
+                </div>
+                <div class="thumbs">
+                  <button type="button" class="thumb is-active" data-src="img/projet-ad-1.jpg" data-alt="Vue globale de l'infrastructure Active Directory durcie">
+                    <img src="img/projet-ad-1.jpg" alt="Vue globale de l'infrastructure Active Directory durcie">
+                  </button>
+                  <button type="button" class="thumb" data-src="img/projet-ad-2.jpg" data-alt="Exemple de GPO de sécurité appliquées">
+                    <img src="img/projet-ad-2.jpg" alt="Exemple de GPO de sécurité appliquées">
+                  </button>
+                  <button type="button" class="thumb" data-src="img/projet-ad-3.jpg" data-alt="Suivi des comptes à privilèges et journaux">
+                    <img src="img/projet-ad-3.jpg" alt="Suivi des comptes à privilèges et journaux">
+                  </button>
+                </div>
+              </div>
+             
+              <h3>Contexte & Objectifs</h3>
+              <p>Suite à un audit de sécurité interne, plusieurs vulnérabilités ont été identifiées dans l'infrastructure Active Directory. Le projet visait à <strong>renforcer la posture de sécurité</strong> de l'entreprise, tant sur l'environnement <strong>on-premise</strong> qu'en <strong>cloud</strong> (Microsoft Azure).</p>
+              
+              <h3>🔒 Phase 1 – Sécurisation Active Directory</h3>
+              <ul>
+                <li><strong>Analyse des vulnérabilités :</strong> Audit complet avec BloodHound et PingCastle pour identifier les chemins d'attaque</li>
+                <li><strong>Durcissement des GPO :</strong> Restriction RDP, désactivation de protocoles obsolètes (SMBv1), politique PowerShell en mode ConstrainedLanguage</li>
+                <li><strong>Hygiène Active Directory :</strong> Réorganisation des OU, révision des droits NTFS, correction de l'héritage de permissions</li>
+                <li><strong>Gestion des comptes privilégiés :</strong> Séparation des comptes admin, mise en place de PAW (Privileged Access Workstation)</li>
+                <li><strong>Audit & Journalisation :</strong> Configuration avancée des politiques d'audit, centralisation des logs avec SIEM</li>
+                <li><strong>Suivi proactif :</strong> Scripts PowerShell pour traquer les comptes inactifs via <code>lastLogonTimestamp</code></li>
+              </ul>
+              
+              <h3>☁️ Phase 2 – Sécurisation Azure</h3>
+              <ul>
+                <li><strong>Audit Microsoft 365 :</strong> Revue complète d'Azure AD et des licences M365</li>
+                <li><strong>Authentification renforcée :</strong> Déploiement MFA pour 100% des utilisateurs, policies d'accès conditionnel par localisation</li>
+                <li><strong>Amélioration du Secure Score :</strong> Passage de 45% à 82% en désactivant les protocoles legacy (POP3/IMAP), activation de la protection anti-phishing</li>
+                <li><strong>Gouvernance :</strong> Mise en place de labels de sensibilité, DLP (Data Loss Prevention)</li>
+                <li><strong>Documentation :</strong> Cartographie complète de l'environnement cloud, plan d'amélioration continue, runbooks de sécurité</li>
+              </ul>
+
+              <h3>📊 Résultats & Impact</h3>
+              <div class="impact-grid">
+                <div class="impact-item">
+                  <div class="impact-number">-75%</div>
+                  <div class="impact-label">Vulnérabilités critiques</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">82%</div>
+                  <div class="impact-label">Secure Score Azure</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">100%</div>
+                  <div class="impact-label">Utilisateurs avec MFA</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">50+</div>
+                  <div class="impact-label">GPO configurées</div>
+                </div>
+              </div>
+
+              <h3>🎓 Compétences mobilisées</h3>
+              <div class="badges">
+                <span class="badge">Active Directory</span>
+                <span class="badge">GPO</span>
+                <span class="badge">PowerShell</span>
+                <span class="badge">Azure AD</span>
+                <span class="badge">Sécurité</span>
+                <span class="badge">Audit</span>
+                <span class="badge">BloodHound</span>
+                <span class="badge">PingCastle</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ac-item reveal" aria-expanded="false">
+            <button class="ac-trigger" type="button">
+              <span>☁️ Infrastructure hybride avec Azure AD Connect</span>
+              <span class="ac-icon">▼</span>
+            </button>
+            <div class="ac-panel">
+              <div class="project-meta">
+                <span class="project-tag">Cloud</span>
+                <span class="project-tag">Azure</span>
+                <span class="project-tag">Hybrid</span>
+                <span class="project-duration">Durée : 2 mois</span>
+              </div>
+              
+              <div class="gallery" data-gallery="hybride-azure">
+                <div class="viewer">
+                  <img src="img/azure-sync-1.jpg" alt="Schéma de synchronisation Azure AD Connect" class="viewer-img">
+                  <div class="gallery-counter"><span class="current">1</span> / <span class="total">3</span></div>
+                </div>
+                <div class="thumbs">
+                  <button type="button" class="thumb is-active" data-src="img/azure-sync-1.jpg" data-alt="Schéma de synchronisation Azure AD Connect">
+                    <img src="img/azure-sync-1.jpg" alt="Schéma de synchronisation Azure AD Connect">
+                  </button>
+                  <button type="button" class="thumb" data-src="img/azure-sync-2.jpg" data-alt="Paramétrage de la synchronisation des identités">
+                    <img src="img/azure-sync-2.jpg" alt="Paramétrage de la synchronisation des identités">
+                  </button>
+                  <button type="button" class="thumb" data-src="img/azure-sync-3.jpg" data-alt="Vue des politiques d'accès conditionnel et MFA">
+                    <img src="img/azure-sync-3.jpg" alt="Vue des politiques d'accès conditionnel et MFA">
+                  </button>
+                </div>
+              </div>
+
+              <h3>Contexte & Objectifs</h3>
+              <p>L'entreprise souhaitait bénéficier des services cloud Microsoft 365 tout en conservant son Active Directory on-premise. Le projet consistait à mettre en place une <strong>infrastructure hybride</strong> avec synchronisation des identités et authentification unifiée (SSO).</p>
+
+              <h3>🔧 Réalisations techniques</h3>
+              <ul>
+                <li><strong>Installation Azure AD Connect :</strong> Configuration du serveur de synchronisation, choix de la méthode d'authentification (Password Hash Sync + Seamless SSO)</li>
+                <li><strong>Hybrid Azure AD Join :</strong> Jonction automatique des machines Windows 10/11 au cloud pour une gestion unifiée via Intune</li>
+                <li><strong>Politiques d'accès conditionnel :</strong> Restriction par géolocalisation, exigence MFA pour accès externes, blocage des appareils non conformes</li>
+                <li><strong>Migration messagerie :</strong> Basculement progressif des boîtes Exchange on-premise vers Exchange Online</li>
+                <li><strong>Automatisation :</strong> Scripts PowerShell pour la gestion en masse (création, modification, désactivation de comptes synchronisés)</li>
+                <li><strong>Monitoring :</strong> Mise en place d'alertes sur la santé de la synchronisation, tableau de bord Azure AD Connect Health</li>
+              </ul>
+
+              <h3>📊 Résultats & Impact</h3>
+              <div class="impact-grid">
+                <div class="impact-item">
+                  <div class="impact-number">300+</div>
+                  <div class="impact-label">Comptes synchronisés</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">100%</div>
+                  <div class="impact-label">SSO fonctionnel</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">60+</div>
+                  <div class="impact-label">Appareils Hybrid Join</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">0</div>
+                  <div class="impact-label">Incident majeur</div>
+                </div>
+              </div>
+
+              <h3>🎓 Compétences mobilisées</h3>
+              <div class="badges">
+                <span class="badge">Azure AD Connect</span>
+                <span class="badge">Hybrid Join</span>
+                <span class="badge">MFA</span>
+                <span class="badge">Conditional Access</span>
+                <span class="badge">PowerShell</span>
+                <span class="badge">Exchange Online</span>
+                <span class="badge">Intune</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ac-item reveal" aria-expanded="false">
+            <button class="ac-trigger" type="button">
+              <span>⚡ Automatisation de la délégation Exchange via n8n</span>
+              <span class="ac-icon">▼</span>
+            </button>
+            <div class="ac-panel">
+              <div class="project-meta">
+                <span class="project-tag">Automatisation</span>
+                <span class="project-tag">n8n</span>
+                <span class="project-tag">Exchange</span>
+                <span class="project-duration">Durée : 1 mois</span>
+              </div>
+              
+              <div class="gallery" data-gallery="n8n-exchange">
+                <div class="viewer">
+                  <img src="img/n8n-workflow-1.jpg" alt="Vue d'ensemble du workflow n8n pour Exchange" class="viewer-img">
+                  <div class="gallery-counter"><span class="current">1</span> / <span class="total">3</span></div>
+                </div>
+                <div class="thumbs">
+                  <button type="button" class="thumb is-active" data-src="img/n8n-workflow-1.jpg" data-alt="Vue d'ensemble du workflow n8n pour Exchange">
+                    <img src="img/n8n-workflow-1.jpg" alt="Vue d'ensemble du workflow n8n pour Exchange">
+                  </button>
+                  <button type="button" class="thumb" data-src="img/n8n-workflow-2.jpg" data-alt="Étape d'approbation des demandes d'accès">
+                    <img src="img/n8n-workflow-2.jpg" alt="Étape d'approbation des demandes d'accès">
+                  </button>
+                  <button type="button" class="thumb" data-src="img/n8n-workflow-3.jpg" data-alt="Étape d'exécution PowerShell / Graph API pour appliquer les droits">
+                    <img src="img/n8n-workflow-3.jpg" alt="Étape d'exécution PowerShell / Graph API pour appliquer les droits">
+                  </button>
+                </div>
+              </div>
+
+              <h3>Contexte & Objectifs</h3>
+              <p>La gestion manuelle des délégations Exchange (accès aux boîtes partagées, permissions FullAccess/SendAs) était chronophage et source d'erreurs. Le projet visait à <strong>automatiser entièrement le processus</strong> via un workflow n8n, de la demande à l'application des droits.</p>
+
+              <h3>🔧 Architecture du workflow</h3>
+              <ul>
+                <li><strong>1. Demande initiale :</strong> Formulaire web pour soumettre une demande de délégation (utilisateur, boîte cible, type de droit, durée)</li>
+                <li><strong>2. Validation hiérarchique :</strong> Notification automatique au manager pour approbation/refus via email avec boutons d'action</li>
+                <li><strong>3. Application des droits :</strong> Exécution de commandes PowerShell via Graph API ou Remote PS pour attribuer les permissions Exchange</li>
+                <li><strong>4. Notification utilisateur :</strong> Email de confirmation avec détails des accès accordés</li>
+                <li><strong>5. Révocation automatique :</strong> Cron job quotidien qui retire les droits expirés selon la date de fin définie</li>
+                <li><strong>6. Consultation des accès actifs :</strong> Interface web pour visualiser toutes les délégations en cours</li>
+                <li><strong>7. Rapport hebdomadaire :</strong> Synthèse envoyée au support IT avec stats (nouvelles demandes, révocations, erreurs)</li>
+              </ul>
+
+              <h3>💡 Innovations techniques</h3>
+              <ul>
+                <li><strong>Gestion des erreurs robuste :</strong> Retry automatique, logs détaillés, notifications en cas d'échec</li>
+                <li><strong>Traçabilité complète :</strong> Historique de toutes les opérations dans une base de données SQLite</li>
+                <li><strong>Sécurité :</strong> Authentification OAuth2, chiffrement des credentials, principe du moindre privilège</li>
+                <li><strong>Évolutivité :</strong> Architecture modulaire permettant d'ajouter facilement d'autres types de délégations (SharePoint, Teams...)</li>
+              </ul>
+
+              <h3>📊 Résultats & Impact</h3>
+              <div class="impact-grid">
+                <div class="impact-item">
+                  <div class="impact-number">8h/sem</div>
+                  <div class="impact-label">Gain de temps</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">0</div>
+                  <div class="impact-label">Erreur humaine</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">100%</div>
+                  <div class="impact-label">Traçabilité</div>
+                </div>
+                <div class="impact-item">
+                  <div class="impact-number">150+</div>
+                  <div class="impact-label">Demandes traitées</div>
+                </div>
+              </div>
+
+              <h3>🎓 Compétences mobilisées</h3>
+              <div class="badges">
+                <span class="badge">n8n</span>
+                <span class="badge">PowerShell</span>
+                <span class="badge">Graph API</span>
+                <span class="badge">OAuth2</span>
+                <span class="badge">Exchange Online</span>
+                <span class="badge">Automatisation</span>
+                <span class="badge">REST API</span>
+                <span class="badge">SQLite</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="center" style="margin-top:2rem">
+        <a class="btn btn-primary" href="scolaire.html">Voir mes projets scolaires</a>
+        <a class="btn btn-outline" href="competences.html">Mes compétences</a>
+      </div>
+    </div>
+  </main>
+
+  <button class="back-to-top" aria-label="Retour en haut" title="Retour en haut">↑</button>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="muted">&copy; 2025 Mathis ROUVREAU – Portfolio BTS SIO SISR.</p>
+    </div>
+  </footer>
+</body>
+</html>
