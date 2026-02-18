@@ -1,7 +1,7 @@
 # Portfolio – Mathis Rouvreau
 
 > BTS SIO option SISR · Alternant Administrateur Systèmes & Réseaux
-> AGIR Recouvrement — Île-de-France
+> AGIR Recouvrement — Cholet (49)
 
 ---
 
