@@ -286,8 +286,7 @@ html:not(.no-js) .nojs-hidden { display: inline-flex; }
 
 /* Bento areas */
 .bento-hero {
-  grid-column: span 3;
-  grid-row: span 2;
+  grid-column: span 4;
 }
 
 .bento-stat-1 { grid-column: span 1; }
@@ -299,8 +298,56 @@ html:not(.no-js) .nojs-hidden { display: inline-flex; }
   grid-column: span 2;
 }
 
-.bento-highlight {
+.bento-avail {
   grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-left: 3px solid var(--success);
+  background: linear-gradient(145deg,
+    color-mix(in oklab, var(--success) 4%, var(--surface-2) 96%),
+    var(--surface-2)
+  );
+}
+
+.bento-avail-header {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.bento-avail-status {
+  font-size: var(--step--1);
+  font-weight: 700;
+  color: var(--success);
+  text-transform: uppercase;
+  letter-spacing: .07em;
+}
+
+.bento-avail-title {
+  margin: 0;
+  font-size: var(--step-2);
+  letter-spacing: -.01em;
+  line-height: 1.25;
+}
+
+.bento-avail-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.bento-avail-details li {
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
+.bento-avail-cta {
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 .bento-full {
@@ -1573,7 +1620,9 @@ input:focus, textarea:focus, select:focus {
 
   .bento-hero,
   .bento-full,
-  .bento-card-quote {
+  .bento-card-quote,
+  .bento-about,
+  .bento-avail {
     grid-column: span 2;
   }
 
@@ -1629,7 +1678,7 @@ input:focus, textarea:focus, select:focus {
 
   .bento-hero,
   .bento-stat-1, .bento-stat-2, .bento-stat-3, .bento-stat-4,
-  .bento-about, .bento-highlight,
+  .bento-about, .bento-avail,
   .bento-full, .bento-card-quote,
   .bento-tech-1, .bento-tech-2, .bento-tech-3, .bento-tech-4 {
     grid-column: span 1;
