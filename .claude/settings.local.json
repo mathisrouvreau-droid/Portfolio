@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "WebSearch",
+      "WebFetch(domain:kothanromeo.dev)",
+      "WebFetch(domain:bouzac.dev)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
