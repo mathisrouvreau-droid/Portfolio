@@ -1819,18 +1819,13 @@ input:focus, textarea:focus, select:focus {
 }
 
 .company-logo-placeholder {
-  width: 52px;
-  height: 52px;
-  border-radius: var(--r-md);
-  background: linear-gradient(135deg, var(--brand), var(--brand-2));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #fff;
   flex-shrink: 0;
-  box-shadow: var(--glow-brand);
+}
+.company-logo-placeholder img {
+  border-radius: var(--r-sm);
 }
 
 .company-id h2 {
