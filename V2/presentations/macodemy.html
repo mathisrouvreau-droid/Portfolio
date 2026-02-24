@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documentation MACODEMY – Mathis Rouvreau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script defer src="../app.js"></script>
+  <style>
+    /* === Presentation-specific styles === */
+    .pres-hero {
+      text-align: center;
+      padding: 4rem 0 2rem;
+    }
+    .pres-hero h1 {
+      font-size: var(--step-4);
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: .5rem;
+    }
+    .pres-hero .pres-subtitle {
+      font-size: var(--step-1);
+      color: var(--muted);
+    }
+    .pres-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .pres-meta-item {
+      background: var(--surface-2);
+      border: 1px solid color-mix(in oklab, var(--brand) 15%, transparent);
+      border-radius: var(--r-sm);
+      padding: .5rem 1rem;
+      font-size: var(--step--1);
+      color: var(--text);
+    }
+    .pres-meta-item strong { color: var(--brand); }
+
+    .pres-toc {
+      background: var(--surface-2);
+      border: 1px solid color-mix(in oklab, var(--brand) 10%, transparent);
+      border-radius: var(--r-md);
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+    }
+    .pres-toc h2 { font-size: var(--step-1); margin-bottom: 1rem; }
+    .pres-toc ol {
+      list-style: none;
+      counter-reset: toc;
+      padding: 0;
+    }
+    .pres-toc li {
+      counter-increment: toc;
+      padding: .4rem 0;
+      border-bottom: 1px solid color-mix(in oklab, var(--muted) 15%, transparent);
+    }
+    .pres-toc li:last-child { border-bottom: none; }
+    .pres-toc li::before {
+      content: counter(toc, decimal-leading-zero) ".";
+      color: var(--brand);
+      font-weight: 700;
+      margin-right: .75rem;
+    }
+    .pres-toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--dur-1) var(--e-out);
+    }
+    .pres-toc a:hover { color: var(--brand); }
+
+    .pres-section {
+      margin-top: 3rem;
+      scroll-margin-top: 2rem;
+    }
+    .pres-section h2 {
+      font-size: var(--step-2);
+      margin-bottom: .25rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .pres-section h2 .pres-num {
+      font-size: var(--step--1);
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #fff;
+      border-radius: var(--r-xs);
+      padding: .2rem .6rem;
+      font-weight: 700;
+    }
+    .pres-section h3 {
+      font-size: var(--step-1);
+      margin-top: 1.5rem;
+      margin-bottom: .5rem;
+      color: var(--brand);
+    }
+
+    .pres-card {
+      background: var(--surface-2);
+      border: 1px solid color-mix(in oklab, var(--muted) 10%, transparent);
+      border-radius: var(--r-md);
+      padding: 1.25rem 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .pres-schema {
+      background: var(--surface-3);
+      border: 1px solid color-mix(in oklab, var(--brand) 15%, transparent);
+      border-radius: var(--r-md);
+      padding: 1.5rem;
+      margin: 1.25rem 0;
+      font-family: 'Courier New', monospace;
+      font-size: var(--step--1);
+      white-space: pre;
+      overflow-x: auto;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .pres-code {
+      background: var(--surface-3);
+      border: 1px solid color-mix(in oklab, var(--brand) 12%, transparent);
+      border-radius: var(--r-sm);
+      padding: 1rem 1.25rem;
+      margin: .75rem 0;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: var(--step--1);
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .pres-code-label {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--brand);
+      font-weight: 700;
+      margin-bottom: .35rem;
+    }
+
+    .pres-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    @media (max-width: 640px) {
+      .pres-grid-2 { grid-template-columns: 1fr; }
+    }
+
+    .pres-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: var(--step--1);
+    }
+    .pres-table th {
+      background: color-mix(in oklab, var(--brand) 12%, var(--surface-2));
+      color: var(--brand);
+      text-align: left;
+      padding: .6rem .75rem;
+      font-weight: 700;
+    }
+    .pres-table td {
+      padding: .5rem .75rem;
+      border-bottom: 1px solid color-mix(in oklab, var(--muted) 12%, transparent);
+    }
+    .pres-table tr:last-child td { border-bottom: none; }
+    .pres-table code {
+      background: var(--surface-3);
+      padding: .15rem .35rem;
+      border-radius: 4px;
+      font-size: .85em;
+    }
+
+    .pres-back {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: var(--step--1);
+      margin-bottom: 1rem;
+      transition: opacity var(--dur-1) var(--e-out);
+    }
+    .pres-back:hover { opacity: .7; }
+
+    .pres-divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--brand), transparent);
+      margin: 2.5rem 0;
+      opacity: .3;
+    }
+
+    .pres-planning th:first-child,
+    .pres-planning td:first-child { min-width: 200px; }
+  </style>
+</head>
+<body>
+
+<header class="modern-header">
+  <div class="container header-inner">
+    <button class="nav-toggle" aria-label="Ouvrir le menu">&#9776;</button>
+    <a href="../index.html" class="brand">Mathis Rouvreau</a>
+    <button class="theme-toggle" aria-label="Basculer le th&egrave;me">&#127767;</button>
+  </div>
+  <div class="container header-bottom">
+    <nav aria-label="Navigation principale" data-open="false">
+      <ul class="nav-list">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../alternance.html">Alternance</a></li>
+        <li><a href="../scolaire.html">Scolaire</a></li>
+        <li><a href="../competences.html">Comp&eacute;tences</a></li>
+        <li><a href="../veille.html">Veille</a></li>
+        <li><button class="nav-contact-btn" data-open-contact aria-label="Ouvrir le formulaire de contact">Contact</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+
+    <a href="../scolaire.html" class="pres-back">&larr; Retour aux projets scolaires</a>
+
+    <!-- HERO -->
+    <div class="pres-hero reveal">
+      <h1>Projet MACODEMY</h1>
+      <p class="pres-subtitle">Optimisation de la gestion du parc informatique</p>
+      <p class="muted" style="margin-top:.5rem">Windows Server 2019 &middot; Cisco &middot; Debian &middot; Active Directory</p>
+      <div class="pres-meta">
+        <div class="pres-meta-item"><strong>Equipe :</strong> Hugo, Mathis, Evan</div>
+        <div class="pres-meta-item"><strong>Dur&eacute;e :</strong> 7 semaines</div>
+        <div class="pres-meta-item"><strong>Formation :</strong> BTS SIO SISR &mdash; 1&egrave;re ann&eacute;e</div>
+      </div>
+    </div>
+
+    <hr class="pres-divider">
+
+    <!-- SOMMAIRE -->
+    <div class="pres-toc reveal">
+      <h2>Sommaire</h2>
+      <ol>
+        <li><a href="#presentation">Pr&eacute;sentation du projet</a></li>
+        <li><a href="#planning">R&eacute;partition des t&acirc;ches</a></li>
+        <li><a href="#schema">Sch&eacute;matisation r&eacute;seau</a></li>
+        <li><a href="#serveur-ad">Serveur Windows 2019 (AD / DHCP / DNS)</a></li>
+        <li><a href="#serveur-web">Serveur Web Debian (Apache2 / DMZ)</a></li>
+        <li><a href="#reseau">Configuration routeurs &amp; switchs</a></li>
+        <li><a href="#clients">Int&eacute;gration postes clients</a></li>
+        <li><a href="#resultats">R&eacute;sultats du projet</a></li>
+      </ol>
+    </div>
+
+    <!-- ========================
+         01 — PRESENTATION
+         ======================== -->
+    <section class="pres-section reveal" id="presentation">
+      <h2><span class="pres-num">01</span> Pr&eacute;sentation du projet</h2>
+      <div class="pres-card">
+        <p>Conception et d&eacute;ploiement d'un <strong>r&eacute;seau complet</strong> pour l'&eacute;tablissement MACODEMY, compos&eacute; de <strong>3 services</strong> segment&eacute;s en VLANs (Administratif, Enseignants, Etudiants), avec un serveur centralis&eacute; sous Windows Server 2019 et un serveur Web sous Debian en DMZ.</p>
+      </div>
+
+      <h3>Services d&eacute;ploy&eacute;s sur le serveur Windows Server 2019</h3>
+      <div class="pres-grid-2">
+        <div class="pres-card">
+          <strong>Active Directory</strong>
+          <p>Gestion centralis&eacute;e des utilisateurs, groupes et unit&eacute;s d'organisation</p>
+        </div>
+        <div class="pres-card">
+          <strong>DHCP</strong>
+          <p>Distribution automatique des adresses IP par VLAN (3 &eacute;tendues)</p>
+        </div>
+        <div class="pres-card">
+          <strong>DNS</strong>
+          <p>Redirection <code>macodemy.local</code> vers le serveur Web en DMZ</p>
+        </div>
+        <div class="pres-card">
+          <strong>GPO</strong>
+          <p>Fond d'&eacute;cran personnalis&eacute; + d&eacute;ploiement Firefox/Chrome automatique</p>
+        </div>
+      </div>
+
+      <h3>Acc&egrave;s utilisateurs</h3>
+      <div class="pres-card">
+        <ul>
+          <li>Nom d'utilisateur : <code>nomp</code> (ex: <code>rouvreaum</code>)</li>
+          <li>Mot de passe initial : <code>premco*963</code></li>
+          <li><strong>Lecteur Perso :</strong> espace personnel par utilisateur</li>
+          <li><strong>R&eacute;pertoire commun :</strong> partag&eacute; au sein du service (lecture/&eacute;criture)</li>
+          <li><strong>Ressources :</strong> admins = contr&ocirc;le total, enseignants = lecture/&eacute;criture, &eacute;tudiants = lecture seule</li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         02 — PLANNING
+         ======================== -->
+    <section class="pres-section reveal" id="planning">
+      <h2><span class="pres-num">02</span> R&eacute;partition des t&acirc;ches</h2>
+      <div style="overflow-x:auto">
+        <table class="pres-table pres-planning">
+          <thead>
+            <tr>
+              <th>Etape</th><th>Sem. 1</th><th>Sem. 2</th><th>Sem. 3</th><th>Sem. 4</th><th>Sem. 5</th><th>Sem. 6</th><th>Sem. 7</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Sch&eacute;ma r&eacute;seau logique</td><td>Evan</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Maquette Packet Tracer</td><td></td><td>Tous</td><td></td><td></td><td></td><td></td><td>Tous</td></tr>
+            <tr><td>Serveur AD (WinServ 2019)</td><td></td><td></td><td></td><td>Hugo</td><td></td><td></td><td></td></tr>
+            <tr><td>Serveur Web Debian</td><td></td><td></td><td>Mathis</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Config routeurs (VLAN, OSPF, ACL)</td><td></td><td></td><td></td><td></td><td>Evan, Mathis</td><td></td><td></td></tr>
+            <tr><td>Cr&eacute;ation des clients</td><td></td><td></td><td>Evan, Mathis</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>Phase de tests</td><td></td><td></td><td></td><td></td><td></td><td>Tous</td><td></td></tr>
+            <tr><td>Documentation</td><td></td><td></td><td>Hugo</td><td></td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         03 — SCHEMA RESEAU
+         ======================== -->
+    <section class="pres-section reveal" id="schema">
+      <h2><span class="pres-num">03</span> Sch&eacute;matisation r&eacute;seau</h2>
+
+      <div class="pres-grid-2">
+        <div class="pres-card">
+          <strong>R&eacute;seau Local</strong>
+          <p>Adresse : <code>172.16.0.0 /16</code></p>
+          <ul>
+            <li>VLAN 10 (Administratif) : <code>172.16.10.0</code></li>
+            <li>VLAN 20 (Enseignants) : <code>172.16.20.0</code></li>
+            <li>VLAN 30 (Etudiants) : <code>172.16.30.0</code></li>
+          </ul>
+        </div>
+        <div class="pres-card">
+          <strong>DMZ</strong>
+          <p>Adresse : <code>192.168.10.0</code></p>
+          <ul>
+            <li>Serveur Web Debian : <code>192.168.10.1</code></li>
+            <li>Routeur DMZ : <code>192.168.10.254</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pres-schema">            Routeur Local                  Routeur DMZ
+          172.16.255.253  ───Serial───  172.16.255.254
+               │                              │
+          Switch Local                   Switch DMZ
+         ┌─────┼─────┐                       │
+     VLAN 10  VLAN 20  VLAN 30          Serveur Web
+     .10.0    .20.0    .30.0          192.168.10.1
+               │
+        Serveur AD/DHCP/DNS
+           172.16.1.1</div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         04 — SERVEUR AD
+         ======================== -->
+    <section class="pres-section reveal" id="serveur-ad">
+      <h2><span class="pres-num">04</span> Serveur Windows 2019</h2>
+
+      <h3>Arborescence Active Directory</h3>
+      <div class="pres-schema">macodemy.local
+├── UO_ADMINISTRATIF
+│   └── GR_ADMINISTRATIF
+│       ├── Evan RAIMBAULT (raimbaulte)
+│       ├── Hugo PASDOIT (pasdoith)
+│       └── Mathis ROUVREAU (rouvreaum)
+├── UO_ENSEIGNANTS
+│   └── GR_ENSEIGNANTS
+│       ├── Francis DUBOIS (duboisf)
+│       └── Madeleine FEUILLE (feuillem)
+└── UO_ETUDIANTS
+    └── GR_ETUDIANTS
+        ├── Bernard BRIQUE (briqueb)
+        └── L&eacute;o TARTE (tartel)</div>
+
+      <h3>Configuration AD DS</h3>
+      <div class="pres-card">
+        <ol>
+          <li><strong>Installation du r&ocirc;le AD DS</strong> via le Gestionnaire de serveur</li>
+          <li><strong>Promotion en contr&ocirc;leur de domaine</strong> &mdash; nouvelle for&ecirc;t <code>macodemy.local</code></li>
+          <li><strong>Cr&eacute;ation des OU, groupes et utilisateurs</strong></li>
+          <li><strong>R&eacute;pertoires Perso</strong> &mdash; <code>\\WINSERVACODEMY\Perso\%username%</code></li>
+          <li><strong>R&eacute;pertoires communs</strong> via scripts NETLOGON</li>
+        </ol>
+      </div>
+
+      <h3>Exemple de script NETLOGON</h3>
+      <div>
+        <div class="pres-code-label">Batch (.bat)</div>
+        <div class="pres-code">NET USE K: \\WINSERVACODEMY\Commun_etudiants</div>
+      </div>
+
+      <h3>Structure du lecteur D:</h3>
+      <div class="pres-schema">D:\
+├── Ressources
+├── Perso
+├── images
+├── Commun_Etudiants
+├── Commun_Enseignants
+├── Commun_Administratif
+└── Applications</div>
+
+      <h3>Configuration DHCP</h3>
+      <table class="pres-table">
+        <thead><tr><th>VLAN</th><th>Etendue</th><th>Plage IP</th><th>Passerelle</th></tr></thead>
+        <tbody>
+          <tr><td>VLAN 10</td><td><code>172.16.10.0</code></td><td><code>172.16.10.1 &ndash; 172.16.10.200</code></td><td><code>172.16.10.254</code></td></tr>
+          <tr><td>VLAN 20</td><td><code>172.16.20.0</code></td><td><code>172.16.20.1 &ndash; 172.16.20.200</code></td><td><code>172.16.20.254</code></td></tr>
+          <tr><td>VLAN 30</td><td><code>172.16.30.0</code></td><td><code>172.16.30.1 &ndash; 172.16.30.200</code></td><td><code>172.16.30.254</code></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Configuration DNS</h3>
+      <div class="pres-card">
+        <p>Zone de recherche directe : <code>macodemy.local</code></p>
+        <table class="pres-table">
+          <thead><tr><th>Enregistrement</th><th>Type</th><th>Cible</th></tr></thead>
+          <tbody>
+            <tr><td><code>macodemy.local</code></td><td>A</td><td><code>192.168.10.1</code></td></tr>
+            <tr><td><code>www</code></td><td>A</td><td><code>192.168.10.1</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         05 — SERVEUR WEB
+         ======================== -->
+    <section class="pres-section reveal" id="serveur-web">
+      <h2><span class="pres-num">05</span> Serveur Web Debian</h2>
+
+      <div class="pres-card">
+        <p>Serveur Apache2 en DMZ, IP statique <code>192.168.10.1</code>, h&eacute;bergeant le site interne de l'&eacute;tablissement.</p>
+      </div>
+
+      <h3>Installation</h3>
+      <div>
+        <div class="pres-code-label">Bash</div>
+        <div class="pres-code">sudo apt update
+sudo apt install apache2</div>
+      </div>
+
+      <h3>Configuration du VirtualHost</h3>
+      <div>
+        <div class="pres-code-label">/etc/apache2/sites-available/000-default.conf</div>
+        <div class="pres-code">ServerName macodemy.local
+DocumentRoot /var/www/html</div>
+      </div>
+
+      <div class="pres-card">
+        <p>Le site est accessible via <code>http://macodemy.local</code> ou <code>http://www.macodemy.local</code> depuis tous les VLANs gr&acirc;ce au DNS interne.</p>
+      </div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         06 — RESEAU
+         ======================== -->
+    <section class="pres-section reveal" id="reseau">
+      <h2><span class="pres-num">06</span> Configuration routeurs &amp; switchs</h2>
+
+      <h3>Routeur Local &mdash; Sous-interfaces VLAN</h3>
+      <div>
+        <div class="pres-code-label">Cisco IOS</div>
+        <div class="pres-code">interface GigabitEthernet0/0
+ ip address 172.16.1.254 255.255.255.0
+
+interface GigabitEthernet0/0.10
+ encapsulation dot1Q 10
+ ip address 172.16.10.254 255.255.255.0
+ ip helper-address 172.16.1.1
+
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 172.16.20.254 255.255.255.0
+ ip helper-address 172.16.1.1
+
+interface GigabitEthernet0/0.30
+ encapsulation dot1Q 30
+ ip address 172.16.30.254 255.255.255.0
+ ip helper-address 172.16.1.1
+
+ip route 0.0.0.0 0.0.0.0 172.16.255.254
+ip route 192.168.10.0 255.255.255.0 172.16.255.254</div>
+      </div>
+
+      <h3>ACL &mdash; Cloisonnement inter-VLAN</h3>
+      <div>
+        <div class="pres-code-label">Cisco IOS</div>
+        <div class="pres-code">access-list 101 deny   ip 172.16.30.0 0.0.0.255 172.16.10.0 0.0.0.255
+access-list 101 permit ip any any
+access-list 103 permit tcp 172.16.0.0 0.0.255.255 host 192.168.10.1 eq www
+access-list 103 permit tcp 172.16.0.0 0.0.255.255 host 192.168.10.1 eq 443</div>
+      </div>
+
+      <h3>Switch Local &mdash; VLANs</h3>
+      <div>
+        <div class="pres-code-label">Cisco IOS</div>
+        <div class="pres-code">interface FastEthernet0/1
+ switchport access vlan 10
+ switchport mode access
+
+interface FastEthernet0/2
+ switchport access vlan 20
+ switchport mode access
+
+interface FastEthernet0/3
+ switchport access vlan 30
+ switchport mode access</div>
+      </div>
+
+      <h3>Routeur DMZ</h3>
+      <div>
+        <div class="pres-code-label">Cisco IOS</div>
+        <div class="pres-code">interface GigabitEthernet0/0
+ ip address 192.168.10.254 255.255.255.0
+
+interface Serial0/0/0
+ ip address 172.16.255.254 255.255.255.252
+
+router ospf 1
+ network 172.0.0.0 0.255.255.255 area 0
+
+ip route 0.0.0.0 0.0.0.0 172.16.255.253</div>
+      </div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         07 — CLIENTS
+         ======================== -->
+    <section class="pres-section reveal" id="clients">
+      <h2><span class="pres-num">07</span> Int&eacute;gration postes clients</h2>
+
+      <div class="pres-card">
+        <h3 style="margin-top:0">Installation Windows 10</h3>
+        <ol>
+          <li>Cr&eacute;ation d'une cl&eacute; USB bootable via <strong>Rufus</strong> (ISO Windows 10 22H2)</li>
+          <li>D&eacute;marrage sur cl&eacute; USB via BIOS &mdash; installation en <strong>UEFI</strong></li>
+        </ol>
+      </div>
+
+      <div class="pres-card">
+        <h3 style="margin-top:0">Jonction au domaine</h3>
+        <ol>
+          <li>D&eacute;finir le DNS pr&eacute;f&eacute;r&eacute; : <code>172.16.1.1</code></li>
+          <li>Joindre le domaine <code>MACODEMY</code> via Propri&eacute;t&eacute;s syst&egrave;me</li>
+          <li>Valider avec les identifiants administrateur du domaine</li>
+        </ol>
+      </div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         08 — RESULTATS
+         ======================== -->
+    <section class="pres-section reveal" id="resultats">
+      <h2><span class="pres-num">08</span> R&eacute;sultats du projet</h2>
+
+      <h3>Lecteurs r&eacute;seau sur un poste type</h3>
+      <table class="pres-table">
+        <thead><tr><th>Lecteur</th><th>Nom</th><th>Acc&egrave;s</th></tr></thead>
+        <tbody>
+          <tr><td><strong>K:</strong></td><td>Commun_etudiants</td><td>Lecture / Ecriture (groupe)</td></tr>
+          <tr><td><strong>P:</strong></td><td>tartel (Perso)</td><td>Acc&egrave;s exclusif utilisateur</td></tr>
+          <tr><td><strong>R:</strong></td><td>Ressources</td><td>Lecture seule (&eacute;tudiants)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Tests de validation</h3>
+      <div class="impact-grid" style="margin-top:1rem">
+        <div class="impact-item">
+          <div class="impact-number">100%</div>
+          <div class="impact-label">Tests VLAN r&eacute;ussis</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-number">3/3</div>
+          <div class="impact-label">DHCP fonctionnel</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-number">0</div>
+          <div class="impact-label">Fuite inter-VLAN</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-number">OK</div>
+          <div class="impact-label">Site Web DMZ</div>
+        </div>
+      </div>
+
+      <h3>Test de cloisonnement VLAN</h3>
+      <div>
+        <div class="pres-code-label">CMD &mdash; Poste VLAN 30 vers VLAN 10</div>
+        <div class="pres-code">C:\Users\pasdoith> ping 172.16.10.1
+
+Envoi d'une requ&ecirc;te 'Ping' 172.16.10.1 avec 32 octets :
+D&eacute;lai d'attente de la demande d&eacute;pass&eacute;.
+D&eacute;lai d'attente de la demande d&eacute;pass&eacute;.
+
+Paquets : envoy&eacute;s = 4, re&ccedil;us = 0, perdus = 4 (perte 100%)</div>
+      </div>
+
+      <div class="pres-card" style="margin-top:1.5rem;text-align:center">
+        <p style="font-size:var(--step-1);margin:0"><strong>Projet valid&eacute; &mdash; tous les tests conformes</strong></p>
+      </div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <div class="center" style="margin:2rem 0">
+      <a class="btn btn-primary" href="../scolaire.html">&larr; Retour aux projets scolaires</a>
+      <a class="btn btn-outline" href="../competences.html">Mes comp&eacute;tences</a>
+    </div>
+
+  </div>
+</main>
+
+<button class="back-to-top" aria-label="Retour en haut" title="Retour en haut">&uarr;</button>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-section">
+      <h4>Mathis Rouvreau</h4>
+      <p>Alternant BTS SIO SISR</p>
+    </div>
+    <div class="footer-section">
+      <h4>Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../alternance.html">Alternance</a></li>
+        <li><a href="../competences.html">Comp&eacute;tences</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <ul class="footer-links">
+        <li><a href="mailto:mathis.rouvreau@gmail.com">Email</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 Mathis ROUVREAU &ndash; Portfolio BTS SIO SISR V2.</p>
+  </div>
+</footer>
+
+</body>
+</html>

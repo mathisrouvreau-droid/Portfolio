@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documentation PPE3 MDS49 – Mathis Rouvreau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script defer src="../app.js"></script>
+  <style>
+    .pres-hero {
+      text-align: center;
+      padding: 4rem 0 2rem;
+    }
+    .pres-hero h1 {
+      font-size: var(--step-4);
+      background: linear-gradient(135deg, var(--brand-2), var(--brand));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: .5rem;
+    }
+    .pres-hero .pres-subtitle {
+      font-size: var(--step-1);
+      color: var(--muted);
+    }
+    .pres-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .pres-meta-item {
+      background: var(--surface-2);
+      border: 1px solid color-mix(in oklab, var(--brand-2) 15%, transparent);
+      border-radius: var(--r-sm);
+      padding: .5rem 1rem;
+      font-size: var(--step--1);
+      color: var(--text);
+    }
+    .pres-meta-item strong { color: var(--brand-2); }
+
+    .pres-toc {
+      background: var(--surface-2);
+      border: 1px solid color-mix(in oklab, var(--brand-2) 10%, transparent);
+      border-radius: var(--r-md);
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+    }
+    .pres-toc h2 { font-size: var(--step-1); margin-bottom: 1rem; }
+    .pres-toc ol {
+      list-style: none;
+      counter-reset: toc;
+      padding: 0;
+    }
+    .pres-toc li {
+      counter-increment: toc;
+      padding: .4rem 0;
+      border-bottom: 1px solid color-mix(in oklab, var(--muted) 15%, transparent);
+    }
+    .pres-toc li:last-child { border-bottom: none; }
+    .pres-toc li::before {
+      content: counter(toc, decimal-leading-zero) ".";
+      color: var(--brand-2);
+      font-weight: 700;
+      margin-right: .75rem;
+    }
+    .pres-toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--dur-1) var(--e-out);
+    }
+    .pres-toc a:hover { color: var(--brand-2); }
+
+    .pres-section {
+      margin-top: 3rem;
+      scroll-margin-top: 2rem;
+    }
+    .pres-section h2 {
+      font-size: var(--step-2);
+      margin-bottom: .25rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .pres-section h2 .pres-num {
+      font-size: var(--step--1);
+      background: linear-gradient(135deg, var(--brand-2), var(--brand));
+      color: var(--bg);
+      border-radius: var(--r-xs);
+      padding: .2rem .6rem;
+      font-weight: 700;
+    }
+    .pres-section h3 {
+      font-size: var(--step-1);
+      margin-top: 1.5rem;
+      margin-bottom: .5rem;
+      color: var(--brand-2);
+    }
+
+    .pres-card {
+      background: var(--surface-2);
+      border: 1px solid color-mix(in oklab, var(--muted) 10%, transparent);
+      border-radius: var(--r-md);
+      padding: 1.25rem 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .pres-schema {
+      background: var(--surface-3);
+      border: 1px solid color-mix(in oklab, var(--brand-2) 15%, transparent);
+      border-radius: var(--r-md);
+      padding: 1.5rem;
+      margin: 1.25rem 0;
+      font-family: 'Courier New', monospace;
+      font-size: var(--step--1);
+      white-space: pre;
+      overflow-x: auto;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .pres-code {
+      background: var(--surface-3);
+      border: 1px solid color-mix(in oklab, var(--brand-2) 12%, transparent);
+      border-radius: var(--r-sm);
+      padding: 1rem 1.25rem;
+      margin: .75rem 0;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: var(--step--1);
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .pres-code-label {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--brand-2);
+      font-weight: 700;
+      margin-bottom: .35rem;
+    }
+
+    .pres-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    @media (max-width: 640px) {
+      .pres-grid-2 { grid-template-columns: 1fr; }
+    }
+
+    .pres-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    @media (max-width: 900px) {
+      .pres-grid-3 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .pres-grid-3 { grid-template-columns: 1fr; }
+    }
+
+    .pres-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: var(--step--1);
+    }
+    .pres-table th {
+      background: color-mix(in oklab, var(--brand-2) 12%, var(--surface-2));
+      color: var(--brand-2);
+      text-align: left;
+      padding: .6rem .75rem;
+      font-weight: 700;
+    }
+    .pres-table td {
+      padding: .5rem .75rem;
+      border-bottom: 1px solid color-mix(in oklab, var(--muted) 12%, transparent);
+    }
+    .pres-table tr:last-child td { border-bottom: none; }
+    .pres-table code {
+      background: var(--surface-3);
+      padding: .15rem .35rem;
+      border-radius: 4px;
+      font-size: .85em;
+    }
+
+    .pres-back {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      color: var(--brand-2);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: var(--step--1);
+      margin-bottom: 1rem;
+      transition: opacity var(--dur-1) var(--e-out);
+    }
+    .pres-back:hover { opacity: .7; }
+
+    .pres-divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--brand-2), transparent);
+      margin: 2.5rem 0;
+      opacity: .3;
+    }
+
+    .pres-test-card {
+      background: var(--surface-2);
+      border: 1px solid color-mix(in oklab, var(--success) 20%, transparent);
+      border-radius: var(--r-md);
+      padding: 1.25rem 1.5rem;
+      margin: 1rem 0;
+    }
+    .pres-test-card h4 {
+      color: var(--brand-2);
+      margin: 0 0 .5rem;
+      font-size: var(--step-0);
+    }
+    .pres-test-result {
+      display: inline-block;
+      background: color-mix(in oklab, var(--success) 15%, transparent);
+      color: var(--success);
+      padding: .2rem .6rem;
+      border-radius: var(--r-xs);
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-top: .5rem;
+    }
+  </style>
+</head>
+<body>
+
+<header class="modern-header">
+  <div class="container header-inner">
+    <button class="nav-toggle" aria-label="Ouvrir le menu">&#9776;</button>
+    <a href="../index.html" class="brand">Mathis Rouvreau</a>
+    <button class="theme-toggle" aria-label="Basculer le th&egrave;me">&#127767;</button>
+  </div>
+  <div class="container header-bottom">
+    <nav aria-label="Navigation principale" data-open="false">
+      <ul class="nav-list">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../alternance.html">Alternance</a></li>
+        <li><a href="../scolaire.html">Scolaire</a></li>
+        <li><a href="../competences.html">Comp&eacute;tences</a></li>
+        <li><a href="../veille.html">Veille</a></li>
+        <li><button class="nav-contact-btn" data-open-contact aria-label="Ouvrir le formulaire de contact">Contact</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+
+    <a href="../scolaire.html" class="pres-back">&larr; Retour aux projets scolaires</a>
+
+    <!-- HERO -->
+    <div class="pres-hero reveal">
+      <h1>Projet PPE3 &mdash; MDS49</h1>
+      <p class="pres-subtitle">Maison D&eacute;partementale des Sports 49</p>
+      <p class="muted" style="margin-top:.5rem">Infrastructure r&eacute;seau s&eacute;curis&eacute;e &middot; Zabbix &middot; RADIUS &middot; NAT/PAT</p>
+      <div class="pres-meta">
+        <div class="pres-meta-item"><strong>Equipe :</strong> Mathis, Evan, Julien</div>
+        <div class="pres-meta-item"><strong>M&eacute;thode :</strong> Agile (Trello)</div>
+        <div class="pres-meta-item"><strong>Formation :</strong> BTS SIO SISR &mdash; 2&egrave;me ann&eacute;e</div>
+      </div>
+    </div>
+
+    <hr class="pres-divider">
+
+    <!-- SOMMAIRE -->
+    <div class="pres-toc reveal">
+      <h2>Sommaire</h2>
+      <ol>
+        <li><a href="#contexte">Contexte &amp; Objectifs</a></li>
+        <li><a href="#architecture">Architecture r&eacute;seau</a></li>
+        <li><a href="#routeurs">Routeurs (RDC &amp; MDS49)</a></li>
+        <li><a href="#switch">Switch &amp; VLANs</a></li>
+        <li><a href="#serveur-ad">Serveur AD / DHCP / DNS / GPO</a></li>
+        <li><a href="#serveur-web">Serveur Web Debian (DMZ)</a></li>
+        <li><a href="#zabbix">Supervision Zabbix</a></li>
+        <li><a href="#wifi-radius">Borne WiFi &amp; Serveur RADIUS</a></li>
+        <li><a href="#tests">Plans de tests &amp; R&eacute;sultats</a></li>
+      </ol>
+    </div>
+
+    <!-- ========================
+         01 — CONTEXTE
+         ======================== -->
+    <section class="pres-section reveal" id="contexte">
+      <h2><span class="pres-num">01</span> Contexte &amp; Objectifs</h2>
+      <div class="pres-card">
+        <p>Conception d'une <strong>infrastructure r&eacute;seau s&eacute;curis&eacute;e et segment&eacute;e</strong> pour la Maison D&eacute;partementale des Sports 49. Le r&eacute;seau interne est divis&eacute; en <strong>4 VLANs</strong> (Volley, Escrime, Administratif, Partenaires), avec un contr&ocirc;leur de domaine AD, un serveur Web en DMZ accessible via NAT/PAT, une supervision Zabbix et un acc&egrave;s WiFi s&eacute;curis&eacute; par RADIUS.</p>
+      </div>
+
+      <h3>Objectifs du projet</h3>
+      <div class="pres-grid-3">
+        <div class="pres-card">
+          <strong>Segmentation</strong>
+          <p>Isolation par VLAN : Volley, Escrime, Administratif, Partenaires</p>
+        </div>
+        <div class="pres-card">
+          <strong>Services centralis&eacute;s</strong>
+          <p>AD / DHCP / DNS sur Windows Server 2019</p>
+        </div>
+        <div class="pres-card">
+          <strong>Routage</strong>
+          <p>Inter-VLAN + OSPF entre routeurs</p>
+        </div>
+        <div class="pres-card">
+          <strong>DMZ</strong>
+          <p>Serveur Web interne + acc&egrave;s externe via NAT/PAT</p>
+        </div>
+        <div class="pres-card">
+          <strong>Supervision</strong>
+          <p>Zabbix : agents + SNMP sur tous les &eacute;quipements</p>
+        </div>
+        <div class="pres-card">
+          <strong>WiFi s&eacute;curis&eacute;</strong>
+          <p>WPA2-Enterprise via FreeRadius + AD</p>
+        </div>
+      </div>
+
+      <h3>Arborescence Active Directory</h3>
+      <div class="pres-schema">MDS49.local
+└── UO_Employ&eacute;s
+    ├── Gr_Employ&eacute;s
+    ├── UO_Bureaux_Administratifs
+    │   └── Gr_Bureaux_Administratifs
+    │       ├── BODIN H&eacute;l&egrave;ne (Bodinh)
+    │       └── SALAIN Claire (Salainc)
+    ├── UO_Comit&eacute;_Escrime
+    │   └── Gr_Comit&eacute;_Escrime
+    │       ├── HERVOUET Paul (Hervouetp)
+    │       └── VERNEUIL Alice (Verneuila)
+    ├── UO_Comit&eacute;_Volley
+    │   └── Gr_Comit&eacute;_Volley
+    │       ├── CHALLAIN Marc (Challainm)
+    │       └── FOURMOND Matthieu (Fourmondm)
+    └── UO_Partenaires
+        └── Gr_Partenaires
+            └── DUBLINEAU C&eacute;cile (Dublineauc)</div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         02 — ARCHITECTURE
+         ======================== -->
+    <section class="pres-section reveal" id="architecture">
+      <h2><span class="pres-num">02</span> Architecture r&eacute;seau</h2>
+
+      <div class="pres-grid-2">
+        <div class="pres-card">
+          <strong>R&eacute;seau interne (4 VLANs)</strong>
+          <table class="pres-table">
+            <thead><tr><th>VLAN</th><th>Sous-r&eacute;seau</th><th>Passerelle</th></tr></thead>
+            <tbody>
+              <tr><td>10 (Volley)</td><td><code>172.16.0.0/18</code></td><td><code>172.16.63.254</code></td></tr>
+              <tr><td>20 (Escrime)</td><td><code>172.16.64.0/18</code></td><td><code>172.16.127.254</code></td></tr>
+              <tr><td>30 (Admin)</td><td><code>172.16.128.0/18</code></td><td><code>172.16.191.254</code></td></tr>
+              <tr><td>100 (Partenaires)</td><td><code>172.16.192.0/18</code></td><td><code>172.16.255.254</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pres-card">
+          <strong>DMZ &amp; Interconnexion</strong>
+          <table class="pres-table">
+            <thead><tr><th>Zone</th><th>R&eacute;seau</th><th>Equipement</th></tr></thead>
+            <tbody>
+              <tr><td>DMZ</td><td><code>10.54.0.0/24</code></td><td>Serveur Web</td></tr>
+              <tr><td>Liaison RDC-MDS49</td><td><code>192.168.0.0/30</code></td><td>Serial</td></tr>
+              <tr><td>Internet</td><td><code>100.100.100.0/30</code></td><td>FAI</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="pres-schema">  Routeur RDC                         Routeur MDS49
+  192.168.0.2 ────── Serial ────── 192.168.0.1
+       │                                │            │
+  Switch (Trunk)                  DMZ 10.54.0.0     Internet
+  ┌────┼────┬────┐                     │          100.100.100.0
+  V10  V20  V30  V100           Serveur Web
+  .0.0 .64.0 .128.0 .192.0     10.54.0.100
+       │
+  Serveur AD/DHCP/DNS
+  + Serveur Zabbix</div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         03 — ROUTEURS
+         ======================== -->
+    <section class="pres-section reveal" id="routeurs">
+      <h2><span class="pres-num">03</span> Routeurs (RDC &amp; MDS49)</h2>
+
+      <h3>Routeur RDC &mdash; Sous-interfaces VLAN</h3>
+      <div class="pres-card">
+        <p>Routage interne entre les 4 VLANs, DHCP Relay via <code>ip helper-address</code>, ACL de filtrage inter-VLAN, routage OSPF.</p>
+      </div>
+      <div>
+        <div class="pres-code-label">Cisco IOS &mdash; Sous-interfaces 802.1Q</div>
+        <div class="pres-code">interface GigabitEthernet0/0/0.10
+ encapsulation dot1Q 10
+ ip address 172.16.63.254 255.255.192.0
+ ip helper-address [IP_SERVEUR_DHCP]
+
+interface GigabitEthernet0/0/0.20
+ encapsulation dot1Q 20
+ ip address 172.16.127.254 255.255.192.0
+ ip helper-address [IP_SERVEUR_DHCP]
+
+interface GigabitEthernet0/0/0.30
+ encapsulation dot1Q 30
+ ip address 172.16.191.254 255.255.192.0
+ ip helper-address [IP_SERVEUR_DHCP]
+
+interface GigabitEthernet0/0/0.100
+ encapsulation dot1Q 100
+ ip address 172.16.255.254 255.255.192.0
+ ip helper-address [IP_SERVEUR_DHCP]</div>
+      </div>
+
+      <h3>ACL inter-VLAN (Routeur RDC)</h3>
+      <div>
+        <div class="pres-code-label">Cisco IOS</div>
+        <div class="pres-code">access-list 1 deny 172.16.0.0 0.0.64.255
+access-list 1 permit any
+
+interface g0/0/1
+ ip access-group 1 in</div>
+      </div>
+
+      <h3>Routeur MDS49 &mdash; Routeur central</h3>
+      <div class="pres-card">
+        <p>Routage entre DMZ, entreprise et Internet. NAT/PAT + ACL standards et &eacute;tendues. Routage OSPF.</p>
+      </div>
+      <table class="pres-table">
+        <thead><tr><th>Interface</th><th>Adresse</th><th>Fonction</th></tr></thead>
+        <tbody>
+          <tr><td><code>g0/0/1</code></td><td><code>192.168.0.1/30</code></td><td>Vers Routeur RDC</td></tr>
+          <tr><td><code>g0/0/0</code></td><td><code>10.54.0.254/24</code></td><td>DMZ</td></tr>
+          <tr><td><code>s0/1/0</code></td><td><code>100.100.100.1/30</code></td><td>Vers Internet (FAI)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>NAT/PAT</h3>
+      <div class="pres-card">
+        <p>Translation de l'adresse publique <code>8.8.8.1:80</code> vers l'adresse priv&eacute;e <code>10.54.0.100:80</code> &mdash; permet l'acc&egrave;s externe au serveur Web en DMZ.</p>
+      </div>
+
+      <h3>ACL configur&eacute;es sur MDS49</h3>
+      <div class="pres-card">
+        <ul>
+          <li><strong>2 ACL standard :</strong> autorisent les sous-r&eacute;seaux internes et le serveur Web &agrave; acc&eacute;der &agrave; Internet (li&eacute;es au NAT)</li>
+          <li><strong>1 ACL &eacute;tendue (WEB) :</strong> permet &agrave; tous les h&ocirc;tes d'acc&eacute;der uniquement au service HTTP du serveur interne <code>10.54.0.100</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         04 — SWITCH
+         ======================== -->
+    <section class="pres-section reveal" id="switch">
+      <h2><span class="pres-num">04</span> Switch &amp; VLANs</h2>
+
+      <div class="pres-grid-2">
+        <div class="pres-card">
+          <strong>Attribution des VLANs</strong>
+          <table class="pres-table">
+            <thead><tr><th>Ports</th><th>VLAN</th><th>Service</th></tr></thead>
+            <tbody>
+              <tr><td><code>Gi1/0/1 &agrave; 1/0/7</code></td><td>10</td><td>Volley</td></tr>
+              <tr><td><code>Gi1/0/8 &agrave; 1/0/14</code></td><td>20</td><td>Escrime</td></tr>
+              <tr><td><code>Gi1/0/15 &agrave; 1/0/21</code></td><td>30</td><td>Administratif</td></tr>
+              <tr><td><code>Gi1/0/22</code></td><td>100</td><td>Partenaires (WiFi)</td></tr>
+              <tr><td><code>Gi1/0/24</code></td><td>Trunk</td><td>Vers Routeur RDC</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="pres-code-label">Cisco IOS &mdash; Configuration</div>
+          <div class="pres-code">interface GigabitEthernet1/0/1 - 1/0/7
+ switchport access vlan 10
+ switchport mode access
+
+interface GigabitEthernet1/0/8 - 1/0/14
+ switchport access vlan 20
+ switchport mode access
+
+interface GigabitEthernet1/0/15 - 1/0/21
+ switchport access vlan 30
+ switchport mode access
+
+interface GigabitEthernet1/0/22
+ switchport access vlan 100
+ switchport mode access
+
+interface GigabitEthernet1/0/24
+ switchport mode trunk</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         05 — SERVEUR AD
+         ======================== -->
+    <section class="pres-section reveal" id="serveur-ad">
+      <h2><span class="pres-num">05</span> Serveur AD / DHCP / DNS / GPO</h2>
+
+      <h3>Active Directory &mdash; <code>MDS49.local</code></h3>
+      <div class="pres-card">
+        <ul>
+          <li><strong>4 OU :</strong> Bureaux_Administratifs, Comit&eacute;_Volley, Comit&eacute;_Escrime, Partenaires</li>
+          <li><strong>Groupes de s&eacute;curit&eacute; :</strong> un par OU (GR_Bureaux_Administratifs, GR_Comit&eacute;_Volley...)</li>
+          <li><strong>Nomenclature :</strong> <code>nom + initiale pr&eacute;nom</code> (ex: <code>challainm</code>)</li>
+          <li><strong>R&eacute;pertoires :</strong> Perso par utilisateur + Commun par service (droits diff&eacute;renci&eacute;s)</li>
+        </ul>
+      </div>
+
+      <h3>DHCP</h3>
+      <div class="pres-card">
+        <p>Distribution automatique des IP aux 4 VLANs via <strong>DHCP Relay</strong> (ip helper-address sur le routeur RDC). Deux <strong>r&eacute;servations</strong> : serveur Zabbix et serveur Windows.</p>
+      </div>
+
+      <h3>DNS</h3>
+      <div class="pres-card">
+        <p>R&eacute;solution interne au domaine <code>MDS49.local</code>, install&eacute; automatiquement avec le r&ocirc;le AD DS.</p>
+      </div>
+
+      <h3>GPO</h3>
+      <div class="pres-card">
+        <p><strong>Interdiction du Panneau de configuration</strong> pour tous les utilisateurs :</p>
+        <div class="pres-code" style="margin-top:.5rem">Configuration utilisateur &gt; Strat&eacute;gies &gt; Mod&egrave;les d'administration &gt; Panneau de configuration
+&rarr; "Interdire l'acc&egrave;s au Panneau de configuration et l'application Param&egrave;tres du PC"</div>
+      </div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         06 — SERVEUR WEB
+         ======================== -->
+    <section class="pres-section reveal" id="serveur-web">
+      <h2><span class="pres-num">06</span> Serveur Web Debian (DMZ)</h2>
+
+      <div class="pres-grid-2">
+        <div class="pres-card">
+          <strong>Configuration</strong>
+          <ul>
+            <li>OS : Debian 12</li>
+            <li>IP : <code>10.54.0.100</code></li>
+            <li>Passerelle : <code>10.54.0.254</code></li>
+            <li>Service : Apache2</li>
+          </ul>
+        </div>
+        <div class="pres-card">
+          <strong>Acc&egrave;s</strong>
+          <ul>
+            <li><strong>Interne :</strong> <code>http://10.54.0.100</code></li>
+            <li><strong>Externe :</strong> <code>http://8.8.8.1</code> (via NAT/PAT)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="pres-code-label">Installation</div>
+        <div class="pres-code">apt install apache2 -y</div>
+      </div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         07 — ZABBIX
+         ======================== -->
+    <section class="pres-section reveal" id="zabbix">
+      <h2><span class="pres-num">07</span> Supervision Zabbix</h2>
+
+      <div class="pres-card">
+        <p>Supervision compl&egrave;te de l'infrastructure via Zabbix : &eacute;tat des serveurs, routeurs et switch en temps r&eacute;el.</p>
+      </div>
+
+      <table class="pres-table">
+        <thead><tr><th>Equipement</th><th>M&eacute;thode</th><th>D&eacute;tail</th></tr></thead>
+        <tbody>
+          <tr><td>Serveur AD (Windows)</td><td>Zabbix Agent</td><td>Agent install&eacute; directement</td></tr>
+          <tr><td>Serveur Web (Debian)</td><td>Zabbix Agent</td><td>Agent install&eacute; directement</td></tr>
+          <tr><td>Routeurs Cisco</td><td>SNMP</td><td><code>snmp-server community RO</code></td></tr>
+          <tr><td>Switch</td><td>SNMP</td><td><code>snmp-server community SW</code></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Configuration SNMP sur les routeurs</h3>
+      <div>
+        <div class="pres-code-label">Cisco IOS</div>
+        <div class="pres-code">snmp-server community RO</div>
+      </div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         08 — WIFI & RADIUS
+         ======================== -->
+    <section class="pres-section reveal" id="wifi-radius">
+      <h2><span class="pres-num">08</span> Borne WiFi &amp; Serveur RADIUS</h2>
+
+      <div class="pres-grid-2">
+        <div class="pres-card">
+          <strong>Borne WiFi Cisco</strong>
+          <ul>
+            <li>Nom : <code>cisco</code></li>
+            <li>IP : <code>172.16.255.253</code></li>
+            <li>VLAN : 100 (Partenaires)</li>
+            <li>SSID : <code>accesspoint</code></li>
+          </ul>
+        </div>
+        <div class="pres-card">
+          <strong>Serveur FreeRadius (Debian)</strong>
+          <ul>
+            <li>Authentification <strong>802.1X</strong></li>
+            <li>S&eacute;curit&eacute; : <strong>WPA2-Enterprise</strong></li>
+            <li>Int&eacute;gration AD via <strong>Winbind</strong></li>
+            <li>Contr&ocirc;le d'acc&egrave;s dynamique</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <!-- ========================
+         09 — TESTS
+         ======================== -->
+    <section class="pres-section reveal" id="tests">
+      <h2><span class="pres-num">09</span> Plans de tests &amp; R&eacute;sultats</h2>
+
+      <div class="impact-grid" style="margin-bottom:1.5rem">
+        <div class="impact-item">
+          <div class="impact-number">5/5</div>
+          <div class="impact-label">Tests r&eacute;ussis</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-number">100%</div>
+          <div class="impact-label">Conformit&eacute;</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-number">0</div>
+          <div class="impact-label">Fuite inter-VLAN</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-number">OK</div>
+          <div class="impact-label">NAT/PAT</div>
+        </div>
+      </div>
+
+      <!-- Test 1 -->
+      <div class="pres-test-card">
+        <h4>Test 1 &mdash; Site Web interne (DMZ)</h4>
+        <p><strong>Sc&eacute;nario :</strong> depuis un poste interne, acc&eacute;der &agrave; <code>10.54.0.100</code> dans le navigateur.</p>
+        <p><strong>R&eacute;sultat :</strong> affichage de la page web.</p>
+        <span class="pres-test-result">100% &mdash; OK</span>
+        <p class="muted" style="margin-top:.25rem;font-size:var(--step--1)">Test&eacute; par Julien &mdash; 24/11/2025</p>
+      </div>
+
+      <!-- Test 2 -->
+      <div class="pres-test-card">
+        <h4>Test 2 &mdash; Site Web externe (NAT/PAT)</h4>
+        <p><strong>Sc&eacute;nario :</strong> depuis un poste externe, acc&eacute;der &agrave; <code>200.200.200.200</code> dans le navigateur.</p>
+        <p><strong>R&eacute;sultat :</strong> affichage de la page web via NAT/PAT.</p>
+        <span class="pres-test-result">100% &mdash; OK</span>
+        <p class="muted" style="margin-top:.25rem;font-size:var(--step--1)">Test&eacute; par Evan &mdash; 24/11/2025</p>
+      </div>
+
+      <!-- Test 3 -->
+      <div class="pres-test-card">
+        <h4>Test 3 &mdash; Cloisonnement inter-VLAN</h4>
+        <p><strong>Sc&eacute;nario :</strong> <code>ping</code> depuis VLAN Volley (172.16.0.3) vers VLAN Escrime (172.16.64.2).</p>
+        <p><strong>R&eacute;sultat :</strong> &eacute;chec du ping (ACL bloquante) &mdash; isolation confirm&eacute;e.</p>
+        <span class="pres-test-result">100% &mdash; OK</span>
+        <p class="muted" style="margin-top:.25rem;font-size:var(--step--1)">Test&eacute; par Mathis &mdash; 24/11/2025</p>
+      </div>
+
+      <!-- Test 4 -->
+      <div class="pres-test-card">
+        <h4>Test 4 &mdash; DHCP (4 VLANs)</h4>
+        <p><strong>Sc&eacute;nario :</strong> <code>ipconfig /all</code> sur un poste par VLAN pour v&eacute;rifier l'attribution IP.</p>
+        <p><strong>R&eacute;sultat :</strong> adresse dans la bonne plage pour les 4 VLANs.</p>
+        <span class="pres-test-result">100% &mdash; OK</span>
+        <p class="muted" style="margin-top:.25rem;font-size:var(--step--1)">Test&eacute; par Julien &mdash; 24/11/2025</p>
+      </div>
+
+      <!-- Test 5 -->
+      <div class="pres-test-card">
+        <h4>Test 5 &mdash; NAT/PAT</h4>
+        <p><strong>Sc&eacute;nario :</strong> <code>show ip nat translations</code> sur le routeur MDS49 apr&egrave;s acc&egrave;s externe.</p>
+        <p><strong>R&eacute;sultat :</strong> traductions NAT visibles et conformes (<code>8.8.8.1:80</code> &rarr; <code>10.54.0.100:80</code>).</p>
+        <span class="pres-test-result">100% &mdash; OK</span>
+        <p class="muted" style="margin-top:.25rem;font-size:var(--step--1)">Test&eacute; par Mathis &mdash; 24/11/2025</p>
+      </div>
+
+      <div class="pres-card" style="margin-top:1.5rem;text-align:center">
+        <p style="font-size:var(--step-1);margin:0"><strong>Tous les tests conformes &mdash; 100% de r&eacute;ussite</strong></p>
+      </div>
+    </section>
+
+    <hr class="pres-divider">
+
+    <div class="center" style="margin:2rem 0">
+      <a class="btn btn-primary" href="../scolaire.html">&larr; Retour aux projets scolaires</a>
+      <a class="btn btn-outline" href="../competences.html">Mes comp&eacute;tences</a>
+    </div>
+
+  </div>
+</main>
+
+<button class="back-to-top" aria-label="Retour en haut" title="Retour en haut">&uarr;</button>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-section">
+      <h4>Mathis Rouvreau</h4>
+      <p>Alternant BTS SIO SISR</p>
+    </div>
+    <div class="footer-section">
+      <h4>Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../alternance.html">Alternance</a></li>
+        <li><a href="../competences.html">Comp&eacute;tences</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <ul class="footer-links">
+        <li><a href="mailto:mathis.rouvreau@gmail.com">Email</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 Mathis ROUVREAU &ndash; Portfolio BTS SIO SISR V2.</p>
+  </div>
+</footer>
+
+</body>
+</html>
