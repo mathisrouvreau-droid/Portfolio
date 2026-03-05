@@ -156,7 +156,7 @@
 
             <div class="gallery" data-gallery="stoik-gpo">
               <div class="viewer">
-                <img src="img/projet-ad-1.jpg" alt="Vue globale de l'infrastructure Active Directory durcie" class="viewer-img">
+                <img src="img/projet-ad-1.jpg" alt="Vue globale de l'infrastructure Active Directory durcie" class="viewer-img" loading="lazy">
                 <div class="gallery-counter"><span class="current">1</span> / <span class="total">3</span></div>
               </div>
               <div class="thumbs">
@@ -244,7 +244,7 @@
 
             <div class="gallery" data-gallery="n8n-exchange">
               <div class="viewer">
-                <img src="img/n8n-workflow-1.jpg" alt="Vue d'ensemble du workflow n8n pour Exchange" class="viewer-img">
+                <img src="img/n8n-workflow-1.jpg" alt="Vue d'ensemble du workflow n8n pour Exchange" class="viewer-img" loading="lazy">
                 <div class="gallery-counter"><span class="current">1</span> / <span class="total">3</span></div>
               </div>
               <div class="thumbs">
@@ -327,20 +327,61 @@
               <span class="project-tag">Infrastructure</span>
               <span class="project-tag">Active Directory</span>
               <span class="project-tag">Azure AD Connect</span>
-              <span class="project-duration">Durée : 1 jour</span>
+              <span class="project-duration">Durée : 45 minutes</span>
+            </div>
+
+            <div class="gallery" data-gallery="bascule-dc">
+              <div class="viewer">
+                <img src="../captures/fsmo-query.png" alt="Résultat de la commande netdom query fsmo montrant les 5 rôles FSMO sur SRV-DC-001" class="viewer-img" loading="lazy">
+                <div class="gallery-counter"><span class="current">1</span> / <span class="total">1</span></div>
+              </div>
+              <div class="thumbs">
+                <button type="button" class="thumb is-active" data-src="../captures/fsmo-query.png" data-alt="Résultat de la commande netdom query fsmo montrant les 5 rôles FSMO sur SRV-DC-001">
+                  <img src="../captures/fsmo-query.png" alt="">
+                </button>
+              </div>
             </div>
 
             <h3>Contexte &amp; Objectifs</h3>
-            <p>Dans le cadre de la maintenance de l'infrastructure Active Directory du Groupe FSP, il a été décidé de <strong>basculer le rôle de contrôleur de domaine « principal »</strong> de SRV-DC-001 vers SRV-DC-002. L'objectif : transférer les 5 rôles FSMO, reconfigurer le service de temps (W32Time) et migrer l'instance active d'Azure AD Connect — <strong>sans interruption de service</strong>.</p>
+            <p>Dans le cadre de la maintenance de l'infrastructure Active Directory du Groupe FSP (<strong>domaine ad.fsp-groupe.com</strong>), il a été décidé de <strong>basculer le rôle de contrôleur de domaine « principal »</strong> de SRV-DC-001 vers SRV-DC-002. L'objectif : transférer les 5 rôles FSMO, reconfigurer le service de temps (W32Time) et migrer l'instance active d'Azure AD Connect — <strong>sans interruption de service</strong>.</p>
+            <p class="muted"><strong>Note :</strong> Dans Active Directory, il n'existe pas de contrôleur « principal » ou « secondaire » au sens strict. Cette opération désigne SRV-DC-002 comme détenteur des rôles FSMO et serveur AAD Connect actif.</p>
 
-            <h3>🔧 Réalisations techniques</h3>
+            <h3>📋 Pré-requis &amp; Sauvegardes</h3>
             <ul>
-              <li><strong>Audit pré-migration :</strong> Vérification de la réplication AD (<code>repadmin /replsummary</code>), validation des rôles FSMO, export de la configuration Azure AD Connect</li>
-              <li><strong>Transfert des 5 rôles FSMO :</strong> Migration propre (Transfer, non Seizure) via <code>Move-ADDirectoryServerOperationMasterRole</code> — Schema Master, Domain Naming Master, PDC Emulator, RID Master, Infrastructure Master</li>
-              <li><strong>Reconfiguration W32Time :</strong> SRV-DC-002 configuré comme source NTP fiable (<code>0.fr.pool.ntp.org</code>), SRV-DC-001 reconfiguré en synchronisation sur SRV-DC-002</li>
-              <li><strong>Bascule Azure AD Connect :</strong> Passage de SRV-DC-001 en Staging Mode, activation de SRV-DC-002 en mode actif, synchronisation initiale forcée et validation dans le portail Entra ID</li>
-              <li><strong>Vérifications post-migration :</strong> Script PowerShell de validation automatisée (FSMO, réplication, W32Time, AAD Connect, événements critiques)</li>
-              <li><strong>Plan de retour arrière :</strong> Procédure de rollback documentée pour chaque étape (FSMO, W32Time, AAD Connect)</li>
+              <li><strong>Vérification réplication AD :</strong> <code>repadmin /replsummary</code> — réplication OK entre les deux DC</li>
+              <li><strong>Validation rôles FSMO :</strong> <code>netdom query fsmo</code> — 5 rôles sur SRV-DC-001</li>
+              <li><strong>État Azure AD Connect :</strong> <code>Get-ADSyncScheduler</code> — actif sur SRV-DC-001</li>
+              <li><strong>Sauvegardes :</strong> Snapshots VM des deux DC + export configuration AAD Connect</li>
+            </ul>
+
+            <h3>🔧 Phase 1 – Transfert des 5 rôles FSMO</h3>
+            <ul>
+              <li><strong>Méthode :</strong> Transfert propre via <code>ntdsutil</code> (Transfer, non Seizure) car les deux DC sont en ligne</li>
+              <li><strong>Rôles transférés :</strong> Schema Master, Domain Naming Master, PDC Emulator, RID Master, Infrastructure Master</li>
+              <li><strong>Validation :</strong> <code>netdom query fsmo</code> — 5 rôles confirmés sur SRV-DC-002</li>
+            </ul>
+
+            <h3>⏱️ Phase 2 – Configuration du service de temps (W32Time)</h3>
+            <ul>
+              <li><strong>SRV-DC-002 (nouveau PDC) :</strong> Configuré comme source NTP fiable (<code>0.fr.pool.ntp.org</code>, <code>1.fr.pool.ntp.org</code>), <code>/reliable:yes</code></li>
+              <li><strong>SRV-DC-001 :</strong> Reconfiguré en <code>/reliable:no</code>, synchronisation sur SRV-DC-002</li>
+              <li><strong>Validation :</strong> <code>w32tm /query /source</code> — chaîne de synchronisation correcte</li>
+            </ul>
+
+            <h3>☁️ Phase 3 – Bascule Azure AD Connect</h3>
+            <ul>
+              <li><strong>Étape 1 :</strong> Vérification des versions AAD Connect identiques sur les deux serveurs</li>
+              <li><strong>Étape 2 :</strong> Passage de SRV-DC-001 en Staging Mode (synchronisation arrêtée immédiatement)</li>
+              <li><strong>Étape 3 :</strong> Désactivation du Staging Mode sur SRV-DC-002 (devient actif)</li>
+              <li><strong>Étape 4 :</strong> Synchronisation initiale forcée (<code>Start-ADSyncSyncCycle -PolicyType Initial</code>)</li>
+              <li><strong>Étape 5 :</strong> Validation dans le portail Entra ID — dernière synchronisation récente, aucune erreur</li>
+            </ul>
+
+            <h3>✅ Vérifications post-bascule</h3>
+            <ul>
+              <li>Script PowerShell de validation automatisée en 5 étapes : FSMO, réplication AD, service de temps, AAD Connect, événements critiques</li>
+              <li>Tests fonctionnels : connexion utilisateur, accès partage réseau, application GPO</li>
+              <li><strong>Plan de retour arrière :</strong> Procédure de rollback documentée pour chaque phase (FSMO, W32Time, AAD Connect)</li>
             </ul>
 
             <h3>📊 Résultats &amp; Impact</h3>
@@ -371,6 +412,7 @@
               <span class="badge">PowerShell</span>
               <span class="badge">W32Time / NTP</span>
               <span class="badge">Entra ID</span>
+              <span class="badge">ntdsutil</span>
               <span class="badge">Documentation</span>
             </div>
           </div>
@@ -389,6 +431,27 @@
               <span class="project-tag">Reverse Proxy</span>
               <span class="project-tag">Automatisation</span>
               <span class="project-duration">Durée : 2 semaines</span>
+            </div>
+
+            <div class="gallery" data-gallery="open-webui">
+              <div class="viewer">
+                <img src="../captures/webui-interface.png" alt="Interface Open WebUI - IA by FSP avec conversations et modèles" class="viewer-img" loading="lazy">
+                <div class="gallery-counter"><span class="current">1</span> / <span class="total">4</span></div>
+              </div>
+              <div class="thumbs">
+                <button type="button" class="thumb is-active" data-src="../captures/webui-interface.png" data-alt="Interface Open WebUI - IA by FSP avec conversations et modèles">
+                  <img src="../captures/webui-interface.png" alt="">
+                </button>
+                <button type="button" class="thumb" data-src="../captures/webui-conf-model.png" data-alt="Configuration du modèle IA dans Open WebUI">
+                  <img src="../captures/webui-conf-model.png" alt="">
+                </button>
+                <button type="button" class="thumb" data-src="../captures/conteneur-portainer.png" data-alt="Vue des conteneurs Docker dans Portainer - stack automat">
+                  <img src="../captures/conteneur-portainer.png" alt="">
+                </button>
+                <button type="button" class="thumb" data-src="../captures/stack-portainer.png" data-alt="Vue des stacks Docker dans Portainer">
+                  <img src="../captures/stack-portainer.png" alt="">
+                </button>
+              </div>
             </div>
 
             <h3>Contexte &amp; Objectifs</h3>
@@ -443,6 +506,77 @@
               <span class="badge">TLS / HTTPS</span>
               <span class="badge">Linux</span>
               <span class="badge">Infrastructure as Code</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projet 5 — Vaultwarden -->
+        <article class="ac-item reveal" aria-expanded="false">
+          <button class="ac-trigger" type="button">
+            <span>🔐 Déploiement Vaultwarden – Gestionnaire de mots de passe interne</span>
+            <span class="ac-icon">▼</span>
+          </button>
+          <div class="ac-panel">
+            <div class="project-meta">
+              <span class="project-tag">Docker</span>
+              <span class="project-tag">Sécurité</span>
+              <span class="project-tag">LDAP</span>
+              <span class="project-tag">Intune</span>
+              <span class="project-duration">Durée : 1 semaine</span>
+            </div>
+
+            <h3>Contexte &amp; Objectifs</h3>
+            <p>Pour renforcer la <strong>gestion des mots de passe</strong> au sein du Groupe FSP, j'ai déployé <strong>Vaultwarden</strong> (implémentation open source et légère de Bitwarden) en interne. L'objectif : fournir un coffre-fort de mots de passe sécurisé, synchronisé avec Active Directory, et déployé automatiquement sur les postes via <strong>Microsoft Intune</strong>.</p>
+
+            <h3>🔧 Architecture &amp; Réalisations</h3>
+            <ul>
+              <li><strong>Déploiement Docker :</strong> Stack Docker Compose avec Vaultwarden + conteneur de synchronisation LDAP, volumes persistants, politique de redémarrage automatique</li>
+              <li><strong>Reverse proxy Traefik :</strong> Exposition via HTTPS avec certificat PKI interne (Step-CA / ACME), sur le domaine <code>bitwarden.ad.fsp-groupe.com</code></li>
+              <li><strong>Synchronisation LDAP :</strong> Conteneur <code>vaultwarden_ldap</code> connecté à Active Directory pour la création automatique des comptes utilisateurs à partir de l'annuaire</li>
+              <li><strong>Sécurité :</strong> Inscriptions libres désactivées (invitation admin uniquement), accès réseau interne/VPN uniquement, token d'administration sécurisé</li>
+              <li><strong>Déploiement extension Edge via Intune :</strong> Profil Settings Catalog pour l'installation silencieuse de l'extension Bitwarden + script PowerShell de préconfiguration du serveur interne</li>
+              <li><strong>Administration :</strong> Interface d'administration web pour gérer les utilisateurs et les invitations</li>
+            </ul>
+
+            <h3>💡 Points techniques clés</h3>
+            <ul>
+              <li><strong>Infrastructure as Code :</strong> Déploiement reproductible via <code>docker-compose.yml</code></li>
+              <li><strong>TLS bout en bout :</strong> Certificat PKI interne via Traefik, aucun port applicatif exposé</li>
+              <li><strong>Intégration AD :</strong> Filtre LDAP ciblant uniquement les comptes actifs (<code>userAccountControl</code>)</li>
+              <li><strong>Déploiement GPO + Intune :</strong> Extension Edge installée silencieusement, serveur préconfiguré via registre Windows</li>
+              <li><strong>Documentation complète :</strong> Procédures de déploiement, configuration LDAP, administration, sauvegardes</li>
+            </ul>
+
+            <h3>📊 Résultats &amp; Impact</h3>
+            <div class="impact-grid">
+              <div class="impact-item">
+                <div class="impact-number">100%</div>
+                <div class="impact-label">Comptes AD synchronisés</div>
+              </div>
+              <div class="impact-item">
+                <div class="impact-number">0</div>
+                <div class="impact-label">Port exposé (hors 80/443)</div>
+              </div>
+              <div class="impact-item">
+                <div class="impact-number">Auto</div>
+                <div class="impact-label">Déploiement extension Intune</div>
+              </div>
+              <div class="impact-item">
+                <div class="impact-number">HTTPS</div>
+                <div class="impact-label">PKI interne automatique</div>
+              </div>
+            </div>
+
+            <h3>🎓 Compétences mobilisées</h3>
+            <div class="badges">
+              <span class="badge">Docker Compose</span>
+              <span class="badge">Vaultwarden</span>
+              <span class="badge">LDAP / Active Directory</span>
+              <span class="badge">Traefik</span>
+              <span class="badge">Microsoft Intune</span>
+              <span class="badge">PowerShell</span>
+              <span class="badge">PKI / TLS</span>
+              <span class="badge">Sécurité</span>
             </div>
           </div>
         </article>
