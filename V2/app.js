@@ -354,6 +354,69 @@
     document.head.appendChild(style);
   }
 
+  // ========== CERT-FR FEED ==========
+  const certfrContainer = document.getElementById('certfr-feed');
+  if (certfrContainer) {
+    const CERTFR_RSS = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.cert.ssi.gouv.fr%2Ffeed%2F&count=8';
+
+    function getCertfrType(title) {
+      const t = title.toLowerCase();
+      if (t.includes('alerte') || t.startsWith('certfr-') && t.includes('-ale-')) return 'alerte';
+      if (t.includes('avis') || t.startsWith('certfr-') && t.includes('-avi-')) return 'avis';
+      if (t.includes('cti') || t.includes('menace')) return 'cti';
+      if (t.includes('ioc') || t.includes('indicateur')) return 'ioc';
+      if (t.includes('durcissement')) return 'dur';
+      return 'avis';
+    }
+
+    function getCertfrTypeFromLink(link) {
+      if (link.includes('/alerte/')) return 'alerte';
+      if (link.includes('/avis/')) return 'avis';
+      if (link.includes('/cti/')) return 'cti';
+      if (link.includes('/ioc/')) return 'ioc';
+      if (link.includes('/dur/')) return 'dur';
+      return null;
+    }
+
+    function escapeHtml(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    function formatDate(dateStr) {
+      try {
+        const d = new Date(dateStr);
+        return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+      } catch { return dateStr; }
+    }
+
+    function typeLabel(type) {
+      const labels = { alerte: 'Alerte', avis: 'Avis', cti: 'CTI', ioc: 'IOC', dur: 'Durcissement' };
+      return labels[type] || 'Avis';
+    }
+
+    fetch(CERTFR_RSS)
+      .then(r => r.json())
+      .then(data => {
+        if (!data.items || !data.items.length) throw new Error('Aucun article');
+        certfrContainer.innerHTML = data.items.map(item => {
+          const type = getCertfrTypeFromLink(item.link) || getCertfrType(item.title);
+          return `<article class="certfr-card reveal">
+            <span class="certfr-card-type" data-type="${type}">${typeLabel(type)}</span>
+            <div class="certfr-card-title"><a href="${escapeHtml(item.link)}" target="_blank" rel="noopener">${escapeHtml(item.title)}</a></div>
+            <span class="certfr-card-date">${formatDate(item.pubDate)}</span>
+          </article>`;
+        }).join('');
+        certfrContainer.querySelectorAll('.reveal').forEach(el => io?.observe(el));
+      })
+      .catch(() => {
+        certfrContainer.innerHTML = `<div class="certfr-error">
+          Impossible de charger le flux CERT-FR. <a href="https://www.cert.ssi.gouv.fr/" target="_blank" rel="noopener">Consulter directement le site</a>.
+        </div>`;
+      });
+  }
+
   // ========== CONSOLE ==========
   console.log('%c👋 Portfolio V2 — Bento Grid Edition', 'font-size:18px;font-weight:bold;color:#4f9cf9;');
   console.log('%cDéveloppé par Mathis Rouvreau 🚀', 'font-size:13px;color:#9b7ef8;');
