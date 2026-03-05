@@ -357,7 +357,7 @@
   // ========== CERT-FR FEED ==========
   const certfrContainer = document.getElementById('certfr-feed');
   if (certfrContainer) {
-    const CERTFR_RSS = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.cert.ssi.gouv.fr%2Ffeed%2F&count=8';
+    const CERTFR_RSS = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.cert.ssi.gouv.fr%2Ffeed%2F';
 
     function getCertfrType(title) {
       const t = title.toLowerCase();
@@ -400,7 +400,7 @@
       .then(r => r.json())
       .then(data => {
         if (!data.items || !data.items.length) throw new Error('Aucun article');
-        certfrContainer.innerHTML = data.items.map(item => {
+        certfrContainer.innerHTML = data.items.slice(0, 8).map(item => {
           const type = getCertfrTypeFromLink(item.link) || getCertfrType(item.title);
           return `<article class="certfr-card reveal">
             <span class="certfr-card-type" data-type="${type}">${typeLabel(type)}</span>
