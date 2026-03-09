@@ -3,6 +3,15 @@
   const html = document.documentElement;
   html.classList.remove('no-js');
 
+  // ========== LOADER ==========
+  const loader = document.getElementById('loader');
+  if (loader) {
+    setTimeout(() => {
+      loader.classList.add('fade-out');
+      loader.addEventListener('transitionend', () => loader.remove(), { once: true });
+    }, 2000);
+  }
+
   // ========== THEME TOGGLE (avec anti-flash) ==========
   const THEME_KEY = 'pref-theme-v2';
   const initial = localStorage.getItem(THEME_KEY);

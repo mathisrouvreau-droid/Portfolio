@@ -2,6 +2,79 @@
    Portfolio V2 – style.css (Bento Grid)
    ========================================================================== */
 
+/* === LOADER === */
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--bg, #060810);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity .5s ease, visibility 0s .5s;
+}
+.loader-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+.loader-content {
+  text-align: center;
+  animation: loaderFadeIn .6s ease both;
+}
+@keyframes loaderFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.loader-badge {
+  display: inline-block;
+  font-size: .8rem;
+  font-weight: 600;
+  padding: .4rem 1.2rem;
+  border-radius: 99px;
+  background: linear-gradient(135deg, var(--brand, #4f9cf9), var(--brand-2, #9b7ef8));
+  color: #fff;
+  margin-bottom: 1.5rem;
+  letter-spacing: .05em;
+}
+.loader-name {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--text, #e8edf5);
+  margin: 0;
+}
+.loader-highlight {
+  background: linear-gradient(135deg, var(--brand, #4f9cf9), var(--brand-2, #9b7ef8));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.loader-subtitle {
+  font-size: clamp(.95rem, 1.5vw, 1.3rem);
+  color: var(--muted, #8a96ae);
+  margin-top: .75rem;
+  font-weight: 400;
+}
+.loader-bar {
+  width: 200px;
+  height: 3px;
+  background: var(--surface-2, #13171f);
+  border-radius: 99px;
+  margin: 2rem auto 0;
+  overflow: hidden;
+}
+.loader-bar-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--brand, #4f9cf9), var(--brand-2, #9b7ef8));
+  animation: loaderProgress 2s ease forwards;
+}
+@keyframes loaderProgress {
+  to { width: 100%; }
+}
+
 /* === VARIABLES V2 === */
 :root {
   /* Dark palette */
