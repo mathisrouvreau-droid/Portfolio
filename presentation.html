@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation BTS SIO SISR — Mathis Rouvreau</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #f4f6fb;
+            --surface: #ffffff;
+            --card: #ffffff;
+            --card-border: #e2e6ef;
+            --brand: #2563eb;
+            --violet: #7c3aed;
+            --green: #059669;
+            --orange: #d97706;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --radius: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* ── Slides container ── */
+        .deck {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 6rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(60px);
+            transition: opacity .45s ease, transform .45s ease, visibility 0s .45s;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            transition: opacity .45s ease, transform .45s ease, visibility 0s;
+        }
+
+        .slide.exit-left {
+            opacity: 0;
+            transform: translateX(-60px);
+        }
+
+        /* ── Typography ── */
+        .slide-number {
+            position: absolute;
+            top: 2rem;
+            left: 3rem;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--brand);
+            opacity: .7;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -.02em;
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--brand);
+            margin-bottom: .5rem;
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-top: .75rem;
+        }
+
+        .highlight { color: var(--brand); }
+        .highlight-v { color: var(--violet); }
+        .highlight-g { color: var(--green); }
+        .highlight-o { color: var(--orange); }
+
+        /* ── Cards grid ── */
+        .cards {
+            display: grid;
+            gap: 1rem;
+            width: 100%;
+            max-width: 1100px;
+            margin-top: 1.5rem;
+        }
+
+        .cards-2 { grid-template-columns: 1fr 1fr; }
+        .cards-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: transform .2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
+        }
+
+        .card:hover { transform: translateY(-2px); }
+
+        .card p, .card li {
+            font-size: .9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li::before {
+            content: '→ ';
+            color: var(--brand);
+            font-weight: 600;
+        }
+
+        /* ── Stats row ── */
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--brand), var(--violet));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: .75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            margin-top: .25rem;
+        }
+
+        /* ── Tags ── */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-top: .75rem;
+        }
+
+        .tag {
+            font-size: .7rem;
+            font-weight: 600;
+            padding: .3rem .7rem;
+            border-radius: 99px;
+            background: rgba(37, 99, 235, .08);
+            color: var(--brand);
+            letter-spacing: .03em;
+        }
+
+        .tag-v {
+            background: rgba(124, 58, 237, .08);
+            color: var(--violet);
+        }
+
+        .tag-g {
+            background: rgba(5, 150, 105, .08);
+            color: var(--green);
+        }
+
+        /* ── Title slide specific ── */
+        .title-slide {
+            text-align: center;
+        }
+
+        .title-slide h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: .8rem;
+            font-weight: 600;
+            padding: .4rem 1.2rem;
+            border-radius: 99px;
+            background: linear-gradient(135deg, var(--brand), var(--violet));
+            color: #fff;
+            margin-bottom: 1.5rem;
+            letter-spacing: .05em;
+        }
+
+        /* ── Slide content layout ── */
+        .slide-content {
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .two-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .context-box {
+            background: var(--surface);
+            border-left: 3px solid var(--brand);
+            padding: 1rem 1.5rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-bottom: 1.5rem;
+            font-size: .9rem;
+            color: var(--text-muted);
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(37,99,235,.06), rgba(124,58,237,.06));
+            border: 1px solid rgba(37,99,235,.15);
+            border-radius: var(--radius);
+            padding: 1.2rem 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .result-box .stat-value { font-size: 1.4rem; }
+
+        .arrow-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: .8rem 1.2rem;
+            font-size: .8rem;
+            font-weight: 500;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .flow-arrow {
+            color: var(--brand);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* ── Conclusion ── */
+        .conclusion-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .conclusion-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
+        }
+
+        .conclusion-card .icon {
+            font-size: 2rem;
+            margin-bottom: .75rem;
+        }
+
+        /* ── Navigation ── */
+        .nav {
+            position: fixed;
+            bottom: 2rem;
+            right: 3rem;
+            display: flex;
+            gap: .75rem;
+            z-index: 100;
+        }
+
+        .nav button {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--card-border);
+            background: var(--card);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1rem;
+            display: grid;
+            place-items: center;
+            transition: all .2s;
+        }
+
+        .nav button:hover {
+            background: var(--brand);
+            border-color: var(--brand);
+            color: #fff;
+        }
+
+        .nav button:disabled {
+            opacity: .3;
+            pointer-events: none;
+        }
+
+        /* ── Progress bar ── */
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--brand), var(--violet));
+            transition: width .4s ease;
+            z-index: 100;
+        }
+
+        /* ── Slide counter ── */
+        .counter {
+            position: fixed;
+            bottom: 2.3rem;
+            left: 3rem;
+            font-size: .8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ── Screenshots ── */
+        .screenshot {
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 2px 8px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.06);
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .screenshot-md {
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .screenshot-caption {
+            font-size: .75rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: .5rem;
+            font-style: italic;
+        }
+
+        .logo-title {
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .slide { padding: 2rem 1.5rem; }
+            .cards-2, .cards-3, .two-cols, .conclusion-grid { grid-template-columns: 1fr; }
+            .arrow-flow { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
+            .nav { bottom: 1rem; right: 1rem; }
+            .counter { bottom: 1.3rem; left: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+    <!-- ═══════════════════ SLIDE 1 — TITRE ═══════════════════ -->
+    <div class="slide title-slide active" data-slide="0">
+        <img src="V2/img/logo-agir.png" alt="Logo AGIR Recouvrement" class="logo-title">
+        <div class="badge">BTS SIO — Option SISR</div>
+        <h1>Mathis <span class="highlight">Rouvreau</span></h1>
+        <p class="subtitle">Administrateur Systèmes & Réseaux — Alternant chez AGIR Recouvrement</p>
+        <div class="stats" style="margin-top:2.5rem;">
+            <div class="stat">
+                <div class="stat-value">15+</div>
+                <div class="stat-label">Projets réalisés</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">120</div>
+                <div class="stat-label">Utilisateurs gérés</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">50+</div>
+                <div class="stat-label">GPO déployées</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">99.9%</div>
+                <div class="stat-label">Disponibilité</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ SLIDE 2 — QUI SUIS-JE ═══════════════════ -->
+    <div class="slide" data-slide="1">
+        <div class="slide-number">01 — Contexte</div>
+        <div class="slide-content">
+            <h2>Mon parcours en <span class="highlight">3 piliers</span></h2>
+            <div class="cards cards-3">
+                <div class="card">
+                    <h3>AP2 — MACODEMY</h3>
+                    <p>Infrastructure réseau complète pour un établissement scolaire fictif.</p>
+                    <p style="margin-top:.5rem;"><strong>Équipe :</strong> Hugo, Mathis, Evan</p>
+                    <div class="tags">
+                        <span class="tag">AD</span>
+                        <span class="tag">VLAN</span>
+                        <span class="tag">DHCP/DNS</span>
+                        <span class="tag">GPO</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>AP3 — MDS49</h3>
+                    <p>Infra sécurisée pour la Maison Départementale des Sports 49 — 7 semaines, méthode Agile.</p>
+                    <p style="margin-top:.5rem;"><strong>Équipe :</strong> Mathis, Evan, Julien</p>
+                    <div class="tags">
+                        <span class="tag-v tag">Zabbix</span>
+                        <span class="tag-v tag">RADIUS</span>
+                        <span class="tag">OSPF</span>
+                        <span class="tag">NAT/PAT</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Alternance — AGIR</h3>
+                    <p>Administrateur Systèmes & Réseaux chez AGIR Recouvrement (Groupe FSP), Cholet.</p>
+                    <p style="margin-top:.5rem;"><strong>~130 salariés · 13M€+ CA</strong></p>
+                    <div class="tags">
+                        <span class="tag-g tag">Azure AD</span>
+                        <span class="tag-g tag">Sécurité</span>
+                        <span class="tag-g tag">Automation</span>
+                        <span class="tag-g tag">IA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ SLIDE 3 — INFRA RÉSEAU ═══════════════════ -->
+    <div class="slide" data-slide="2">
+        <div class="slide-number">02 — Conception réseau</div>
+        <div class="slide-content">
+            <h2>Je sais <span class="highlight">concevoir une infrastructure réseau</span></h2>
+            <div class="context-box">
+                <strong>Contexte :</strong> AP2 MACODEMY — réseau 3 services (Admin, Profs, Élèves) · AP3 MDS49 — 4 VLANs (Volley, Escrime, Admin, Partenaires)
+            </div>
+            <div class="two-cols">
+                <div class="card">
+                    <h3>Ce que j'ai réalisé</h3>
+                    <ul>
+                        <li>Segmentation VLAN (802.1Q) avec plans d'adressage</li>
+                        <li>Active Directory centralisé, OUs et groupes de sécurité</li>
+                        <li>DHCP multi-scopes par VLAN + DNS interne</li>
+                        <li>Routage inter-VLAN (OSPF) + NAT/PAT vers Internet</li>
+                        <li>Serveur web en DMZ (Apache2 / Debian)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Ce que ça prouve</h3>
+                    <ul>
+                        <li>Conception d'architectures réseau segmentées</li>
+                        <li>Configuration d'équipements Cisco (switches, routeurs)</li>
+                        <li>Mise en place de services d'annuaire et réseau</li>
+                        <li>Intégration de postes clients dans un domaine</li>
+                    </ul>
+                    <div class="result-box" style="margin-top:1rem;">
+                        <span class="highlight-g" style="font-weight:700;">AP3 : 100% des tests conformes</span><br>
+                        <span style="font-size:.85rem;color:var(--text-muted);">Isolation VLAN · DHCP · NAT/PAT · Accessibilité</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ SLIDE 4 — SÉCURITÉ ═══════════════════ -->
+    <div class="slide" data-slide="3">
+        <div class="slide-number">03 — Sécurité & supervision</div>
+        <div class="slide-content">
+            <h2>Je sais <span class="highlight-v">sécuriser et superviser</span> un SI</h2>
+            <div class="context-box">
+                <strong>Contexte :</strong> Stage AGIR — Projet Stoïk (3 mois) : audit et durcissement AD · AP3 — Supervision Zabbix + WiFi RADIUS
+            </div>
+            <div class="two-cols">
+                <div class="card">
+                    <h3>Sécurisation AD — Stage</h3>
+                    <ul>
+                        <li>Audit vulnérabilités (BloodHound, PingCastle)</li>
+                        <li>50+ GPO de sécurité déployées</li>
+                        <li>MFA activé pour 100% des utilisateurs</li>
+                        <li>Accès conditionnels Azure AD</li>
+                        <li>Désactivation protocoles obsolètes (SMBv1…)</li>
+                    </ul>
+                    <div class="result-box">
+                        <div style="display:flex;gap:2rem;justify-content:center;">
+                            <div class="stat">
+                                <div class="stat-value">78% → 85%</div>
+                                <div class="stat-label">Azure Secure Score</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">−45%</div>
+                                <div class="stat-label">Vulnérabilités AD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Supervision & Auth — AP3</h3>
+                    <ul>
+                        <li>Zabbix : monitoring temps réel SNMP</li>
+                        <li>Dashboard d'alertes automatisées</li>
+                        <li>FreeRADIUS + WPA2-Enterprise (802.1X)</li>
+                        <li>Authentification WiFi via Active Directory</li>
+                    </ul>
+                    <div class="tags" style="margin-top:1rem;">
+                        <span class="tag-v tag">BloodHound</span>
+                        <span class="tag-v tag">PingCastle</span>
+                        <span class="tag">Zabbix</span>
+                        <span class="tag">RADIUS</span>
+                        <span class="tag-v tag">MFA</span>
+                        <span class="tag-v tag">GPO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ SLIDE 5 — AUTOMATISATION ═══════════════════ -->
+    <div class="slide" data-slide="4">
+        <div class="slide-number">04 — Automatisation</div>
+        <div class="slide-content">
+            <h2>Je sais <span class="highlight-g">automatiser</span> les processus IT</h2>
+            <div class="context-box">
+                <strong>Contexte :</strong> Stage AGIR — Création d'un système complet d'automatisation des délégations Exchange via n8n
+            </div>
+            <div class="arrow-flow">
+                <div class="flow-step">Formulaire<br><small style="color:var(--text-muted)">demande web</small></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Approbation<br><small style="color:var(--text-muted)">manager par mail</small></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Exécution<br><small style="color:var(--text-muted)">Graph API / PS</small></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Confirmation<br><small style="color:var(--text-muted)">mail + traçabilité</small></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Révocation auto<br><small style="color:var(--text-muted)">expiration / cron</small></div>
+            </div>
+            <div class="cards cards-3" style="margin-top:1rem;">
+                <div class="card" style="text-align:center;">
+                    <div class="stat-value">2h/sem</div>
+                    <div class="stat-label">économisées</div>
+                </div>
+                <div class="card" style="text-align:center;">
+                    <div class="stat-value">150+</div>
+                    <div class="stat-label">demandes traitées</div>
+                </div>
+                <div class="card" style="text-align:center;">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">erreur humaine</div>
+                </div>
+            </div>
+            <div class="tags" style="margin-top:1.5rem;justify-content:center;">
+                <span class="tag-g tag">n8n</span>
+                <span class="tag-g tag">Graph API</span>
+                <span class="tag-g tag">PowerShell</span>
+                <span class="tag">OAuth2</span>
+                <span class="tag">REST API</span>
+                <span class="tag">SQLite</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ SLIDE 6 — DÉPLOIEMENT ═══════════════════ -->
+    <div class="slide" data-slide="5">
+        <div class="slide-number">05 — Déploiement & conteneurisation</div>
+        <div class="slide-content">
+            <h2>Je sais <span class="highlight">déployer des services</span> conteneurisés et intégrer l'<span class="highlight-v">IA</span></h2>
+            <div class="context-box">
+                <strong>Contexte :</strong> Stage AGIR — Déploiement d'une plateforme IA interne (Open WebUI + SearXNG) connectée aux données de l'entreprise, et d'un gestionnaire de mots de passe (Vaultwarden)
+            </div>
+            <div class="two-cols" style="margin-top:1rem;">
+                <div style="text-align:center;">
+                    <img src="V2/img/webui-interface.png" alt="Interface Open WebUI" class="screenshot" style="width:100%;max-height:none;">
+                    <p class="screenshot-caption">Open WebUI — IA interne du Groupe FSP</p>
+                </div>
+                <div style="text-align:center;">
+                    <img src="V2/img/stack-portainer.png" alt="Stacks Portainer" class="screenshot" style="width:100%;max-height:none;">
+                    <p class="screenshot-caption">4 stacks Compose : automat, monitoring, portainer, vaultwarden</p>
+                </div>
+            </div>
+            <div class="cards cards-2" style="margin-top:1rem;">
+                <div class="card">
+                    <h3>Formation IA — Service IT</h3>
+                    <ul>
+                        <li>Prompt Engineering — rédiger des requêtes efficaces</li>
+                        <li>RAG — enrichir l'IA avec les données internes</li>
+                        <li>MCP — connecter l'IA aux outils métier</li>
+                    </ul>
+                    <div class="tags" style="margin-top:.75rem;">
+                        <span class="tag-v tag">Prompt Engineering</span>
+                        <span class="tag-v tag">RAG</span>
+                        <span class="tag-v tag">MCP</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Infrastructure</h3>
+                    <ul>
+                        <li>7 services Docker Compose</li>
+                        <li>Traefik + HTTPS auto (Step-CA)</li>
+                        <li>Vaultwarden + synchro LDAP/AD</li>
+                    </ul>
+                    <div class="tags" style="margin-top:.75rem;">
+                        <span class="tag">Docker</span>
+                        <span class="tag">Traefik</span>
+                        <span class="tag-v tag">Vaultwarden</span>
+                        <span class="tag">PKI</span>
+                    </div>
+                </div>
+            </div>
+            <div class="stats" style="margin-top:1.5rem;">
+                <div class="stat">
+                    <div class="stat-value">7</div>
+                    <div class="stat-label">services déployés</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">HTTPS automatisé</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">port applicatif exposé</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ SLIDE 7 — CONTINUITÉ ═══════════════════ -->
+    <div class="slide" data-slide="6">
+        <div class="slide-number">06 — Continuité de service</div>
+        <div class="slide-content">
+            <h2>Je sais assurer la <span class="highlight-o">continuité de service</span></h2>
+            <div class="context-box">
+                <strong>Contexte :</strong> Stage AGIR — Bascule du contrôleur de domaine principal (SRV-DC-001 → SRV-DC-002) sans interruption
+            </div>
+            <div class="arrow-flow">
+                <div class="flow-step">Transfert FSMO<br><small style="color:var(--text-muted)">5 rôles / ntdsutil</small></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">NTP / W32Time<br><small style="color:var(--text-muted)">reconfig horloge</small></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Azure AD Connect<br><small style="color:var(--text-muted)">migration instance</small></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Validation<br><small style="color:var(--text-muted)">repadmin + scripts</small></div>
+            </div>
+            <div style="display:flex;gap:2rem;margin-top:1.5rem;align-items:center;justify-content:center;flex-wrap:wrap;">
+                <div style="flex:1;min-width:280px;max-width:480px;">
+                    <img src="V2/img/fsmo-query.png" alt="netdom query fsmo" class="screenshot screenshot-md">
+                    <p class="screenshot-caption">netdom query fsmo — 5 rôles sur SRV-DC-001</p>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:1rem;flex:0 0 auto;">
+                    <div class="card" style="text-align:center;">
+                        <div class="stat-value">5/5</div>
+                        <div class="stat-label">rôles FSMO transférés</div>
+                    </div>
+                    <div class="card" style="text-align:center;">
+                        <div class="stat-value">0</div>
+                        <div class="stat-label">interruption de service</div>
+                    </div>
+                    <div class="card" style="text-align:center;">
+                        <div class="stat-value">120</div>
+                        <div class="stat-label">comptes synchronisés</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tags" style="margin-top:1.5rem;justify-content:center;">
+                <span class="tag-o tag" style="background:rgba(217,119,6,.08);color:var(--orange);">FSMO</span>
+                <span class="tag-o tag" style="background:rgba(217,119,6,.08);color:var(--orange);">Azure AD Connect</span>
+                <span class="tag">PowerShell</span>
+                <span class="tag">W32Time</span>
+                <span class="tag">Entra ID</span>
+                <span class="tag">Documentation</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ SLIDE 8 — CONCLUSION ═══════════════════ -->
+    <div class="slide" data-slide="7">
+        <div class="slide-number">07 — Conclusion & perspectives</div>
+        <div class="slide-content" style="text-align:center;">
+            <h2>Et <span class="highlight">après</span> le BTS ?</h2>
+            <div class="conclusion-grid" style="max-width:800px;margin:1.5rem auto 0;">
+                <div class="conclusion-card">
+                    <div class="icon">🎓</div>
+                    <h3>Licence Informatique</h3>
+                    <p style="color:var(--text-muted);font-size:.9rem;">Poursuite en Licence Info à AGIR (alternance) — septembre 2026</p>
+                </div>
+                <div class="conclusion-card">
+                    <div class="icon">🚀</div>
+                    <h3>Objectif</h3>
+                    <p style="color:var(--text-muted);font-size:.9rem;">Licence Info en alternance chez AGIR, puis Master ou école spécialisée en cybersécurité</p>
+                </div>
+            </div>
+            <div style="margin-top:2.5rem;">
+                <p style="font-size:1.1rem;color:var(--text-muted);max-width:700px;margin:0 auto;line-height:1.7;">
+                    En deux ans de BTS SIO SISR et d'alternance chez AGIR Recouvrement, j'ai acquis des compétences solides en <span class="highlight">administration systèmes</span>,
+                    <span class="highlight-v">sécurité</span>, <span class="highlight-g">automatisation</span> et
+                    <span class="highlight-o">gestion d'infrastructure</span> — validées par des réalisations concrètes en entreprise et en projet scolaire.
+                </p>
+            </div>
+            <p style="margin-top:2rem;font-size:1.4rem;font-weight:700;">Merci pour votre attention</p>
+            <p style="color:var(--text-muted);margin-top:.5rem;font-size:.9rem;">Des questions ?</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- Navigation -->
+<div class="counter" id="counter">1 / 8</div>
+<div class="nav">
+    <button id="prev" aria-label="Slide précédente">◀</button>
+    <button id="next" aria-label="Slide suivante">▶</button>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    let current = 0;
+
+    const progress = document.getElementById('progress');
+    const counter = document.getElementById('counter');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+
+    function goTo(n) {
+        if (n < 0 || n >= total || n === current) return;
+        const dir = n > current ? 1 : -1;
+        const prev = current;
+        current = n;
+
+        // Exit current slide
+        slides[prev].classList.remove('active');
+        slides[prev].style.transform = dir > 0 ? 'translateX(-60px)' : 'translateX(60px)';
+        slides[prev].style.opacity = '0';
+        setTimeout(() => {
+            slides[prev].style.transform = '';
+            slides[prev].style.opacity = '';
+        }, 500);
+
+        // Enter new slide
+        slides[current].style.transition = 'none';
+        slides[current].style.transform = dir > 0 ? 'translateX(60px)' : 'translateX(-60px)';
+        slides[current].classList.add('active');
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                slides[current].style.transition = '';
+                slides[current].style.transform = '';
+            });
+        });
+
+        update();
+    }
+
+    function update() {
+        progress.style.width = ((current + 1) / total * 100) + '%';
+        counter.textContent = (current + 1) + ' / ' + total;
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === total - 1;
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+        if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+        if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+    });
+
+    // Touch support
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+    document.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) {
+            diff > 0 ? goTo(current + 1) : goTo(current - 1);
+        }
+    });
+
+    update();
+</script>
+
+</body>
+</html>
