@@ -16,7 +16,10 @@
       "Bash(cd:*)",
       "Bash(cd ~/Desktop && python3 << 'PYTHON_SCRIPT'\nimport os\nimport glob\n\nfiles = os.listdir\\('.'\\)\nfor f in files:\n    if '2026-02-24' in f and '19.04.38' in f:\n        print\\(f\"Found: {f}\"\\)\n        print\\(f\"Full path: {os.path.abspath\\(f\\)}\"\\)\n        # Get file info\n        stat = os.stat\\(f\\)\n        print\\(f\"Size: {stat.st_size} bytes\"\\)\n        print\\(f\"Type: PNG image\"\\)\nPYTHON_SCRIPT)",
       "Bash(cd ~/Desktop && python3 << 'PYTHON_SCRIPT'\nimport os\nfrom PIL import Image\n\n# Find the file\nfiles = os.listdir\\('.'\\)\ntarget = None\nfor f in files:\n    if '2026-02-24' in f and '19.04.38' in f:\n        target = f\n        break\n\nif target:\n    img = Image.open\\(target\\)\n    print\\(f\"File: {target}\"\\)\n    print\\(f\"Dimensions: {img.width}x{img.height}\"\\)\n    print\\(f\"Format: {img.format}\"\\)\n    print\\(f\"Mode: {img.mode}\"\\)\nPYTHON_SCRIPT)",
-      "Bash(cd /Users/mathisrouvreau/Desktop && python3 << 'PYTHON_SCRIPT'\nimport os\nimport sys\n\n# Get the actual filename\nfiles = [f for f in os.listdir\\('.'\\) if '2026-02-24' in f and '19.04.38' in f and f.endswith\\('.png'\\)]\nif files:\n    filepath = os.path.abspath\\(files[0]\\)\n    print\\(f\"Screenshot found at: {filepath}\"\\)\n    \n    # Check file exists and get size\n    if os.path.exists\\(filepath\\):\n        size = os.path.getsize\\(filepath\\)\n        print\\(f\"File size: {size} bytes\"\\)\n        print\\(f\"File exists: True\"\\)\nPYTHON_SCRIPT)"
+      "Bash(cd /Users/mathisrouvreau/Desktop && python3 << 'PYTHON_SCRIPT'\nimport os\nimport sys\n\n# Get the actual filename\nfiles = [f for f in os.listdir\\('.'\\) if '2026-02-24' in f and '19.04.38' in f and f.endswith\\('.png'\\)]\nif files:\n    filepath = os.path.abspath\\(files[0]\\)\n    print\\(f\"Screenshot found at: {filepath}\"\\)\n    \n    # Check file exists and get size\n    if os.path.exists\\(filepath\\):\n        size = os.path.getsize\\(filepath\\)\n        print\\(f\"File size: {size} bytes\"\\)\n        print\\(f\"File exists: True\"\\)\nPYTHON_SCRIPT)",
+      "Bash(mkdir:*)",
+      "Bash(curl:*)",
+      "WebFetch(domain:mathisrouvreau-droid.github.io)"
     ]
   }
 }

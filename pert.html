@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Diagramme de Gantt — Corrigé</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;600&display=swap');
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --border: #2a2d3e;
+    --gold: #c9a84c; --gold-light: #e8c97a; --text: #e8e8f0; --text-dim: #7a7a9a;
+    --critical: #e05252; --ok: #52c47a; --warn: #c9a84c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'IBM Plex Sans',sans-serif; padding:32px; }
+  h1 { font-family:'IBM Plex Mono',monospace; font-size:1.3rem; color:var(--gold); letter-spacing:.15em; text-transform:uppercase; margin-bottom:4px; }
+  .subtitle { font-size:.78rem; color:var(--text-dim); margin-bottom:20px; }
+  .note { background:rgba(201,168,76,.1); border:1px solid rgba(201,168,76,.3); border-left:3px solid var(--gold); padding:10px 16px; border-radius:4px; font-size:.76rem; color:var(--gold-light); margin-bottom:24px; font-family:'IBM Plex Mono',monospace; line-height:1.7; }
+
+  /* GANTT */
+  .gantt-wrap { background:var(--surface); border:1px solid var(--border); border-radius:8px; overflow:hidden; margin-bottom:28px; }
+  .g-header { display:flex; background:#13151f; border-bottom:1px solid var(--border); }
+  .g-label-h { width:170px; min-width:170px; padding:10px 14px; font-family:'IBM Plex Mono',monospace; font-size:.68rem; font-weight:600; color:var(--gold); letter-spacing:.1em; text-transform:uppercase; border-right:1px solid var(--border); }
+  .g-days-h { flex:1; display:flex; }
+  .g-day-h { flex:1; text-align:center; padding:10px 2px; font-family:'IBM Plex Mono',monospace; font-size:.6rem; color:var(--text-dim); border-right:1px solid rgba(42,45,62,.4); }
+  .g-day-h:last-child { border-right:none; }
+
+  .g-row { display:flex; border-bottom:1px solid rgba(42,45,62,.35); align-items:center; min-height:42px; }
+  .g-row:hover { background:rgba(255,255,255,.02); }
+  .g-row:last-child { border-bottom:none; }
+  .g-label { width:170px; min-width:170px; padding:6px 14px; border-right:1px solid var(--border); display:flex; align-items:center; gap:10px; }
+  .g-letter { font-family:'IBM Plex Mono',monospace; font-size:.85rem; font-weight:700; width:18px; }
+  .g-meta { font-size:.63rem; color:var(--text-dim); line-height:1.5; }
+  .g-bars { flex:1; position:relative; height:42px; }
+  .bar { position:absolute; height:24px; top:50%; transform:translateY(-50%); border-radius:3px; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:.58rem; font-weight:700; color:rgba(0,0,0,.8); }
+
+  /* RESOURCE */
+  .res-title { font-family:'IBM Plex Mono',monospace; font-size:.73rem; font-weight:600; color:var(--gold); letter-spacing:.12em; text-transform:uppercase; margin-bottom:12px; }
+  .res-wrap { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:20px 16px 8px; position:relative; }
+  .res-chart { display:flex; align-items:flex-end; height:100px; gap:1px; position:relative; }
+  .res-col { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; }
+  .res-bar { width:85%; border-radius:2px 2px 0 0; position:relative; min-height:2px; }
+  .res-bar.ok { background:var(--ok); }
+  .res-bar.warn { background:var(--warn); }
+  .res-bar.over { background:var(--critical); }
+  .res-num { position:absolute; top:-15px; left:0; right:0; text-align:center; font-family:'IBM Plex Mono',monospace; font-size:.56rem; font-weight:700; color:var(--text); }
+  .res-dlbl { font-family:'IBM Plex Mono',monospace; font-size:.52rem; color:var(--text-dim); padding:3px 0; }
+  .maxline { position:absolute; left:16px; right:16px; border-top:1.5px dashed rgba(201,168,76,.6); pointer-events:none; z-index:2; }
+  .maxlbl { position:absolute; right:6px; font-family:'IBM Plex Mono',monospace; font-size:.58rem; color:var(--gold); transform:translateY(-50%); background:var(--surface); padding:0 4px; }
+
+  /* INFO */
+  .info-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:20px; }
+  .info-card { background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:12px 14px; }
+  .ic-lbl { font-family:'IBM Plex Mono',monospace; font-size:.6rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:.1em; margin-bottom:4px; }
+  .ic-val { font-family:'IBM Plex Mono',monospace; font-size:1.25rem; font-weight:700; color:var(--gold); }
+  .ic-sub { font-size:.65rem; color:var(--text-dim); margin-top:2px; }
+</style>
+</head>
+<body>
+
+<h1>Diagramme de Gantt — Corrigé</h1>
+<p class="subtitle">Exercice 3 · 12 tâches · Effectif max : 6 personnes · Contrainte disjonctive C ∥ I</p>
+
+<div class="note">
+  Règles respectées :<br>
+  ① Antériorités : A→B,C · B→D,E · C+D+I→F · E+F→G · H→I,J · I→K · J+K→L<br>
+  ② Effectif ≤ 6 personnes/jour à tout moment<br>
+  ③ Contrainte disjonctive : C et I ne se chevauchent pas
+</div>
+
+<div id="gantt"></div>
+
+<div class="res-title" style="margin-top:24px">Charge journalière en personnel</div>
+<div class="res-wrap"><div class="res-chart" id="res"></div></div>
+
+<div class="info-grid" id="info"></div>
+
+<script>
+/*
+RAISONNEMENT PAS À PAS (toutes charges vérifiées jour par jour) :
+
+Données :
+  A(3j,5p)  B(1j,2p,apA)  C(5j,3p,apA)  D(6j,2p,apB)
+  E(4j,4p,apB)  F(2j,3p,apC+D+I)  G(9j,4p,apE+F)
+  H(5j,4p)  I(8j,4p,apH)  J(2j,2p,apH)  K(3j,2p,apI)  L(7j,4p,apJ+K)
+
+ÉTAPE 1 : tâches sans antécédents = A, H (peuvent démarrer en J1)
+  J1-3 : A(5p). H(4p) ne peut PAS être parallèle à A → 5+4=9>6
+  → H démarre après A, soit J4.
+
+ÉTAPE 2 : A termine J3. 
+  J4 : H(4p) démarre. B(2p) peut démarrer (après A). H+B = 6 ✓
+  J4 : B(1j) → termine J4.
+
+ÉTAPE 3 : B terminé J4. Successeurs : D(2p), E(4p)
+  J5-10 : D(6j,2p) démarre J5.
+  J5-8 : H tourne encore (J4-8). J5 : H(4)+D(2)=6 ✓ → E ne peut pas démarrer en J5 (6 déjà)
+  J8 fin de H. J9 : D(2p) seul sur J9-10, E(4p) peut démarrer J9 : D(2)+E(4)=6 ✓
+  → E : J9-12.  D : J5-10.
+
+ÉTAPE 4 : H termine J8. Successeurs : I(8j,4p), J(2j,2p)
+  J9 : I(4p)+J(2p)+D(2p) = 8 > 6 → J ne peut pas démarrer J9 avec I et D.
+  J9 : I(4)+D(2)+E(4) = 10 > 6 même sans J.
+  → I et E ne peuvent pas être simultanés non plus.
+  E(4p) J9-12 et D(2p) J9-10 = 6 max → I doit attendre.
+  I démarre J11 : E(4)+I(4)=8>6. Pas bon.
+  I démarre J13 (après E et D) : J13 : I(4p) seul = 4 ✓
+  J(2j,2p) après H : J9 : D(2)+E(4)+J(2)=8>6. 
+  J démarre J11 : E(4)+J(2)=6 ✓ → J: J11-12.
+
+ÉTAPE 5 : Contrainte disjonctive C ∥ I
+  C(5j,3p) après A (dispo J4). I : J13-20.
+  → C ne peut pas chevaucher J13-20.
+  C doit finir avant J13 ou commencer après J20.
+  C démarre J4 : J4-8. J4 : H(4)+C(3)=7>6 ✗
+  C démarre J5 : J5-9. J5 : H(4)+D(2)+C(3)=9>6 ✗
+  C ne peut pas tenir sur J4-12 sans dépasser 6 avec H puis D puis E.
+  → C doit démarrer après I (après J20) : C : J21-25.
+
+ÉTAPE 6 : D termine J10. I : J13-20. C : J21-25.
+  F après C+D+I : max(25,10,20)=25 → F : J26-27 (3p).
+
+ÉTAPE 7 : E termine J12. F termine J27.
+  G après E+F : max(12,27)=27 → G : J28-36 (4p).
+
+ÉTAPE 8 : I termine J20. K(3j,2p) après I → K : J21-23.
+  J(2j,2p) : J11-12. K: J21-23.
+  L après J+K : max(12,23)=23 → L : J24-30 (4p).
+
+VÉRIFICATION CHARGES :
+  J1-3  : A(5) = 5 ✓
+  J4    : H(4)+B(2) = 6 ✓
+  J5-8  : H(4)+D(2) = 6 ✓
+  J9-10 : D(2)+E(4) = 6 ✓
+  J11-12: E(4)+J(2) = 6 ✓
+  J13-20: I(4) = 4 ✓
+  J21-23: C(3)+K(2) = 5 ✓
+  J24-25: C(3)+L(4) = 7 > 6 ✗ !!
+  → L doit attendre C. L démarre J26.
+  J24-25: C(3) = 3 ✓
+  J26-27: F(3)+L(4) = 7 > 6 ✗ !!
+  → F et L ne peuvent pas être simultanés.
+  F après C(25),D(10),I(20) → F doit démarrer J26.
+  → soit L après F : L démarre J28.
+  J26-27: F(3) = 3 ✓
+  J28-30: G(4)+L(4) = 8 > 6 ✗ (G démarre J28, L J28)
+  → L d'abord puis G, ou G d'abord.
+  L(7j) J28-34. G(9j) après E(12),F(27) → G peut démarrer J28.
+  G(4)+L(4)=8>6 → sérialiser.
+  L J28-34 (4p). G J35-43 (4p). Ou G J28-36, L J37-43.
+  Choisir option la plus courte : même durée totale 43j dans les deux cas.
+  → L : J28-34, G : J35-43. Total = 43 jours.
+
+VÉRIFICATION FINALE :
+  J1-3   : A(5)=5 ✓
+  J4     : H(4)+B(2)=6 ✓
+  J5-8   : H(4)+D(2)=6 ✓
+  J9-10  : D(2)+E(4)=6 ✓
+  J11-12 : E(4)+J(2)=6 ✓
+  J13-20 : I(4)=4 ✓
+  J21-23 : C(3)+K(2)=5 ✓
+  J24-25 : C(3)=3 ✓
+  J26-27 : F(3)=3 ✓
+  J28-34 : L(4)=4 ✓
+  J35-43 : G(4)=4 ✓
+  Toutes charges ≤ 6 ✓
+  C(21-25) et I(13-20) : pas de chevauchement ✓
+*/
+
+const tasks = [
+  { n:'A', dur:3, eff:5, start:1,  color:'#4a9eff' },
+  { n:'B', dur:1, eff:2, start:4,  color:'#4a9eff' },
+  { n:'H', dur:5, eff:4, start:4,  color:'#b06aff' },
+  { n:'D', dur:6, eff:2, start:5,  color:'#4a9eff' },
+  { n:'E', dur:4, eff:4, start:9,  color:'#4a9eff' },
+  { n:'J', dur:2, eff:2, start:11, color:'#b06aff' },
+  { n:'I', dur:8, eff:4, start:13, color:'#b06aff' },
+  { n:'K', dur:3, eff:2, start:21, color:'#b06aff' },
+  { n:'C', dur:5, eff:3, start:21, color:'#4a9eff' },
+  { n:'F', dur:2, eff:3, start:26, color:'#52c47a' },
+  { n:'L', dur:7, eff:4, start:28, color:'#e8c97a' },
+  { n:'G', dur:9, eff:4, start:35, color:'#52c47a' },
+];
+
+tasks.forEach(t => t.end = t.start + t.dur - 1);
+const total = Math.max(...tasks.map(t => t.end));
+
+// Daily load
+const load = new Array(total + 2).fill(0);
+tasks.forEach(t => { for(let d=t.start;d<=t.end;d++) load[d]+=t.eff; });
+
+// Render Gantt
+const dayHeaders = Array.from({length:total},(_,i)=>`<div class="g-day-h">${(i+1)%5===0?i+1:''}</div>`).join('');
+
+document.getElementById('gantt').innerHTML = `
+<div class="gantt-wrap">
+  <div class="g-header">
+    <div class="g-label-h">Tâche</div>
+    <div class="g-days-h">${dayHeaders}</div>
+  </div>
+  ${tasks.map(t=>{
+    const l = ((t.start-1)/total*100).toFixed(3);
+    const w = (t.dur/total*100).toFixed(3);
+    return `<div class="g-row">
+      <div class="g-label">
+        <span class="g-letter" style="color:${t.color}">${t.n}</span>
+        <div class="g-meta">${t.dur}j · ${t.eff}p<br><span style="color:${t.color}">J${t.start}→J${t.end}</span></div>
+      </div>
+      <div class="g-bars">
+        <div class="bar" style="left:${l}%;width:${w}%;background:${t.color}" title="${t.n}: J${t.start}-J${t.end}, ${t.eff}p">
+          ${t.dur>1?t.n:''}
+        </div>
+      </div>
+    </div>`;
+  }).join('')}
+</div>`;
+
+// Render resource chart
+const maxV = Math.max(...load.slice(1));
+const H = 85;
+const res = document.getElementById('res');
+
+const mlTop = 20 + (1 - 6/maxV)*H;
+res.insertAdjacentHTML('beforeend',`
+  <div class="maxline" style="top:${mlTop}px"></div>
+  <div class="maxlbl" style="top:${mlTop}px">max=6</div>
+`);
+
+for(let d=1;d<=total;d++){
+  const v = load[d];
+  const bh = Math.round((v/maxV)*H);
+  const cls = v>6?'over':v===6?'warn':'ok';
+  res.insertAdjacentHTML('beforeend',`
+    <div class="res-col">
+      <div class="res-bar ${cls}" style="height:${bh}px">
+        <div class="res-num">${v}</div>
+      </div>
+      <div class="res-dlbl">${d%5===0?d:''}</div>
+    </div>
+  `);
+}
+
+// Info cards
+document.getElementById('info').innerHTML = `
+  <div class="info-card"><div class="ic-lbl">Durée totale</div><div class="ic-val">${total} jours</div><div class="ic-sub">Toutes contraintes</div></div>
+  <div class="info-card"><div class="ic-lbl">Charge max</div><div class="ic-val">${Math.max(...load)} pers.</div><div class="ic-sub">Limite : 6 ✓</div></div>
+  <div class="info-card"><div class="ic-lbl">Contrainte C∥I</div><div class="ic-val" style="color:#52c47a">✓</div><div class="ic-sub">C:J21-25 / I:J13-20</div></div>
+  <div class="info-card"><div class="ic-lbl">Ressources</div><div class="ic-val" style="color:#52c47a">✓</div><div class="ic-sub">≤ 6p/jour partout</div></div>
+`;
+</script>
+</body>
+</html>
