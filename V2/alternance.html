@@ -99,39 +99,6 @@
           </ul>
         </div>
 
-        <div class="company-block">
-          <h3>🛠️ Environnement technique</h3>
-          <div class="tech-env">
-            <div class="tech-env-category">
-              <strong>Systèmes :</strong>
-              <span class="badge">Windows Server 2019/2022</span>
-              <span class="badge">Active Directory</span>
-              <span class="badge">DHCP/DNS</span>
-              <span class="badge">GPO</span>
-            </div>
-            <div class="tech-env-category">
-              <strong>Cloud :</strong>
-              <span class="badge">Microsoft 365</span>
-              <span class="badge">Azure AD / Entra ID</span>
-              <span class="badge">Exchange Online</span>
-              <span class="badge">Intune</span>
-            </div>
-            <div class="tech-env-category">
-              <strong>Outils :</strong>
-              <span class="badge">PowerShell</span>
-              <span class="badge">n8n</span>
-              <span class="badge">Graph API</span>
-              <span class="badge">GLPI</span>
-            </div>
-            <div class="tech-env-category">
-              <strong>Sécurité :</strong>
-              <span class="badge">Stoïk (XDR)</span>
-              <span class="badge">BloodHound</span>
-              <span class="badge">PingCastle</span>
-              <span class="badge">MFA / Conditional Access</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -197,7 +164,7 @@
             <h3>📊 Résultats &amp; Impact</h3>
             <div class="impact-grid">
               <div class="impact-item">
-                <div class="impact-number">-75%</div>
+                <div class="impact-number">-25%</div>
                 <div class="impact-label">Vulnérabilités critiques</div>
               </div>
               <div class="impact-item">
@@ -209,7 +176,7 @@
                 <div class="impact-label">Utilisateurs avec MFA</div>
               </div>
               <div class="impact-item">
-                <div class="impact-number">50+</div>
+                <div class="impact-number">20</div>
                 <div class="impact-label">GPO configurées</div>
               </div>
             </div>
@@ -222,7 +189,6 @@
               <span class="badge">Azure AD</span>
               <span class="badge">Sécurité</span>
               <span class="badge">Audit</span>
-              <span class="badge">BloodHound</span>
               <span class="badge">PingCastle</span>
             </div>
           </div>
@@ -285,7 +251,7 @@
             <h3>📊 Résultats &amp; Impact</h3>
             <div class="impact-grid">
               <div class="impact-item">
-                <div class="impact-number">8h/sem</div>
+                <div class="impact-number">2h</div>
                 <div class="impact-label">Gain de temps</div>
               </div>
               <div class="impact-item">
@@ -513,7 +479,7 @@
         <!-- Projet 5 — Vaultwarden -->
         <article class="ac-item reveal" aria-expanded="false">
           <button class="ac-trigger" type="button">
-            <span>🔐 Déploiement Vaultwarden – Gestionnaire de mots de passe interne</span>
+            <span>🔐 Déploiement Vaultwarden – Gestionnaire de mots de passe interne <span class="ac-status ac-status-abandoned">Abandonné</span></span>
             <span class="ac-icon">▼</span>
           </button>
           <div class="ac-panel">
@@ -577,6 +543,58 @@
               <span class="badge">PowerShell</span>
               <span class="badge">PKI / TLS</span>
               <span class="badge">Sécurité</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projet 6 — Détection d'usurpation d'identité (incident sécurité) -->
+        <article class="ac-item reveal" aria-expanded="false">
+          <button class="ac-trigger" type="button">
+            <span>🎭 Détection d'une usurpation d'identité – Incident FOVI / Whaling <span class="ac-status ac-status-done">Traité</span></span>
+            <span class="ac-icon">▼</span>
+          </button>
+          <div class="ac-panel">
+            <div class="project-meta">
+              <span class="project-tag">Cybersécurité</span>
+              <span class="project-tag">Détection d'incident</span>
+              <span class="project-tag">FOVI / Whaling</span>
+              <span class="project-tag">Forensique</span>
+              <span class="project-duration">Détection &amp; rapport : février 2026</span>
+            </div>
+
+            <h3>Contexte &amp; détection</h3>
+            <p>En <strong>février 2026</strong>, j'ai détecté un cas d'<strong>usurpation d'identité externe</strong> visant l'entreprise. Un fraudeur s'est fait passer pour une collaboratrice (négociatrice) et a utilisé l'identité du <strong>Directeur Général</strong> (signature usurpée) pour faire exécuter un <strong>faux ordre de virement</strong> par un débiteur. Le débiteur a effectué un virement vers un compte personnel frauduleux, croyant régler une échéance auprès de la société.</p>
+
+            <h3>🔍 Investigation technique</h3>
+            <ul>
+              <li><strong>Audit complet :</strong> contrôle du compte email et du poste de la collaboratrice usurpée — aucune compromission détectée</li>
+              <li><strong>Analyse des logs de messagerie :</strong> confirmation qu'aucun email frauduleux n'a quitté l'organisation</li>
+              <li><strong>Analyse comparative :</strong> emails légitime vs frauduleux (domaine officiel vs ProtonMail), et RIB légitime vs faux RIB (titulaire, IBAN, signature)</li>
+              <li><strong>Caractérisation du vecteur :</strong> attaque <strong>FOVI / Whaling</strong> par création d'une adresse ProtonMail imitant l'adresse légitime, avec faux RIB en pièce jointe</li>
+              <li><strong>Conclusion :</strong> usurpation 100 % externe — aucun système interne compromis</li>
+            </ul>
+
+            <h3>📋 Actions menées</h3>
+            <ul>
+              <li><strong>Alerte du débiteur :</strong> confirmation du RIB officiel, blocage de tout virement vers le compte frauduleux, conseil de dépôt de plainte</li>
+              <li><strong>Recommandations sécurité :</strong> renouvellement des mots de passe côté débiteur pour couper tout accès résiduel</li>
+              <li><strong>Communication interne :</strong> sensibilisation des collaborateurs aux techniques de phishing / FOVI</li>
+              <li><strong>Rapport d'incident :</strong> rédaction d'un compte rendu complet (chronologie, vecteur d'attaque, preuves, recommandations) signé par le DSI</li>
+            </ul>
+
+            <h3>📄 Document associé</h3>
+            <p>Rapport d'incident complet, anonymisé pour usage portfolio :</p>
+            <p><a class="btn btn-outline" href="Rapport_Incident_Usurpation_Identite_ANONYMISE.pdf" target="_blank" rel="noopener">📄 Ouvrir le rapport d'incident (PDF)</a></p>
+
+            <h3>🎓 Compétences mobilisées</h3>
+            <div class="badges">
+              <span class="badge">Détection d'incident</span>
+              <span class="badge">Investigation forensique</span>
+              <span class="badge">Analyse de logs</span>
+              <span class="badge">Phishing / FOVI</span>
+              <span class="badge">Audit messagerie</span>
+              <span class="badge">Communication de crise</span>
+              <span class="badge">Rédaction de rapport</span>
             </div>
           </div>
         </article>

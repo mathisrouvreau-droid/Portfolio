@@ -427,11 +427,256 @@ html:not(.no-js) .nojs-hidden { display: inline-flex; }
   grid-column: span 4;
 }
 
+/* ===== BENTO PARCOURS / QUI SUIS-JE ===== */
+.bento-parcours {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding: 1.75rem;
+}
+
+.bento-parcours-header {
+  max-width: 75ch;
+}
+
+.bento-parcours-eyebrow {
+  margin: 0 0 .5rem;
+  font-size: var(--step--1);
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.bento-parcours-title {
+  margin: 0 0 .75rem;
+  font-size: var(--step-2);
+  letter-spacing: -.01em;
+  line-height: 1.25;
+}
+
+.bento-parcours-bio {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.bento-parcours-bio strong {
+  color: var(--text);
+}
+
+.bento-parcours-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  position: relative;
+}
+
+.bento-parcours-timeline::before {
+  content: '';
+  position: absolute;
+  top: 1.4rem;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2), var(--success));
+  opacity: .35;
+  z-index: 0;
+}
+
+.parcours-step {
+  position: relative;
+  padding: 1.5rem 1rem 1rem;
+  background: var(--surface);
+  border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+  border-radius: var(--r-md);
+  z-index: 1;
+}
+
+.parcours-step::before {
+  content: '';
+  position: absolute;
+  top: -.55rem;
+  left: 1rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 2px solid var(--brand);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand) 18%, transparent);
+}
+
+.parcours-step-done::before {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand) 18%, transparent);
+}
+
+.parcours-step-current::before {
+  border-color: var(--brand-2);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand-2) 22%, transparent);
+}
+
+.parcours-step-next::before {
+  border-color: var(--success);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--success) 22%, transparent);
+}
+
+.parcours-year {
+  font-size: var(--step--1);
+  font-weight: 700;
+  color: var(--brand);
+  letter-spacing: .04em;
+  margin-bottom: .35rem;
+}
+
+.parcours-step-current .parcours-year { color: var(--brand-2); }
+.parcours-step-next .parcours-year { color: var(--success); }
+
+.parcours-degree {
+  margin: 0 0 .35rem;
+  font-size: var(--step-0);
+  letter-spacing: -.01em;
+}
+
+.parcours-school {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--step--1);
+  line-height: 1.5;
+}
+
+@media (max-width: 720px) {
+  .bento-parcours-timeline {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .bento-parcours-timeline::before { display: none; }
+}
+
 .bento-tech-1,
 .bento-tech-2,
 .bento-tech-3,
 .bento-tech-4 {
   grid-column: span 1;
+}
+
+/* ===== BENTO OBJECTIFS FUTURS ===== */
+.bento-goals {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding: 1.75rem;
+  background: linear-gradient(145deg,
+    color-mix(in oklab, var(--brand) 5%, var(--surface-2) 95%),
+    var(--surface-2)
+  );
+  border-left: 3px solid var(--brand);
+}
+
+.bento-goals-header {
+  max-width: 75ch;
+}
+
+.bento-goals-eyebrow {
+  margin: 0 0 .5rem;
+  font-size: var(--step--1);
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.bento-goals-title {
+  margin: 0 0 .75rem;
+  font-size: var(--step-2);
+  letter-spacing: -.01em;
+  line-height: 1.25;
+}
+
+.bento-goals-intro {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.bento-goals-intro strong { color: var(--text); }
+
+.bento-goals-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.goal-item {
+  padding: 1.25rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+  border-radius: var(--r-md);
+  transition: transform var(--dur-2) var(--e-out), border-color var(--dur-2);
+}
+
+.goal-item:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--brand) 30%, transparent);
+}
+
+.goal-icon {
+  font-size: 1.6rem;
+  margin-bottom: .6rem;
+}
+
+.goal-title {
+  margin: 0 0 .4rem;
+  font-size: var(--step-0);
+  letter-spacing: -.01em;
+}
+
+.goal-desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--step--1);
+  line-height: 1.55;
+}
+
+.goal-desc strong { color: var(--text); }
+
+@media (max-width: 720px) {
+  .bento-goals-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== BADGES STATUT ACCORDÉON (alternance) ===== */
+.ac-status {
+  display: inline-block;
+  margin-left: .55rem;
+  padding: .15rem .6rem;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.ac-status-current {
+  background: color-mix(in oklab, var(--brand-2) 16%, transparent);
+  color: var(--brand-2);
+  border: 1px solid color-mix(in oklab, var(--brand-2) 35%, transparent);
+}
+
+.ac-status-abandoned {
+  background: color-mix(in oklab, var(--muted) 14%, transparent);
+  color: var(--muted);
+  border: 1px solid color-mix(in oklab, var(--muted) 30%, transparent);
+}
+
+.ac-status-done {
+  background: color-mix(in oklab, var(--success) 16%, transparent);
+  color: var(--success);
+  border: 1px solid color-mix(in oklab, var(--success) 35%, transparent);
 }
 
 /* === BENTO CARD BASE === */
