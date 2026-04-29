@@ -35,16 +35,16 @@
 <main class="section">
   <div class="container">
     <h1 class="mb-1">Projets réalisés en formation</h1>
-    <p class="muted max-w-prose">Projets techniques menés pendant le BTS SIO SISR : administration systèmes, réseaux, sécurité, supervision et déploiement. Deux projets majeurs réalisés en équipe sur des infrastructures complètes.</p>
+    <p class="muted max-w-prose">Projets techniques menés pendant le BTS SIO SISR : administration systèmes, réseaux, sécurité, supervision et déploiement. Trois projets majeurs réalisés en équipe sur des infrastructures complètes.</p>
 
     <!-- Stats -->
     <div class="stats-grid reveal" style="margin-top:2rem">
       <div class="stat-card">
-        <div class="stat-number">2</div>
+        <div class="stat-number">3</div>
         <div class="stat-label">Projets d'infrastructure</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">12+</div>
+        <div class="stat-number">15+</div>
         <div class="stat-label">Technologies déployées</div>
       </div>
       <div class="stat-card">
@@ -274,6 +274,56 @@
               <p>Test site web interne/externe (NAT), cloisonnement VLAN (ping ↔), DHCP 4 VLANs, NAT/PAT (<code>show ip nat translations</code>). Tous tests réussis.</p>
               <div class="badges"><span class="badge">B4.1</span><span class="badge">B5.1</span></div>
             </div>
+          </div>
+
+        </div>
+
+        <!-- ===== MILESTONE : SIO 2ème année — PPE4 TOBAT ===== -->
+        <div class="tl-v2-milestone" style="margin-top:2.5rem">
+          <div class="tl-v2-milestone-label" style="background:linear-gradient(135deg,var(--success),var(--brand))">SIO 2ème année — PPE4 TOBAT</div>
+          <div class="tl-v2-milestone-dot" style="background:linear-gradient(135deg,var(--success),var(--brand));box-shadow:0 0 0 5px rgba(74,222,128,.2),var(--glow-blue)" aria-hidden="true"></div>
+        </div>
+
+        <!-- Contexte PPE4 TOBAT -->
+        <div class="tl-v2-items" style="margin-bottom:1.5rem">
+          <div class="tl-v2-card tl-right">
+            <div class="tl-v2-card-spacer"></div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot" style="background:linear-gradient(135deg,var(--success),var(--brand))"></div>
+            </div>
+            <div class="tl-v2-card-content" style="background:linear-gradient(135deg,color-mix(in oklab,var(--success) 6%,transparent),var(--surface-2))">
+              <h4>Projet PPE4 — TOBAT (Salon Nautique de Paris)</h4>
+              <p>Mise en place du SI des stands de la société <strong>TOBAT</strong> (constructeur de bateaux de prestige) pour l'édition 2026 du <strong>Salon Nautique International de Paris</strong>. Pavillon voile et pavillon moteur — accès Intranet et Internet, 10 postes par stand, exigence de haute disponibilité. Contexte : société de services <strong>OXAM</strong>. Équipe : Julien, Mathis, Evan R. Oral : 03 avril 2026.</p>
+              <p class="muted" style="font-size:var(--step--1);margin-top:.5rem">Périmètre projet : déploiement masse FOG, DHCP Linux en répartition de charge, supervision, contrôleurs de domaine répliqués, scripts de provisionnement.</p>
+              <div class="badges">
+                <span class="badge">Windows Server 2022</span>
+                <span class="badge">Active Directory</span>
+                <span class="badge">DFS-R</span>
+                <span class="badge">Haute dispo</span>
+                <span class="badge">DHCP Linux</span>
+                <span class="badge">FOG</span>
+              </div>
+              <div style="margin-top:.75rem;display:flex;gap:.5rem;flex-wrap:wrap">
+                <a href="consigne_projet_tobat.pdf" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:var(--step--1)">📄 Consigne du projet</a>
+                <a href="documentation_tobat_complete.docx" download class="btn btn-outline" style="font-size:var(--step--1)">📥 Documentation complète</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activités PPE4 -->
+        <div class="tl-v2-items">
+
+          <div class="tl-v2-card tl-left">
+            <div class="tl-v2-card-content" style="border-color:color-mix(in oklab,var(--success) 25%,transparent)">
+              <h4>🖥️ 2 contrôleurs de domaine Windows Server 2022 — réplication DFS</h4>
+              <p>Mise en place d'un domaine Active Directory à <strong>haute disponibilité</strong> avec <strong>deux contrôleurs de domaine répliqués sous Windows Server 2022</strong>. Configuration de la <strong>réplication DFS-R</strong> pour synchroniser les partages entre les deux DC et assurer la continuité de service en cas de panne. Vérification de la convergence (<code>repadmin /replsummary</code>, <code>dfsrdiag pollad</code>) et tests de bascule.</p>
+              <div class="badges"><span class="badge">B1.2</span><span class="badge">B2.2</span><span class="badge">B4.1</span></div>
+            </div>
+            <div class="tl-v2-card-connector">
+              <div class="tl-v2-card-dot" style="background:linear-gradient(135deg,var(--success),var(--brand))"></div>
+            </div>
+            <div class="tl-v2-card-spacer"></div>
           </div>
 
         </div>
