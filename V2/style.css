@@ -681,6 +681,186 @@ html:not(.no-js) .nojs-hidden { display: inline-flex; }
   border: 1px solid color-mix(in oklab, var(--success) 35%, transparent);
 }
 
+/* ===== VEILLE — SUJET SPOTLIGHT ===== */
+.veille-spotlight {
+  position: relative;
+  padding: 2rem;
+  border-radius: var(--r-lg);
+  background: linear-gradient(145deg,
+    color-mix(in oklab, var(--brand) 8%, var(--surface-2) 92%),
+    color-mix(in oklab, var(--brand-2) 6%, var(--surface-2) 94%)
+  );
+  border: 1px solid color-mix(in oklab, var(--brand) 25%, transparent);
+  box-shadow: var(--shadow-2);
+  overflow: hidden;
+}
+
+.veille-spotlight::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2), var(--success));
+}
+
+.veille-spotlight-header {
+  max-width: 80ch;
+}
+
+.veille-spotlight-eyebrow {
+  display: inline-block;
+  padding: .3rem .8rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--brand-2) 18%, transparent);
+  color: var(--brand-2);
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 1rem;
+}
+
+.veille-spotlight-title {
+  margin: 0 0 .5rem;
+  font-size: var(--step-3);
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.veille-spotlight-subtitle {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  font-size: var(--step-0);
+}
+
+.veille-spotlight-question {
+  margin: 0 0 1rem;
+  padding: 1rem 1.25rem;
+  background: color-mix(in oklab, var(--surface) 70%, transparent);
+  border-left: 3px solid var(--brand);
+  border-radius: var(--r-sm);
+}
+
+.veille-spotlight-question p {
+  margin: 0;
+  font-style: italic;
+  font-size: var(--step-0);
+  color: var(--text);
+}
+
+.veille-spotlight-question strong { font-style: normal; color: var(--brand); }
+
+.veille-axes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.veille-axis-card {
+  padding: 1.1rem;
+  background: var(--surface-2);
+  border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+  border-radius: var(--r-md);
+  transition: transform var(--dur-2) var(--e-out), border-color var(--dur-2);
+}
+
+.veille-axis-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--brand) 35%, transparent);
+}
+
+.veille-axis-icon {
+  font-size: 1.6rem;
+  margin-bottom: .5rem;
+}
+
+.veille-axis-card h4 {
+  margin: 0 0 .35rem;
+  font-size: var(--step-0);
+  letter-spacing: -.01em;
+}
+
+.veille-axis-card p {
+  margin: 0;
+  font-size: var(--step--1);
+  line-height: 1.5;
+}
+
+.veille-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.75rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--surface-2);
+  border: 1px solid color-mix(in oklab, var(--brand) 25%, transparent);
+  border-radius: var(--r-md);
+}
+
+.veille-cta h3 {
+  font-size: var(--step-0);
+  color: var(--brand);
+}
+
+.veille-cta .btn {
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .veille-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .veille-cta .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.veille-spotlight-quote {
+  margin-top: 1.75rem;
+  padding: 1.25rem 1.5rem;
+  background: color-mix(in oklab, var(--surface) 60%, transparent);
+  border-left: 3px solid var(--brand-2);
+  border-radius: var(--r-md);
+}
+
+.veille-spotlight-quote p {
+  margin: 0 0 .5rem;
+  font-style: italic;
+  color: var(--text);
+  font-size: var(--step-0);
+  line-height: 1.6;
+}
+
+.veille-spotlight-quote cite {
+  color: var(--muted);
+  font-size: var(--step--1);
+  font-style: normal;
+}
+
+@media (max-width: 900px) {
+  .veille-axes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .veille-spotlight {
+    padding: 1.5rem;
+  }
+  .veille-axes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* === BENTO CARD BASE === */
 .bento-card {
   background: var(--surface-2);

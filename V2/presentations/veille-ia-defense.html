@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sujet de veille — L'IA au service des défenseurs · Mathis Rouvreau</title>
+  <meta name="description" content="Dossier de veille personnel : l'IA au service des défenseurs. Copilot for Security, IA dans les SOC, détection de menaces. Premiers éléments de réponse.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script defer src="../app.js"></script>
+  <style>
+    .pres-hero {
+      text-align: center;
+      padding: 4rem 0 2rem;
+    }
+    .pres-hero h1 {
+      font-size: var(--step-4);
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: .5rem;
+    }
+    .pres-hero .pres-subtitle {
+      font-size: var(--step-1);
+      color: var(--muted);
+    }
+    .pres-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .pres-meta-item {
+      background: var(--surface-2);
+      border: 1px solid color-mix(in oklab, var(--brand) 15%, transparent);
+      border-radius: var(--r-sm);
+      padding: .5rem 1rem;
+      font-size: var(--step--1);
+      color: var(--text);
+    }
+    .pres-meta-item strong { color: var(--brand); }
+
+    .pres-back {
+      display: inline-block;
+      margin-bottom: 1rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: var(--step--1);
+      transition: color var(--dur-2) var(--e-out);
+    }
+    .pres-back:hover { color: var(--brand); }
+
+    .pres-problem {
+      max-width: 80ch;
+      margin: 2rem auto;
+      padding: 1.5rem 1.75rem;
+      background: color-mix(in oklab, var(--brand) 6%, var(--surface-2) 94%);
+      border-left: 4px solid var(--brand);
+      border-radius: var(--r-md);
+    }
+    .pres-problem p {
+      margin: 0;
+      font-style: italic;
+      font-size: var(--step-1);
+      line-height: 1.55;
+    }
+    .pres-problem strong { font-style: normal; color: var(--brand); }
+
+    .pres-toc {
+      background: var(--surface-2);
+      border: 1px solid color-mix(in oklab, var(--brand) 12%, transparent);
+      border-radius: var(--r-md);
+      padding: 1.5rem 2rem;
+      margin: 2rem auto;
+      max-width: 80ch;
+    }
+    .pres-toc h2 { font-size: var(--step-1); margin-bottom: 1rem; }
+    .pres-toc ol {
+      list-style: none;
+      counter-reset: toc;
+      padding: 0;
+      margin: 0;
+    }
+    .pres-toc li {
+      counter-increment: toc;
+      padding: .5rem 0;
+      border-bottom: 1px solid color-mix(in oklab, var(--muted) 15%, transparent);
+    }
+    .pres-toc li:last-child { border-bottom: none; }
+    .pres-toc li::before {
+      content: counter(toc, decimal-leading-zero) ".";
+      color: var(--brand);
+      font-weight: 700;
+      margin-right: .75rem;
+    }
+    .pres-toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--dur-2) var(--e-out);
+    }
+    .pres-toc a:hover { color: var(--brand); }
+
+    .pres-qr {
+      max-width: 80ch;
+      margin: 2.5rem auto 0;
+      scroll-margin-top: 2rem;
+    }
+    .pres-qr h2 {
+      font-size: var(--step-2);
+      margin-bottom: .75rem;
+      letter-spacing: -.01em;
+      color: var(--brand);
+    }
+    .pres-qr-num {
+      display: inline-block;
+      font-size: var(--step--1);
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: .08em;
+      margin-bottom: .35rem;
+      text-transform: uppercase;
+    }
+    .pres-qr-body {
+      padding: 1.25rem 1.5rem;
+      background: var(--surface-2);
+      border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+      border-left: 3px solid var(--brand);
+      border-radius: var(--r-md);
+    }
+    .pres-qr-body p {
+      margin: 0 0 .75rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .pres-qr-body p:last-child { margin-bottom: 0; }
+    .pres-qr-body strong { color: var(--brand); }
+    .pres-qr-body ul { margin: .25rem 0 .75rem 1.25rem; line-height: 1.7; }
+    .pres-qr-body code {
+      font-size: .9em;
+      padding: .1em .35em;
+      background: color-mix(in oklab, var(--brand) 10%, transparent);
+      border-radius: 4px;
+    }
+
+    .pres-conclusion {
+      max-width: 80ch;
+      margin: 3rem auto;
+      padding: 1.75rem 2rem;
+      background: linear-gradient(145deg,
+        color-mix(in oklab, var(--brand) 8%, var(--surface-2) 92%),
+        color-mix(in oklab, var(--brand-2) 6%, var(--surface-2) 94%)
+      );
+      border: 1px solid color-mix(in oklab, var(--brand) 25%, transparent);
+      border-radius: var(--r-lg);
+    }
+    .pres-conclusion h2 {
+      margin-top: 0;
+      color: var(--brand-2);
+    }
+    .pres-conclusion p {
+      line-height: 1.7;
+      margin: 0 0 .75rem;
+    }
+    .pres-conclusion p:last-child { margin-bottom: 0; }
+    .pres-conclusion blockquote {
+      margin: 1rem 0 0;
+      padding: 1rem 1.25rem;
+      border-left: 3px solid var(--brand-2);
+      background: color-mix(in oklab, var(--surface) 60%, transparent);
+      border-radius: var(--r-sm);
+    }
+    .pres-conclusion blockquote p {
+      font-style: italic;
+      margin: 0;
+    }
+    .pres-conclusion cite {
+      display: block;
+      margin-top: .5rem;
+      color: var(--muted);
+      font-size: var(--step--1);
+      font-style: normal;
+    }
+
+    @media (max-width: 640px) {
+      .pres-hero { padding: 2rem 0 1rem; }
+      .pres-toc, .pres-problem, .pres-qr-body, .pres-conclusion { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="modern-header">
+  <div class="container header-inner">
+    <button class="nav-toggle" aria-label="Ouvrir le menu">&#9776;</button>
+    <a href="../index.html" class="brand">Mathis Rouvreau</a>
+    <button class="theme-toggle" aria-label="Basculer le thème">&#127767;</button>
+  </div>
+  <div class="container header-bottom">
+    <nav aria-label="Navigation principale" data-open="false">
+      <ul class="nav-list">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../alternance.html">Alternance</a></li>
+        <li><a href="../scolaire.html">Scolaire</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../veille.html" aria-current="page">Veille</a></li>
+        <li><button class="nav-contact-btn" data-open-contact aria-label="Ouvrir le formulaire de contact">Contact</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+
+    <a href="../veille.html" class="pres-back">&larr; Retour à ma page veille</a>
+
+    <!-- HERO -->
+    <div class="pres-hero reveal">
+      <h1>L'IA au service des défenseurs</h1>
+      <p class="pres-subtitle">Copilot for Security, IA dans les SOC et la détection de menaces</p>
+      <div class="pres-meta">
+        <div class="pres-meta-item"><strong>Type :</strong> Veille informationnelle</div>
+        <div class="pres-meta-item"><strong>Domaine :</strong> Cybersécurité &amp; IA</div>
+        <div class="pres-meta-item"><strong>Période :</strong> 2025 – 2026</div>
+      </div>
+    </div>
+
+    <!-- PROBLÉMATIQUE -->
+    <div class="pres-problem reveal">
+      <p>Comment l'<strong>intelligence artificielle générative</strong> transforme-t-elle le métier de la <strong>cyberdéfense</strong> en 2026 — outils, usages concrets en SOC, limites et risques ?</p>
+    </div>
+
+    <!-- TABLE DES MATIÈRES -->
+    <nav class="pres-toc reveal" aria-label="Sommaire">
+      <h2>📑 Sommaire</h2>
+      <ol>
+        <li><a href="#q1">Pourquoi l'IA s'impose-t-elle dans la cyberdéfense en 2026 ?</a></li>
+        <li><a href="#q2">Qu'est-ce que Microsoft Security Copilot, concrètement ?</a></li>
+        <li><a href="#q3">Quels usages concrets dans un SOC ?</a></li>
+        <li><a href="#q4">Quelles sont les limites et les risques ?</a></li>
+        <li><a href="#q5">L'IA défensive peut-elle contrer l'IA offensive ?</a></li>
+      </ol>
+    </nav>
+
+    <!-- Q1 -->
+    <article class="pres-qr reveal" id="q1">
+      <span class="pres-qr-num">Question 01</span>
+      <h2>Pourquoi l'IA s'impose-t-elle dans la cyberdéfense en 2026 ?</h2>
+      <div class="pres-qr-body">
+        <p>Le volume d'alertes générées dans les SOC dépasse depuis longtemps la capacité humaine de traitement. Plusieurs études (Gartner, IBM Cost of a Data Breach) estiment qu'<strong>une part significative des alertes ne sont jamais analysées</strong>, faute d'analystes disponibles. Le coût moyen d'un poste d'analyste SOC junior, la pénurie de talents en cybersécurité et la croissance continue du périmètre à surveiller (cloud, SaaS, identités machines, OT) poussent les organisations à automatiser une partie du travail.</p>
+        <p>En parallèle, les attaquants <strong>industrialisent l'IA générative</strong> pour produire :</p>
+        <ul>
+          <li>des phishing personnalisés à l'échelle (chaque cible reçoit un email contextualisé)</li>
+          <li>des malwares polymorphes générés à la volée</li>
+          <li>des reconnaissances automatisées sur les surfaces d'attaque exposées</li>
+          <li>des deepfakes audio/vidéo pour les escroqueries au président (FOVI)</li>
+        </ul>
+        <p>La <strong>réponse défensive doit jouer à la même vitesse</strong>. C'est ce qui explique l'arrivée massive de copilotes spécialisés cybersécurité depuis 2024 : Microsoft Security Copilot, Google Sec-Gemini, CrowdStrike Charlotte AI, SentinelOne Purple AI…</p>
+      </div>
+    </article>
+
+    <!-- Q2 -->
+    <article class="pres-qr reveal" id="q2">
+      <span class="pres-qr-num">Question 02</span>
+      <h2>Qu'est-ce que Microsoft Security Copilot, concrètement ?</h2>
+      <div class="pres-qr-body">
+        <p><strong>Microsoft Security Copilot</strong> a été annoncé en mars 2023 et est généralement disponible depuis avril 2024. C'est un <strong>assistant IA basé sur GPT-4</strong>, connecté nativement à l'écosystème Microsoft de sécurité :</p>
+        <ul>
+          <li><strong>Microsoft Sentinel</strong> (SIEM) — investigations et requêtes <code>KQL</code></li>
+          <li><strong>Microsoft Defender XDR</strong> — analyse d'incidents endpoint, identité, email, cloud</li>
+          <li><strong>Microsoft Intune</strong> — politiques de gestion des appareils</li>
+          <li><strong>Microsoft Entra ID</strong> — analyse des identités et signaux d'authentification</li>
+          <li><strong>Microsoft Purview</strong> — gouvernance, DLP, conformité</li>
+        </ul>
+        <p>Concrètement, l'analyste peut <strong>poser des questions en langage naturel</strong> (« Donne-moi tous les comptes ayant fait un login depuis un pays inhabituel cette semaine »), obtenir des requêtes KQL prêtes à l'emploi, des résumés d'incidents, des recommandations de remédiation, et même la traduction d'un script PowerShell ou d'une commande shell suspecte.</p>
+        <p>Tarification : ~ 4 $ par <strong>SCU</strong> (Security Compute Unit) consommée par heure. La consommation est gérée via le portail Azure — un usage SOC quotidien représente plusieurs centaines à plusieurs milliers d'euros par mois selon la taille de l'organisation.</p>
+      </div>
+    </article>
+
+    <!-- Q3 -->
+    <article class="pres-qr reveal" id="q3">
+      <span class="pres-qr-num">Question 03</span>
+      <h2>Quels usages concrets dans un SOC ?</h2>
+      <div class="pres-qr-body">
+        <p>Quatre familles d'usage dominent aujourd'hui dans les SOC qui ont déployé un copilote IA :</p>
+        <ul>
+          <li><strong>Tri d'alertes (alert triage) :</strong> l'IA classe et priorise les alertes en fonction de leur gravité, du contexte métier et des liens avec d'autres incidents — réduisant la charge cognitive des analystes N1.</li>
+          <li><strong>Investigation guidée :</strong> l'IA reconstitue automatiquement la timeline d'un incident à partir des logs disponibles, propose les requêtes pertinentes et corrèle les indicateurs (IoC) avec la threat intel.</li>
+          <li><strong>Threat intel enrichie :</strong> résumé automatique de bulletins (CERT-FR, CISA, Mandiant, Recorded Future), corrélation des IoC publiés avec ceux observés dans le SI.</li>
+          <li><strong>Génération de scripts de réponse :</strong> playbooks SOAR, scripts PowerShell d'isolement de poste, requêtes KQL ad-hoc, règles de blocage firewall.</li>
+        </ul>
+        <p>Le gain attendu n'est pas de <em>remplacer</em> les analystes mais de <strong>libérer leur temps des tâches répétitives</strong> pour qu'ils se concentrent sur le threat hunting, l'analyse forensique avancée et la stratégie de défense.</p>
+      </div>
+    </article>
+
+    <!-- Q4 -->
+    <article class="pres-qr reveal" id="q4">
+      <span class="pres-qr-num">Question 04</span>
+      <h2>Quelles sont les limites et les risques ?</h2>
+      <div class="pres-qr-body">
+        <p>Trois zones de vigilance majeures sont régulièrement pointées par les analystes et les CERT :</p>
+        <ul>
+          <li><strong>Hallucinations :</strong> l'IA peut inventer des CVE, des règles de détection, des commandes ou des procédures qui n'existent pas. Inacceptable dans un contexte critique où une mauvaise réponse peut amplifier un incident.</li>
+          <li><strong>Confidentialité :</strong> les prompts envoyés vers les modèles cloud peuvent contenir des données sensibles (logs réels, noms d'utilisateurs, IP internes, hashes de mots de passe). Microsoft, Google et les autres fournisseurs documentent leurs garanties contractuelles, mais le sujet reste sensible — particulièrement dans les secteurs régulés (santé, finance, défense).</li>
+          <li><strong>Dépendance fournisseur :</strong> un SOC dont les workflows sont profondément intégrés à Security Copilot devient difficilement portable vers un autre écosystème. Le vendor lock-in est réel.</li>
+        </ul>
+        <p>La pratique qui s'impose dans les SOC matures est celle du <strong>« human in the loop »</strong> : l'IA propose, l'analyste valide. Aucune action de remédiation critique (isolement de serveur, suppression de compte, blocage IP) ne devrait être déclenchée automatiquement sans contrôle humain — du moins en 2026.</p>
+      </div>
+    </article>
+
+    <!-- Q5 -->
+    <article class="pres-qr reveal" id="q5">
+      <span class="pres-qr-num">Question 05</span>
+      <h2>L'IA défensive peut-elle contrer l'IA offensive ?</h2>
+      <div class="pres-qr-body">
+        <p>C'est la <strong>course à l'armement</strong> qui structure le marché de la cybersécurité depuis 2024. La défense se développe sur trois axes complémentaires :</p>
+        <ul>
+          <li><strong>Détection de contenus IA-générés :</strong> deepfakes vidéo et audio, faux documents type RIB, faux emails. Les éditeurs intègrent désormais des classifieurs spécialisés (par exemple Microsoft Defender for Office 365 détecte certains patterns de phishing IA-augmenté).</li>
+          <li><strong>Analyse comportementale (UEBA) :</strong> dopée au machine learning, elle détecte les anomalies subtiles invisibles aux règles statiques — connexion à 3h du matin depuis un pays inhabituel suivi d'un téléchargement massif de fichiers, par exemple.</li>
+          <li><strong>Résistance aux attaques sur les modèles eux-mêmes :</strong> les copilotes IA deviennent eux-mêmes des cibles (prompt injection, jailbreaks, exfiltration via outils MCP). De nouveaux outils émergent pour les protéger : Lakera Guard, NeMo Guardrails, AI gateways…</li>
+        </ul>
+        <p>Le cas FOVI vécu chez FSP en février 2026 illustre parfaitement ce besoin : un email frauduleux ProtonMail, très crédible, avec un faux RIB et une signature de DG usurpée — sera demain quasi-indétectable sans aide IA. La détection passera de « comparer les domaines email » (règle statique) à « repérer les anomalies sémantiques et stylistiques entre l'email légitime et l'email frauduleux » (analyse IA).</p>
+      </div>
+    </article>
+
+    <!-- CONCLUSION -->
+    <section class="pres-conclusion reveal">
+      <h2>🧭 Mon angle perso</h2>
+      <p>L'IA dans la cyberdéfense n'est pas un sujet technique parmi d'autres : c'est un <strong>changement de paradigme</strong> qui redéfinit le métier d'analyste SOC. En tant qu'alternant qui s'oriente vers la cybersécurité défensive, je veux comprendre comment intégrer ces outils sans tomber dans deux pièges symétriques : la <em>foi aveugle</em> (l'IA ne se trompe jamais) et le <em>rejet réflexe</em> (l'IA c'est juste un buzzword).</p>
+      <p>Le sujet vit en permanence — chaque mois apporte de nouvelles annonces produit, de nouveaux retours d'expérience, de nouvelles limites identifiées. Cette page est un <strong>point d'étape</strong>, mise à jour régulièrement.</p>
+      <blockquote>
+        <p>« J'ai vécu un incident d'usurpation d'identité chez FSP. J'ai aussi été formé aux outils IA poussés. J'ai naturellement voulu suivre comment l'IA arme désormais les défenseurs — Copilot for Security, IA dans les SOC, agents blue team — pour préparer mon orientation cybersécurité défensive. »</p>
+        <cite>— Mathis Rouvreau</cite>
+      </blockquote>
+    </section>
+
+    <div class="center" style="margin-top:2rem">
+      <a class="btn btn-primary" href="../veille.html">&larr; Retour à ma page veille</a>
+      <a class="btn btn-outline" href="../index.html">Accueil</a>
+    </div>
+  </div>
+</main>
+
+<button class="back-to-top" aria-label="Retour en haut" title="Retour en haut">&uarr;</button>
+
+<footer class="site-footer">
+  <div class="container footer-bottom">
+    <p>&copy; 2026 Mathis ROUVREAU – Portfolio BTS SIO SISR V2.</p>
+  </div>
+</footer>
+
+</body>
+</html>
