@@ -32,12 +32,19 @@ Portfolio/
 ├── Photo/
 │   └── IMG_8395.png             · Photo de profil
 │
-├── documentation/               · Documentations techniques des projets
+├── documentation/               · Documentations techniques & veille
 │   ├── Documentation_technique_MACODEMY.md
 │   ├── Documentation_Technique_MDS49_PPE3.md
+│   ├── Documentation_Changement_DC_v2_0_final.md
+│   ├── Documentation_OpenWebUI_WebSearch_RAG_Mathis_Rouvreau_v3.md
+│   ├── doc-vaultwarden.md
 │   ├── DOCUMENTATION_PORTFOLIO.md
+│   ├── ANALYSE_V2_BENCHMARK.md
+│   ├── script-oral.md
+│   ├── veille-ia-defense.html   · Sujet de veille perso "L'IA au service des défenseurs"
 │   └── README.txt
 │
+├── VERSION                      ← Version courante (ex: V2.11.1)
 └── README.md                    ← Ce fichier
 ```
 
@@ -93,8 +100,13 @@ Portfolio/
 
 | Version | Description | Date |
 |---------|-------------|------|
-| **V2** *(active)* | Refonte Bento Grid — dark/light, animations, modal contact | Fév. 2026 |
+| **V2.11.1** *(active)* | Sujet de veille perso "L'IA au service des défenseurs" sorti du portfolio | Mai 2026 |
+| V2.10.x | Renommage PPE → AP, ajout PPE4 TOBAT (page scolaire) | Avr. 2026 |
+| V2.9.x | Refonte accueil + restructuration alternance & compétences | Mars 2026 |
+| V2.0.0 | Refonte Bento Grid — dark/light, animations, modal contact | Fév. 2026 |
 | V1 *(archivée)* | Première version du portfolio | 2025 |
+
+> Voir le fichier `VERSION` pour la version exacte. L'historique complet figure dans `CLAUDE.md`.
 
 ---
 
@@ -103,8 +115,8 @@ Portfolio/
 - **Email** : mathis.rouvreau@gmail.com
 - **LinkedIn** : [linkedin.com/in/mathis-rouvreau-aa6096305](https://www.linkedin.com/in/mathis-rouvreau-aa6096305/)
 - **GitHub** : [github.com/mathisrouvreau](https://github.com/mathisrouvreau)
-- **Localisation** : Île-de-France · Télétravail partiel accepté
-- **Disponibilité** : Dès septembre 2026
+- **Localisation** : Cholet (49) · Télétravail partiel accepté
+- **Disponibilité** : Dès septembre 2026 (poursuite Licence Info. AGIR)
 
 ---
 
