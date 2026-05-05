@@ -364,10 +364,9 @@ html:not(.no-js) .nojs-hidden { display: inline-flex; }
   grid-column: span 4;
 }
 
-.bento-stat-1 { grid-column: span 1; }
+.bento-stat-1 { grid-column: span 2; }
 .bento-stat-2 { grid-column: span 1; }
 .bento-stat-3 { grid-column: span 1; }
-.bento-stat-4 { grid-column: span 1; }
 
 .bento-about {
   grid-column: span 2;
@@ -2166,7 +2165,7 @@ input:focus, textarea:focus, select:focus {
   .bento-grid { grid-template-columns: 1fr; }
 
   .bento-hero,
-  .bento-stat-1, .bento-stat-2, .bento-stat-3, .bento-stat-4,
+  .bento-stat-1, .bento-stat-2, .bento-stat-3,
   .bento-about, .bento-avail,
   .bento-full, .bento-card-quote,
   .bento-tech-1, .bento-tech-2, .bento-tech-3, .bento-tech-4 {
