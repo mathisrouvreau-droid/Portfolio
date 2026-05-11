@@ -122,6 +122,7 @@
 
         .cards-2 { grid-template-columns: 1fr 1fr; }
         .cards-3 { grid-template-columns: 1fr 1fr 1fr; }
+        .cards-4 { grid-template-columns: repeat(4, 1fr); }
 
         .card {
             background: var(--card);
@@ -487,7 +488,7 @@
         /* ── Responsive ── */
         @media (max-width: 768px) {
             .slide { padding: 2rem 1.5rem; }
-            .cards-2, .cards-3, .two-cols, .conclusion-grid { grid-template-columns: 1fr; }
+            .cards-2, .cards-3, .cards-4, .two-cols, .conclusion-grid { grid-template-columns: 1fr; }
             .arrow-flow { flex-direction: column; }
             .flow-arrow { transform: rotate(90deg); }
             .org-branches { flex-direction: column; align-items: center; width: 100%; }
@@ -519,12 +520,12 @@
                 <div class="stat-label">Utilisateurs gérés</div>
             </div>
             <div class="stat">
-                <div class="stat-value">50+</div>
+                <div class="stat-value">20</div>
                 <div class="stat-label">GPO déployées</div>
             </div>
             <div class="stat">
-                <div class="stat-value">99.9%</div>
-                <div class="stat-label">Disponibilité</div>
+                <div class="stat-value">1</div>
+                <div class="stat-label">Incident FOVI détecté</div>
             </div>
         </div>
     </div>
@@ -533,8 +534,8 @@
     <div class="slide" data-slide="1">
         <div class="slide-number">01 — Contexte</div>
         <div class="slide-content">
-            <h2>Mon parcours en <span class="highlight">3 piliers</span></h2>
-            <div class="cards cards-3">
+            <h2>Mon parcours en <span class="highlight">4 piliers</span></h2>
+            <div class="cards cards-4">
                 <div class="card">
                     <h3>AP2 — MACODEMY</h3>
                     <p>Infrastructure réseau complète pour un établissement scolaire fictif.</p>
@@ -548,7 +549,7 @@
                 </div>
                 <div class="card">
                     <h3>AP3 — MDS49</h3>
-                    <p>Infra sécurisée pour la Maison Départementale des Sports 49 — 7 semaines, méthode Agile.</p>
+                    <p>Infra sécurisée pour la Maison Départementale des Sports 49 — 7 semaines, Agile.</p>
                     <p style="margin-top:.5rem;"><strong>Équipe :</strong> Mathis, Evan, Julien</p>
                     <div class="tags">
                         <span class="tag-v tag">Zabbix</span>
@@ -558,8 +559,19 @@
                     </div>
                 </div>
                 <div class="card">
+                    <h3>AP4 — TOBAT</h3>
+                    <p>SI des stands TOBAT pour le Salon Nautique International de Paris 2026, haute dispo.</p>
+                    <p style="margin-top:.5rem;"><strong>Équipe :</strong> Julien, Mathis, Evan R.</p>
+                    <div class="tags">
+                        <span class="tag">WS 2022</span>
+                        <span class="tag">DFS-R</span>
+                        <span class="tag">FOG</span>
+                        <span class="tag-v tag">Haute dispo</span>
+                    </div>
+                </div>
+                <div class="card">
                     <h3>Alternance — AGIR</h3>
-                    <p>Administrateur Systèmes & Réseaux chez AGIR Recouvrement (Groupe FSP), Cholet.</p>
+                    <p>SysAdmin chez AGIR Recouvrement (Groupe FSP), Cholet.</p>
                     <p style="margin-top:.5rem;"><strong>~130 salariés · 13M€+ CA</strong></p>
                     <div class="tags">
                         <span class="tag-g tag">Azure AD</span>
@@ -676,7 +688,7 @@
                     <h3>Sécurisation AD — Stage</h3>
                     <ul>
                         <li>Audit vulnérabilités (BloodHound, PingCastle)</li>
-                        <li>50+ GPO de sécurité déployées</li>
+                        <li>20 GPO de sécurité déployées</li>
                         <li>MFA activé pour 100% des utilisateurs</li>
                         <li>Accès conditionnels Azure AD</li>
                         <li>Désactivation protocoles obsolètes (SMBv1…)</li>
@@ -684,11 +696,11 @@
                     <div class="result-box">
                         <div style="display:flex;gap:2rem;justify-content:center;">
                             <div class="stat">
-                                <div class="stat-value">78% → 85%</div>
+                                <div class="stat-value">45% → 82%</div>
                                 <div class="stat-label">Azure Secure Score</div>
                             </div>
                             <div class="stat">
-                                <div class="stat-value">−45%</div>
+                                <div class="stat-value">−25%</div>
                                 <div class="stat-label">Vulnérabilités AD</div>
                             </div>
                         </div>
@@ -715,9 +727,59 @@
         </div>
     </div>
 
-    <!-- ═══════════════════ SLIDE 6 — AUTOMATISATION ═══════════════════ -->
+    <!-- ═══════════════════ SLIDE 6 — INCIDENT FOVI / WHALING ═══════════════════ -->
     <div class="slide" data-slide="5">
-        <div class="slide-number">05 — Automatisation</div>
+        <div class="slide-number">05 — Détection d'incident</div>
+        <div class="slide-content">
+            <h2>Je sais <span class="highlight-o">détecter et traiter un incident</span> de sécurité</h2>
+            <div class="context-box">
+                <strong>Contexte :</strong> Stage AGIR — Février 2026 : détection d'une <strong>usurpation d'identité externe</strong> (FOVI / Whaling). Un fraudeur s'est fait passer pour une collaboratrice via une adresse ProtonMail imitée + signature DG usurpée pour faire exécuter un faux ordre de virement par un débiteur.
+            </div>
+            <div class="arrow-flow">
+                <div class="flow-step">Détection<br><small style="color:var(--text-muted)">signalement débiteur</small></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Audit interne<br><small style="color:var(--text-muted)">compte + poste utilisateur</small></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Analyse forensique<br><small style="color:var(--text-muted)">logs messagerie · RIB</small></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Caractérisation<br><small style="color:var(--text-muted)">FOVI / Whaling externe</small></div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Rapport DSI<br><small style="color:var(--text-muted)">chronologie + reco.</small></div>
+            </div>
+            <div class="two-cols" style="margin-top:1.5rem;">
+                <div class="card">
+                    <h3>Investigation menée</h3>
+                    <ul>
+                        <li>Audit compte mail + poste de la collaboratrice usurpée</li>
+                        <li>Analyse des logs de messagerie sortants</li>
+                        <li>Comparaison emails légitime vs frauduleux (domaine officiel vs ProtonMail)</li>
+                        <li>Analyse RIB officiel vs faux RIB (titulaire, IBAN, signature)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Conclusion &amp; actions</h3>
+                    <ul>
+                        <li>Usurpation <strong>100 % externe</strong> — aucun système interne compromis</li>
+                        <li>Alerte du débiteur, blocage virement, conseil dépôt de plainte</li>
+                        <li>Communication interne &amp; sensibilisation au phishing / FOVI</li>
+                        <li>Rapport d'incident complet signé par le DSI</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tags" style="margin-top:1.5rem;justify-content:center;">
+                <span class="tag-o tag" style="background:rgba(217,119,6,.08);color:var(--orange);">FOVI / Whaling</span>
+                <span class="tag-o tag" style="background:rgba(217,119,6,.08);color:var(--orange);">Investigation forensique</span>
+                <span class="tag">Analyse de logs</span>
+                <span class="tag">Audit messagerie</span>
+                <span class="tag">Communication de crise</span>
+                <span class="tag">Rédaction de rapport</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ SLIDE 7 — AUTOMATISATION ═══════════════════ -->
+    <div class="slide" data-slide="6">
+        <div class="slide-number">06 — Automatisation</div>
         <div class="slide-content">
             <h2>Je sais <span class="highlight-g">automatiser</span> les processus IT</h2>
             <div class="context-box">
@@ -759,9 +821,9 @@
         </div>
     </div>
 
-    <!-- ═══════════════════ SLIDE 7 — DÉPLOIEMENT ═══════════════════ -->
-    <div class="slide" data-slide="6">
-        <div class="slide-number">06 — Déploiement & conteneurisation</div>
+    <!-- ═══════════════════ SLIDE 8 — DÉPLOIEMENT ═══════════════════ -->
+    <div class="slide" data-slide="7">
+        <div class="slide-number">07 — Déploiement & conteneurisation</div>
         <div class="slide-content">
             <h2>Je sais <span class="highlight">déployer des services</span> conteneurisés et intégrer l'<span class="highlight-v">IA</span></h2>
             <div class="context-box">
@@ -823,9 +885,9 @@
         </div>
     </div>
 
-    <!-- ═══════════════════ SLIDE 8 — CONTINUITÉ ═══════════════════ -->
-    <div class="slide" data-slide="7">
-        <div class="slide-number">07 — Continuité de service</div>
+    <!-- ═══════════════════ SLIDE 9 — CONTINUITÉ ═══════════════════ -->
+    <div class="slide" data-slide="8">
+        <div class="slide-number">08 — Continuité de service</div>
         <div class="slide-content">
             <h2>Je sais assurer la <span class="highlight-o">continuité de service</span></h2>
             <div class="context-box">
@@ -871,9 +933,50 @@
         </div>
     </div>
 
-    <!-- ═══════════════════ SLIDE 9 — CONCLUSION ═══════════════════ -->
-    <div class="slide" data-slide="8">
-        <div class="slide-number">08 — Conclusion & perspectives</div>
+    <!-- ═══════════════════ SLIDE 10 — VEILLE PERSONNELLE ═══════════════════ -->
+    <div class="slide" data-slide="9">
+        <div class="slide-number">09 — Veille personnelle</div>
+        <div class="slide-content">
+            <h2>Ma veille perso : <span class="highlight-v">l'IA au service des défenseurs</span></h2>
+            <div class="context-box">
+                <strong>Lien avec mon parcours :</strong> j'ai vécu un incident FOVI réel chez FSP en février 2026, et je suis formé aux outils IA poussés (Open WebUI, MCP, RAG). Je veille désormais sur la manière dont <strong>l'IA arme les défenseurs</strong> — pour préparer mon orientation cybersécurité défensive.
+            </div>
+            <div class="two-cols" style="margin-top:1rem;">
+                <div class="card">
+                    <h3>Sujets suivis</h3>
+                    <ul>
+                        <li>Microsoft Copilot for Security &amp; Security Copilot agents</li>
+                        <li>IA dans les SOC : tri d'alertes, corrélation, hunting assisté</li>
+                        <li>Détection de phishing / FOVI par analyse sémantique</li>
+                        <li>UEBA (User & Entity Behavior Analytics) dopée au ML</li>
+                        <li>Sécurité des copilotes IA : prompt injection, AI gateways</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Sources &amp; méthode</h3>
+                    <ul>
+                        <li>Microsoft Security Blog, ANSSI, Cert-FR</li>
+                        <li>The Hacker News, BleepingComputer (flux RSS)</li>
+                        <li>Retours d'expérience SOC (LinkedIn, conférences)</li>
+                        <li>Synthèse mensuelle dans une page dédiée du portfolio</li>
+                    </ul>
+                    <div class="tags" style="margin-top:.75rem;">
+                        <span class="tag-v tag">Copilot for Security</span>
+                        <span class="tag-v tag">SOC IA</span>
+                        <span class="tag-v tag">UEBA</span>
+                        <span class="tag">Blue Team</span>
+                    </div>
+                </div>
+            </div>
+            <div class="result-box" style="margin-top:1.5rem;max-width:850px;margin-left:auto;margin-right:auto;text-align:center;">
+                <p style="font-style:italic;color:var(--text);line-height:1.6;">« Comprendre comment intégrer l'IA dans la défense sans tomber dans la foi aveugle ni le rejet réflexe. »</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ SLIDE 11 — CONCLUSION ═══════════════════ -->
+    <div class="slide" data-slide="10">
+        <div class="slide-number">10 — Conclusion & perspectives</div>
         <div class="slide-content" style="text-align:center;">
             <h2>Et <span class="highlight">après</span> le BTS ?</h2>
             <div class="conclusion-grid" style="max-width:800px;margin:1.5rem auto 0;">
@@ -889,10 +992,10 @@
                 </div>
             </div>
             <div style="margin-top:2.5rem;">
-                <p style="font-size:1.1rem;color:var(--text-muted);max-width:700px;margin:0 auto;line-height:1.7;">
+                <p style="font-size:1.1rem;color:var(--text-muted);max-width:740px;margin:0 auto;line-height:1.7;">
                     En deux ans de BTS SIO SISR et d'alternance chez AGIR Recouvrement, j'ai acquis des compétences solides en <span class="highlight">administration systèmes</span>,
-                    <span class="highlight-v">sécurité</span>, <span class="highlight-g">automatisation</span> et
-                    <span class="highlight-o">gestion d'infrastructure</span> — validées par des réalisations concrètes en entreprise et en projet scolaire.
+                    <span class="highlight-v">sécurité</span>, <span class="highlight-g">automatisation</span>,
+                    <span class="highlight-o">gestion d'incidents</span> et gestion d'infrastructure — validées par des projets scolaires (MACODEMY, MDS49, TOBAT) et un incident FOVI réel détecté et traité chez FSP.
                 </p>
             </div>
             <p style="margin-top:2rem;font-size:1.4rem;font-weight:700;">Merci pour votre attention</p>
@@ -903,7 +1006,7 @@
 </div>
 
 <!-- Navigation -->
-<div class="counter" id="counter">1 / 9</div>
+<div class="counter" id="counter">1 / 11</div>
 <div class="nav">
     <button id="prev" aria-label="Slide précédente">◀</button>
     <button id="next" aria-label="Slide suivante">▶</button>
